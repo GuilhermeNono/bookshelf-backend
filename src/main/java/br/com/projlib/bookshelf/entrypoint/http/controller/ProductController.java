@@ -2,6 +2,7 @@ package br.com.projlib.bookshelf.entrypoint.http.controller;
 
 import br.com.projlib.bookshelf.core.usecase.GetProd;
 import br.com.projlib.bookshelf.entrypoint.http.response.ProductResponse;
+import br.com.projlib.bookshelf.infra.exception.ProductNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +18,8 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<ProductResponse> getProd() {
-
-        ProductResponse productResponse = ProductResponse.fromDomain(getProd.process());
-
-        return ResponseEntity.ok(productResponse);
+            ProductResponse productResponse = ProductResponse.fromDomain(getProd.process());
+            return ResponseEntity.ok(productResponse);
     }
 
 }
