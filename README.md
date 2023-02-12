@@ -1,6 +1,7 @@
 # 📚Bookshelf📚
 ## 📖 Description 
-<p>Repositório referente ao Backend do projeto Bookshelf. O Bookshelf, será um sistema especializado no gerenciamento e consulta de dados relacionados à bibliotecas. Inicialmente o backend será desenvolvido em Java. O mesmo será utilizado como Trabalho de Conclusão de curso para a ETEC Comendador João Rays.</p>
+<p>Repositório referente ao Backend do projeto Bookshelf. O Bookshelf, será um sistema especializado no gerenciamento e consulta de dados relacionados à bibliotecas. Inicialmente o backend será desenvolvido em Java.</p>
+<p><i>O mesmo será utilizado como Trabalho de Conclusão de curso para a ETEC Comendador João Rays.</i></p>
 
 ##
 
