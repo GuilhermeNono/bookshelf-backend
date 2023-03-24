@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway.userprofile;
 
+import br.com.projlib.bookshelf.core.domain.Profile;
 import br.com.projlib.bookshelf.infra.gateway.syspermissionjpa.SysPermissionJpa;
 import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
 import jakarta.persistence.Column;
@@ -47,5 +48,25 @@ public class UserProfileJpa implements Serializable {
 
     @OneToOne(mappedBy = "userProfile")
     private UserAccountJpa userAccount;
+
+    public Profile toDomain() {
+        return new Profile(
+                this.getId(),
+                this.getPersonName(),
+                this.getCreatedAt(),
+                this.getUpdatedAt()
+        );
+    }
+
+    public static UserProfileJpa fromDomain(final Profile userProfile) {
+        UserProfileJpa userProfileJpa = new UserProfileJpa();
+
+        userProfileJpa.setId(userProfile.getId());
+        userProfileJpa.setCreatedAt(userProfile.getCreatedAt());
+        userProfileJpa.setUpdatedAt(userProfile.getUpdatedAt());
+        userProfileJpa.setPersonName(userProfile.getPersonName());
+
+        return userProfileJpa;
+    }
 
 }
