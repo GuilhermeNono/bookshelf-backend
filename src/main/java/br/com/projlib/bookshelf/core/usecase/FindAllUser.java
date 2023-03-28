@@ -11,7 +11,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class FindAllUser {
 
-    private UserAccountGateway userAccountGateway;
+    private final UserAccountGateway userAccountGateway;
 
     public Collection<UserAccount> process() {
         return userAccountGateway.findAll();

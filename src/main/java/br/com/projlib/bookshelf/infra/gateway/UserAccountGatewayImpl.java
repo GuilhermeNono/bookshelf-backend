@@ -42,6 +42,12 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
     }
 
     @Override
+    public UserAccount findUserByUsername(String username) {
+        return userAccountRepository.findByUsername(username)
+                .orElseThrow().toDomain();
+    }
+
+    @Override
     @Transactional
     public List<UserAccount> findAllActiveAccounts() {
         return userAccountRepository

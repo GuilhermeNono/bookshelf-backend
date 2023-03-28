@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class FindUserByUsername {
-    private UserAccountGateway userAccountGateway;
+    private final UserAccountGateway userAccountGateway;
 
     public UserAccount process(String username) {
         return userAccountGateway.findUserByUsername(username);

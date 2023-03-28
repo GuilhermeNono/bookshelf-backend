@@ -3,6 +3,7 @@ package br.com.projlib.bookshelf.entrypoint.http.controller;
 import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.core.usecase.CreateUser;
 import br.com.projlib.bookshelf.core.usecase.FindAllUser;
+import br.com.projlib.bookshelf.entrypoint.http.request.UserAccountRequest;
 import br.com.projlib.bookshelf.entrypoint.http.response.UserAccountResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

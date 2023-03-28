@@ -27,7 +27,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/api/authentication")
+@RequestMapping(value = "/api/v1/authentication")
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class AuthenticationController implements Serializable {

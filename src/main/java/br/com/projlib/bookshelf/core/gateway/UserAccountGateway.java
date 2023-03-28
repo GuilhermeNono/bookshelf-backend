@@ -13,6 +13,8 @@ public interface UserAccountGateway {
 
     List<UserAccount> findAll();
 
+    UserAccount findUserByUsername(String username);
+
     List<UserAccount> findAllActiveAccounts();
 
     UserAccount findUserById(final long id);

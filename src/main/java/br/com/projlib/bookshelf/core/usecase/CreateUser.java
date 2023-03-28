@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class CreateUser {
     private UserAccountGateway userAccountGateway;
 
-    public void process(UserAccount userAccount) {
-        userAccountGateway.create(userAccount);
+    public UserAccount process(UserAccount userAccount) {
+        return userAccountGateway.create(userAccount);
     }
 }
