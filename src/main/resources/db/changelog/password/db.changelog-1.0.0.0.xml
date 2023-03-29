@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql"/>
+
+    <changeSet id="populating password table" author="guilherme.nono">
+        <insert tableName="password">
+            <column name="id" value="1"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="1"/>
+        </insert>
+
+        <insert tableName="password">
+            <column name="id" value="2"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="2"/>
+        </insert>
+
+        <insert tableName="password">
+            <column name="id" value="3"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="3"/>
+        </insert>
+
+        <insert tableName="password">
+            <column name="id" value="4"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="4"/>
+        </insert>
+
+        <insert tableName="password">
+            <column name="id" value="5"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="5"/>
+        </insert>
+
+        <insert tableName="password">
+            <column name="id" value="6"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="6"/>
+        </insert>
+
+        <insert tableName="password">
+            <column name="id" value="7"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="7"/>
+        </insert>
+
+        <insert tableName="password">
+            <column name="id" value="8"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="8"/>
+        </insert>
+
+        <insert tableName="password">
+            <column name="id" value="9"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="9"/>
+        </insert>
+
+        <insert tableName="password">
+            <column name="id" value="10"/>
+            <column name="password" value="$2y$10$76Sqh10gtguN0ABMnIVBreQV4xRpGn2qnKA5snXb.cVsqBkPJLPkK"/>
+            <column name="active" value="1"/>
+            <column name="fk_password_user_account" value="10"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

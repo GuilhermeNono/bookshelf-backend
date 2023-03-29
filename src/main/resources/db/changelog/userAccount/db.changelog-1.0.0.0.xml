@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql"/>
+
+    <changeSet id="populating user_account table" author="guilherme.nono">
+        <insert tableName="user_account">
+            <column name="id" value="1"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="guilherme.nono"/>
+            <column name="email" value="guilherme.nono@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="1"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="2"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="kauan.moreira"/>
+            <column name="email" value="guilherme.nono@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="2"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="3"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="gabriel.morais"/>
+            <column name="email" value="kauan.moreira@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="3"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="4"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="caio.almeida"/>
+            <column name="email" value="gabriel.morais@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="4"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="5"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="breno.silva"/>
+            <column name="email" value="breno.silva@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="5"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="6"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="suzane.chimenas"/>
+            <column name="email" value="suzane.chimenas@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="6"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="7"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="ana.julia"/>
+            <column name="email" value="ana.julia@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="7"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="8"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="juan.primo"/>
+            <column name="email" value="juan.primo@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="8"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="9"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="luan.barros"/>
+            <column name="email" value="luan.barros@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="9"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="10"/>
+            <column name="cpf" value="55566699974"/>
+            <column name="username" value="lucas.adriano"/>
+            <column name="email" value="lucas.adriano@hotmail.com"/>
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="10"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
