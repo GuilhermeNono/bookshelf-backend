@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql"/>
+
+    <changeSet id="populating borrowing table" author="guilherme.nono">
+        <insert tableName="borrowing">
+            <column name="active" value="1" />
+            <column name="loan_date" value="2023-01-01" />
+            <column name="return_date" value="2023-01-01" />
+            <column name="fk_borrowing_book" value="1" />
+            <column name="fk_borrowing_user_library" value="1" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

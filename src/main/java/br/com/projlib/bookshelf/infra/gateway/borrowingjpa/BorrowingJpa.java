@@ -27,7 +27,7 @@ public class BorrowingJpa implements Serializable {
     private long id;
 
     @Column(nullable = false)
-    private Date loadDate;
+    private Date loanDate;
 
     @Column(nullable = false)
     private Date returnDate;

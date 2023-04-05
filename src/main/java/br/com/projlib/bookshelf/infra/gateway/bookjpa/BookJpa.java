@@ -46,9 +46,8 @@ public class BookJpa implements Serializable {
     @JoinColumn(name = "fk_book_publisher", referencedColumnName = "id")
     private PublisherJpa publisher;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_book_book_copy", referencedColumnName = "id")
-    private BookCopyJpa copy;
+    @OneToMany(mappedBy = "book")
+    private Set<BookCopyJpa> copies;
 
     @OneToMany(mappedBy = "book")
     private Set<BorrowingJpa> borrowings;

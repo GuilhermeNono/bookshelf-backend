@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -18,7 +19,7 @@ import java.util.Set;
 @Table(name = "lib_permission")
 @Getter
 @Setter
-public class LibPermissionJpa implements Serializable {
+public class LibPermissionJpa implements GrantedAuthority, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +28,14 @@ public class LibPermissionJpa implements Serializable {
     @Column(nullable = false)
     private String description;
 
+    @Column(nullable = false)
+    private String code;
+
     @ManyToMany(mappedBy = "libraryPermissions")
     private Set<UserLibraryJpa> libraryUsers;
 
+    @Override
+    public String getAuthority() {
+        return null;
+    }
 }

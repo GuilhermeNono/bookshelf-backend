@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql"/>
+
+    <changeSet id="populating lib_permission_user_library table" author="guilherme.nono">
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="1" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="2" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="3" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="4" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="5" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="6" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="7" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="8" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="9" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+        <insert tableName="lib_permission_user_library">
+            <column name="fk_user_library_lib_permission" value="10" />
+            <column name="fk_lib_permission_user_library" value="1" />
+        </insert>
+
+
+    </changeSet>
+
+</databaseChangeLog>

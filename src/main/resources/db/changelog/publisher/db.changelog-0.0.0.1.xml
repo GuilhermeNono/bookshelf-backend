@@ -4,23 +4,14 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="create-product-table" author="guilherme.nono">
-        <createTable tableName="product">
+    <changeSet id="creating publisher table" author="guilherme.nono">
+        <createTable tableName="publisher">
             <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true"
-                             primaryKeyName="pk_product"
-                             nullable="false"
-                             />
+                <constraints primaryKey="true" primaryKeyName="pk_publisher" nullable="false"/>
             </column>
-
-            <column name="name" type="varchar(80)">
+            <column name="name" type="varchar(45)">
                 <constraints nullable="false"/>
             </column>
-
-            <column name="price" type="decimal" >
-                <constraints nullable="false"/>
-            </column>
-
         </createTable>
     </changeSet>
 

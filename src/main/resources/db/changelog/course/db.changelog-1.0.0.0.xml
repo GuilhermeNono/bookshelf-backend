@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql"/>
+
+    <changeSet id="populating course table" author="guilherme.nono">
+        <insert tableName="course">
+            <column name="id" value="1"/>
+            <column name="name" value="Desenvolvimento de Sistema"/>
+            <column name="class" value="A"/>
+            <column name="module" value="3"/>
+            <column name="period" value="Noturno"/>
+            <column name="active" value="1"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

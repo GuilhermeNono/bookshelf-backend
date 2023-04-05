@@ -33,6 +33,12 @@ public class CourseJpa implements Serializable {
     @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
     private boolean active;
 
+    @Column(nullable = false)
+    private String period;
+
+    @Column
+    private String module;
+
     @ManyToMany(mappedBy = "courses")
     private Set<UserLibraryJpa> libraryUsers;
 
