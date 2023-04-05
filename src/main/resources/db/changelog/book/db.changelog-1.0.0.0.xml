@@ -6,11 +6,12 @@
 
     <property name="now" value="now()" dbms="mysql"/>
 
-    <changeSet id="populating lib_permission table" author="guilherme.nono">
-        <insert tableName="lib_permission">
-            <column name="id" value="1" />
-            <column name="code" value="BOOKSHELF_LIBRARY:USERS" />
-            <column name="description" value="Users" />
+    <changeSet id="populating book table" author="guilherme.nono">
+        <insert tableName="book">
+            <column name="name" value="Harry Potter e a Ordem da Fênix" />
+            <column name="language" value="Português" />
+            <column name="publication_date" value="2003-11-29" />
+            <column name="fk_book_publisher" value="1" />
         </insert>
     </changeSet>
 

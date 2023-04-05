@@ -6,11 +6,10 @@
 
     <property name="now" value="now()" dbms="mysql"/>
 
-    <changeSet id="populating lib_permission table" author="guilherme.nono">
-        <insert tableName="lib_permission">
-            <column name="id" value="1" />
-            <column name="code" value="BOOKSHELF_LIBRARY:USERS" />
-            <column name="description" value="Users" />
+    <changeSet id="populating author table" author="guilherme.nono">
+        <insert tableName="author">
+            <column name="first_name" value="J. K." />
+            <column name="last_name" value="Rowling" />
         </insert>
     </changeSet>
 

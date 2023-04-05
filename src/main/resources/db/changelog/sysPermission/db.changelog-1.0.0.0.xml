@@ -10,7 +10,7 @@
         <insert tableName="sys_permission">
             <column name="id" value="1" />
             <column name="code" value="BOOKSHELF:CREATE_BOOK" />
-            <column name="name" value="Create book" />
+            <column name="description" value="Create book" />
         </insert>
     </changeSet>
 

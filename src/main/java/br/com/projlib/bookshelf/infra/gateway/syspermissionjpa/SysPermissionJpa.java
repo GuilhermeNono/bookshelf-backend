@@ -26,7 +26,7 @@ public class SysPermissionJpa implements GrantedAuthority, Serializable {
     private long id;
 
     @Column(nullable = false)
-    private String name;
+    private String description;
 
     @Column(nullable = false)
     private String code;

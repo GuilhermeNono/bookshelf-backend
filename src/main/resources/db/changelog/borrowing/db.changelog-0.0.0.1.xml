@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql"/>
+
+    <changeSet id="creating borrowing table" author="guilherme.nono">
+        <createTable tableName="borrowing">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="pk_borrowing" nullable="false"/>
+            </column>
+            <column name="loan_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="return_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="renewal_date" type="date">
+                <constraints nullable="true"/>
+            </column>
+            <column name="active" type="tinyint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_borrowing_book" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_borrowing_book"
+                             referencedTableName="book"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="fk_borrowing_user_library" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_borrowing_user_library"
+                             referencedTableName="user_library"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
