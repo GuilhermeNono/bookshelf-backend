@@ -5,7 +5,6 @@ import br.com.projlib.bookshelf.core.usecase.BuildToken;
 import br.com.projlib.bookshelf.core.usecase.FindAuthoritiesByAuthenticatedUser;
 import br.com.projlib.bookshelf.core.usecase.GetAuthenticatedUserAccount;
 import br.com.projlib.bookshelf.core.usecase.ValidateAuthToken;
-import br.com.projlib.bookshelf.core.usecase.ValidateToken;
 import br.com.projlib.bookshelf.entrypoint.http.response.UserPermissionsResponse;
 import br.com.projlib.bookshelf.infra.command.AuthenticationToken;
 import br.com.projlib.bookshelf.infra.command.LoginCommand;
