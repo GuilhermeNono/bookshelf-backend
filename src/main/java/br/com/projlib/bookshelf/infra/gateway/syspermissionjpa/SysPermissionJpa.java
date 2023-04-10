@@ -1,6 +1,7 @@
 package br.com.projlib.bookshelf.infra.gateway.syspermissionjpa;
 
 import br.com.projlib.bookshelf.infra.gateway.userprofile.UserProfileJpa;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +32,10 @@ public class SysPermissionJpa implements GrantedAuthority, Serializable {
     @Column(nullable = false)
     private String code;
 
-    @ManyToMany(mappedBy = "systemPermissions")
+    @ManyToMany(mappedBy = "systemPermissions", cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     private Set<UserProfileJpa> profiles;
 
     @Override

@@ -13,7 +13,7 @@ import org.springframework.hateoas.server.core.Relation;
 public class UserAccountQuery extends RepresentationModel<UserAccountQuery> {
 
     private long id;
-    private String username;
+    private String cpf;
     private long profileId;
     private String profile;
     private boolean active;
@@ -22,10 +22,10 @@ public class UserAccountQuery extends RepresentationModel<UserAccountQuery> {
         super();
     }
 
-    public UserAccountQuery(String username, String profile, boolean active, long profileId) {
+    public UserAccountQuery(String cpf, String profile, boolean active, long profileId) {
         this();
         this.setProfile(profile);
-        this.setUsername(username);
+        this.setCpf(cpf);
         this.setActive(active);
         this.setProfileId(profileId);
     }

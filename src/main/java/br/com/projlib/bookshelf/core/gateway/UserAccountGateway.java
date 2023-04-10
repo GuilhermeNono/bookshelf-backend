@@ -8,12 +8,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public interface UserAccountGateway {
 
     List<UserAccount> findAll();
 
-    UserAccount findUserByUsername(String username);
+    UserAccount findUserByCpf(String cpf);
+
+
+    Optional<UserAccountJpa> findUserByEmail(String email);
 
     List<UserAccount> findAllActiveAccounts();
 

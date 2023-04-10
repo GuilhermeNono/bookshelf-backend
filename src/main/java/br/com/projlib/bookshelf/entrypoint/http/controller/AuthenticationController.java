@@ -10,6 +10,8 @@ import br.com.projlib.bookshelf.infra.command.AuthenticationToken;
 import br.com.projlib.bookshelf.infra.command.LoginCommand;
 import br.com.projlib.bookshelf.infra.gateway.syspermissionjpa.SysPermissionJpa;
 import br.com.projlib.bookshelf.infra.query.UserAccountQuery;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,7 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/api/v1/authentication")
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
+@Tag(name = "Authentication")
 public class AuthenticationController implements Serializable {
 
     private final Authenticate authenticate;
@@ -40,23 +43,26 @@ public class AuthenticationController implements Serializable {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AuthenticationToken> login(@RequestBody @Valid LoginCommand loginCommand) {
-        this.authenticate.process(loginCommand.getUsername(), loginCommand.getPassword());
+        this.authenticate.process(loginCommand.getEmail(), loginCommand.getPassword());
 
-        return ResponseEntity.ok(this.buildToken.process(loginCommand.getUsername()));
+        return ResponseEntity.ok(this.buildToken.process(loginCommand.getEmail()));
     }
 
     @PostMapping(value = "/validate", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<Void> validate(@RequestBody AuthenticationToken token) {
         this.validateAuthToken.process(token);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping(value = "me", produces = MediaType.APPLICATION_JSON_VALUE)
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<UserAccountQuery> getAuthenticatedUser() {
         return ResponseEntity.ok(this.getAuthenticatedUserAccount.process());
     }
     //
     @GetMapping(value = "/me/permissions", produces = MediaType.APPLICATION_JSON_VALUE)
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<UserPermissionsResponse> getAuthorizations() {
         final Collection<SysPermissionJpa> permissions = this.findAuthoritiesByAuthenticatedUser.process();
 
