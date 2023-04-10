@@ -28,13 +28,13 @@ public class AuthenticationGatewayImpl implements AuthenticationGateway {
     private final ValidateToken validateToken;
 
     @Override
-    public void authenticate(String username, String password) {
-        this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+    public void authenticate(String email, String password) {
+        this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
     }
 
     @Override
-    public AuthenticationToken buildToken(String username) {
-        UserDetails userDetails = this.loadUserByUsername.process(username);
+    public AuthenticationToken buildToken(String email) {
+        UserDetails userDetails = this.loadUserByUsername.process(email);
 
         AuthenticationToken authenticationToken = new AuthenticationToken();
         authenticationToken.setToken(this.generateToken.process(userDetails));

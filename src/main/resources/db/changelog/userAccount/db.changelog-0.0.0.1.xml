@@ -15,12 +15,6 @@
             <column name="cpf" type="varchar(11)">
                 <constraints nullable="false"/>
             </column>
-            <column name="email" type="varchar(80)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="username" type="varchar(40)">
-                <constraints nullable="false"/>
-            </column>
             <column name="created_at" type="datetime">
                 <constraints nullable="false"/>
             </column>

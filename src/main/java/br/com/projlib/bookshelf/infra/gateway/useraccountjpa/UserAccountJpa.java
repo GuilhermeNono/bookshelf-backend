@@ -1,9 +1,13 @@
 package br.com.projlib.bookshelf.infra.gateway.useraccountjpa;
 
+import br.com.projlib.bookshelf.core.domain.Contact;
+import br.com.projlib.bookshelf.core.domain.Password;
 import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.infra.gateway.passwordjpa.PasswordJpa;
+import br.com.projlib.bookshelf.infra.gateway.usercontact.UserContactJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import br.com.projlib.bookshelf.infra.gateway.userprofile.UserProfileJpa;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,8 +25,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Entity
 @Table(name = "user_account")
@@ -37,12 +41,6 @@ public class UserAccountJpa implements Serializable, UserDetails {
     @Column(nullable = false)
     private String cpf;
 
-    @Column(nullable = false)
-    private String username;
-
-    @Column(nullable = false)
-    private String email;
-
     @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
     private boolean active;
 
@@ -52,26 +50,42 @@ public class UserAccountJpa implements Serializable, UserDetails {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "userAccount")
-    private Set<PasswordJpa> passwords;
+    @OneToMany(mappedBy = "userAccount",orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    private List<PasswordJpa> passwords;
 
     @OneToOne
     @JoinColumn(name = "fk_user_account_user_profile", referencedColumnName = "id")
     private UserProfileJpa userProfile;
 
-    @OneToMany(mappedBy = "userAccount")
-    private Set<UserLibraryJpa> userLibraries;
+    @OneToMany(mappedBy = "userAccount", orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    private List<UserContactJpa> userContact;
+
+    @OneToMany(mappedBy = "userAccount",orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    private List<UserLibraryJpa> userLibraries;
 
     public UserAccount toDomain() {
+        List<Contact> contactList = this.getUserContact()
+                .stream()
+                .map(UserContactJpa::toDomain)
+                .toList();
+
+        List<Password> passwordList = this.getPasswords()
+                .stream()
+                .map(PasswordJpa::toDomain)
+                .toList();
+
         return new UserAccount(
                 this.getId(),
                 this.getCpf(),
-                this.getUsername(),
-                this.getEmail(),
                 this.isActive(),
                 this.getCreatedAt(),
                 this.getUpdatedAt(),
-                this.getUserProfile().toDomain()
+                this.getUserProfile().toDomain(),
+                contactList,
+                passwordList
         );
     }
 
@@ -79,15 +93,24 @@ public class UserAccountJpa implements Serializable, UserDetails {
         final UserAccountJpa userAccountJpa = new UserAccountJpa();
 
         userAccountJpa.setId(userAccount.getId());
-        userAccountJpa.setUsername(userAccount.getUsername());
         userAccountJpa.setActive(userAccount.isActive());
         userAccountJpa.setCpf(userAccount.getCpf());
-        userAccountJpa.setEmail(userAccount.getEmail());
         userAccountJpa.setCreatedAt(userAccount.getCreatedAt());
         userAccountJpa.setUpdatedAt(userAccount.getUpdatedAt());
         userAccountJpa.setUserProfile(UserProfileJpa.fromDomain(userAccount.getProfile()));
 
         return userAccountJpa;
+    }
+
+    public String getEmail() {
+        String email = "";
+        for (UserContactJpa userContactJpa : this.getUserContact()) {
+            if(userContactJpa.isActive())
+                if(userContactJpa.getUserContactType().getId() == 1){
+                    email = userContactJpa.getContact();
+                }
+        }
+        return email;
     }
 
     @Override
@@ -105,6 +128,11 @@ public class UserAccountJpa implements Serializable, UserDetails {
                 .findFirst();
 
         return userPasswordJpa.map(PasswordJpa::getPassword).orElse(null);
+    }
+
+    @Override
+    public String getUsername() {
+        return this.getCpf();
     }
 
     @Override

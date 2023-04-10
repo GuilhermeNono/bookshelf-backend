@@ -10,8 +10,6 @@
         <insert tableName="user_account">
             <column name="id" value="1"/>
             <column name="cpf" value="55566699974"/>
-            <column name="username" value="guilherme.nono"/>
-            <column name="email" value="guilherme.nono@hotmail.com"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -20,9 +18,7 @@
 
         <insert tableName="user_account">
             <column name="id" value="2"/>
-            <column name="cpf" value="55566699974"/>
-            <column name="username" value="kauan.moreira"/>
-            <column name="email" value="guilherme.nono@hotmail.com"/>
+            <column name="cpf" value="55566699975"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -31,9 +27,7 @@
 
         <insert tableName="user_account">
             <column name="id" value="3"/>
-            <column name="cpf" value="55566699974"/>
-            <column name="username" value="gabriel.morais"/>
-            <column name="email" value="kauan.moreira@hotmail.com"/>
+            <column name="cpf" value="55566699976"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -42,9 +36,7 @@
 
         <insert tableName="user_account">
             <column name="id" value="4"/>
-            <column name="cpf" value="55566699974"/>
-            <column name="username" value="caio.almeida"/>
-            <column name="email" value="gabriel.morais@hotmail.com"/>
+            <column name="cpf" value="55566699977"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -53,9 +45,7 @@
 
         <insert tableName="user_account">
             <column name="id" value="5"/>
-            <column name="cpf" value="55566699974"/>
-            <column name="username" value="breno.silva"/>
-            <column name="email" value="breno.silva@hotmail.com"/>
+            <column name="cpf" value="55566699978"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -64,9 +54,7 @@
 
         <insert tableName="user_account">
             <column name="id" value="6"/>
-            <column name="cpf" value="55566699974"/>
-            <column name="username" value="suzane.chimenas"/>
-            <column name="email" value="suzane.chimenas@hotmail.com"/>
+            <column name="cpf" value="55566699979"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -75,9 +63,7 @@
 
         <insert tableName="user_account">
             <column name="id" value="7"/>
-            <column name="cpf" value="55566699974"/>
-            <column name="username" value="ana.julia"/>
-            <column name="email" value="ana.julia@hotmail.com"/>
+            <column name="cpf" value="55566699980"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -86,9 +72,7 @@
 
         <insert tableName="user_account">
             <column name="id" value="8"/>
-            <column name="cpf" value="55566699974"/>
-            <column name="username" value="juan.primo"/>
-            <column name="email" value="juan.primo@hotmail.com"/>
+            <column name="cpf" value="55566699981"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -97,9 +81,7 @@
 
         <insert tableName="user_account">
             <column name="id" value="9"/>
-            <column name="cpf" value="55566699974"/>
-            <column name="username" value="luan.barros"/>
-            <column name="email" value="luan.barros@hotmail.com"/>
+            <column name="cpf" value="55566699982"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -108,9 +90,7 @@
 
         <insert tableName="user_account">
             <column name="id" value="10"/>
-            <column name="cpf" value="55566699974"/>
-            <column name="username" value="lucas.adriano"/>
-            <column name="email" value="lucas.adriano@hotmail.com"/>
+            <column name="cpf" value="55566699983"/>
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>

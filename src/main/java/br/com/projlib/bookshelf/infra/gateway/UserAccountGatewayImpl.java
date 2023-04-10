@@ -18,6 +18,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,8 +29,9 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
     private final SysPermissionRepository permissionRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return this.userAccountRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        //TODO: Refazer a Exception para EmailNotFoundException
+        return this.userAccountRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(email));
     }
 
     @Override
@@ -42,9 +44,14 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
     }
 
     @Override
-    public UserAccount findUserByUsername(String username) {
-        return userAccountRepository.findByUsername(username)
+    public UserAccount findUserByCpf(String cpf) {
+        return userAccountRepository.findByCpf(cpf)
                 .orElseThrow().toDomain();
+    }
+
+    @Override
+    public Optional<UserAccountJpa> findUserByEmail(String email) {
+        return userAccountRepository.findByEmail(email);
     }
 
     @Override
@@ -97,8 +104,9 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
     @Override
     public UserAccountJpa loadAuthenticatedUserAccount() {
         UserDetails userDetails = AuthenticationGatewayImpl.getLoggedUser().orElseThrow(RuntimeException::new);
+        //TODO: O getUsername a partir de agora deverá ser o CPF
 
-        return this.userAccountRepository.findByUsername(userDetails.getUsername()).orElseThrow(() -> new RuntimeException("Load authenticated User error"));
+        return this.userAccountRepository.findByCpf(userDetails.getUsername()).orElseThrow(() -> new RuntimeException("Load authenticated User error"));
 
     }
 

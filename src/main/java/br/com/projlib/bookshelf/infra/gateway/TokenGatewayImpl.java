@@ -1,6 +1,8 @@
 package br.com.projlib.bookshelf.infra.gateway;
 
 import br.com.projlib.bookshelf.core.gateway.TokenGateway;
+import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
+import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -8,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -18,14 +22,18 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class TokenGatewayImpl implements TokenGateway {
 
+    private final UserAccountRepository userAccountRepository;
+
     private static final long JWT_TOKEN_VALIDITY = 16L * 60L * 60L;
 
     @Value("${jwt.secret}")
     private String secret;
 
     @Override
+    @Transactional
     public String getUsernameFromToken(String token) {
-        return this.getClaimFromToken(token, Claims::getSubject);
+        String cpf = this.getClaimFromToken(token, Claims::getSubject);
+        return userAccountRepository.findByCpf(cpf).orElseThrow().getEmail();
     }
 
     @Override
@@ -70,9 +78,15 @@ public class TokenGatewayImpl implements TokenGateway {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public boolean validateToken(String token, UserDetails userDetails) {
-        final String username = this.getUsernameFromToken(token);
+        String email = this.getUsernameFromToken(token);
+        final UserAccountJpa userByToken = userAccountRepository.findByEmail(email).orElseThrow();
+        final String emailByToken = userByToken.getEmail();
 
-        return (username.equals(userDetails.getUsername()) && !this.isTokenExpired(token));
+        final UserAccountJpa userByUserDetails = userAccountRepository.findByCpf(userDetails.getUsername()).orElseThrow();
+        final String emailByUserDetails = userByUserDetails.getEmail();
+
+        return (emailByToken.equals(emailByUserDetails) && !this.isTokenExpired(token));
     }
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="creating user_contact table" author="guilherme.nono">
+        <createTable tableName="user_contact">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints
+                        primaryKey="true"
+                        primaryKeyName="pk_user_contact"
+                        nullable="false"
+                        />
+            </column>
+
+            <column name="active" type="tinyint">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="contact" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fk_user_contact_user_account" type="BIGINT">
+                <constraints
+                        foreignKeyName="fk_user_contact_user_account"
+                        referencedTableName="user_account"
+                        referencedColumnNames="id"
+                        nullable="true"
+                        />
+            </column>
+
+            <column name="fk_user_contact_user_contact_type" type="BIGINT">
+                <constraints
+                        foreignKeyName="fk_user_contact_user_contact_type"
+                        referencedTableName="user_contact_type"
+                        referencedColumnNames="id"
+                        nullable="true"
+                        />
+                />
+            </column>
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

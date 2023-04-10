@@ -5,11 +5,12 @@ import br.com.projlib.bookshelf.core.usecase.CreateUser;
 import br.com.projlib.bookshelf.core.usecase.FindAllUser;
 import br.com.projlib.bookshelf.entrypoint.http.request.UserAccountRequest;
 import br.com.projlib.bookshelf.entrypoint.http.response.UserAccountResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,12 +22,14 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/user")
 @RequiredArgsConstructor
+@Tag(name = "User Account")
 public class UserAccountController {
 
     private final FindAllUser findAllUser;
     private final CreateUser createUser;
 
     @GetMapping
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<UserAccountResponse>> getAll() {
         final List<UserAccountResponse> responses = findAllUser.process().stream()
                 .map(UserAccountResponse::fromDomain).toList();
@@ -35,15 +38,11 @@ public class UserAccountController {
     }
 
     @PostMapping
-    public ResponseEntity<UserAccountResponse> create(@RequestBody UserAccountRequest userAccountRequest) {
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<UserAccountResponse> create(@RequestBody @Valid UserAccountRequest userAccountRequest) {
         final UserAccount userAccount = userAccountRequest.toDomain();
         final UserAccountResponse response = UserAccountResponse.fromDomain(createUser.process(userAccount));
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
-
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }

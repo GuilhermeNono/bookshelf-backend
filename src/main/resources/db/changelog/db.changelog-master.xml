@@ -5,9 +5,11 @@
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <!-- Version 0.0.0.1 - Creation  -->
+    <include file="userContactType/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="sysPermission/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="userProfile/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="userAccount/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
+    <include file="userContact/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="password/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="userProfile_sysPermissions/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="libPermission/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
@@ -29,32 +31,35 @@
     <include file="borrowing/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
 
 
+
     <!-- Version 1.0.0.0 - Population -->
-<!--    <include file="userProfile/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="userAccount/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="password/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="sysPermission/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="userProfile_sysPermissions/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="course/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="institution/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="library/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="userLibrary/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="userLibrary_course/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="libPermission/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="libPermission_userLibrary/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="penalityType/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="penality/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="publisher/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="author/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="category/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="book/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="bookCopy/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="book_author/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="book_category/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
-<!--    <include file="borrowing/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="userProfile/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="userAccount/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="password/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="sysPermission/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="userProfile_sysPermissions/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="course/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="institution/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="library/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="userLibrary/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="userLibrary_course/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="libPermission/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="libPermission_userLibrary/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="penalityType/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="penality/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="publisher/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="author/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="category/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="book/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="bookCopy/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="book_author/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="book_category/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
+<!--    <include file="borrowing/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />-->
     <include file="sysPermission/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
+    <include file="userContactType/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="userProfile/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="userAccount/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
+    <include file="userContact/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="password/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="userProfile_sysPermissions/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="libPermission/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />

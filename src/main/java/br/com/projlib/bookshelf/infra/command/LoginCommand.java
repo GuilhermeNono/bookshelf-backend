@@ -2,16 +2,16 @@ package br.com.projlib.bookshelf.infra.command;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.io.Serializable;
 
 public class LoginCommand implements Serializable {
 
     @NotNull
     @Size(min = 1, max = 60)
-    @JsonProperty("username")
-    private String username;
+    @JsonProperty("email")
+    private String email;
 
     @NotNull
     @Size(min = 1, max = 60)
@@ -22,18 +22,18 @@ public class LoginCommand implements Serializable {
         super();
     }
 
-    public LoginCommand(String username, String password) {
+    public LoginCommand(String email, String password) {
         this();
-        this.setUsername(username);
+        this.setEmail(email);
         this.setPassword(password);
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

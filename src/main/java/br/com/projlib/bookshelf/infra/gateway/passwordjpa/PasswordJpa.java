@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway.passwordjpa;
 
+import br.com.projlib.bookshelf.core.domain.Password;
 import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,4 +34,12 @@ public class PasswordJpa implements Serializable {
     @ManyToOne
     @JoinColumn(name = "fk_password_user_account", referencedColumnName = "id")
     private UserAccountJpa userAccount;
+
+    public Password toDomain() {
+        return new Password(
+                this.getId(),
+                this.getPassword(),
+                this.isActive()
+        );
+    }
 }

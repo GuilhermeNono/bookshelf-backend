@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class FindUserByUsername {
+public class FindUserByEmail {
     private final UserAccountGateway userAccountGateway;
 
-    public UserAccount process(String username) {
-        return userAccountGateway.findUserByUsername(username);
+    public UserAccount process(String email) {
+        return userAccountGateway.findUserByEmail(email).orElseThrow().toDomain();
     }
 }

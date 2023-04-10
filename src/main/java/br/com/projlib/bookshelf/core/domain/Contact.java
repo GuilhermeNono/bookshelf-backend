@@ -3,17 +3,13 @@ package br.com.projlib.bookshelf.core.domain;
 import lombok.Value;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Value
-
-public class UserAccount {
+public class Contact {
     long id;
-    String cpf;
     boolean active;
+    String contact;
     LocalDateTime createdAt;
     LocalDateTime updatedAt;
-    Profile profile;
-    List<Contact> contacts;
-    List<Password> passwords;
+    String type;
 }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property name="now" value="now()" dbms="mysql"/>
+
+    <changeSet id="populating user_contact table" author="guilherme.nono">
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="guilherme.nono@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="1" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="kauan.moreira@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="2" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="gabriel.morais@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="3" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="caio.almeida@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="4" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="breno.silva@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="5" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="suzane.chimenas@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="6" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="ana.julia@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="7" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="juan.primo@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="8" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="luan.barros@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="9" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+        <insert tableName="user_contact">
+            <column name="active" value="1" />
+            <column name="contact" value="lucas.adriano@hotmail.com" />
+            <column name="created_at" value="${now}" />
+            <column name="updated_at" value="${now}" />
+            <column name="fk_user_contact_user_account" value="10" />
+            <column name="fk_user_contact_user_contact_type" value="1" />
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>
