@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway.usercontacttype;
 
+import br.com.projlib.bookshelf.core.domain.ContactType;
 import br.com.projlib.bookshelf.infra.gateway.usercontact.UserContactJpa;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -32,4 +33,22 @@ public class UserContactTypeJpa implements Serializable {
             orphanRemoval = true,
             cascade = CascadeType.ALL)
     private List<UserContactJpa> contact;
+
+    public ContactType toDomain(){
+        return new ContactType(
+                this.getId(),
+                this.getDescription()
+        );
+    }
+
+    public static UserContactTypeJpa fromDomain(ContactType type) {
+
+        UserContactTypeJpa userContactTypeJpa = new UserContactTypeJpa();
+
+        userContactTypeJpa.setId(type.getId());
+        userContactTypeJpa.setDescription(type.getDescription());
+
+        return userContactTypeJpa;
+
+    }
 }

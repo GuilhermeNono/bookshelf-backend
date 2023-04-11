@@ -1,14 +1,17 @@
 package br.com.projlib.bookshelf.entrypoint.http.controller;
 
+import br.com.projlib.bookshelf.core.usecase.FindUserById;
 import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.core.usecase.CreateUser;
 import br.com.projlib.bookshelf.core.usecase.FindAllUser;
+import br.com.projlib.bookshelf.core.usecase.FindProfileById;
 import br.com.projlib.bookshelf.entrypoint.http.request.UserAccountRequest;
 import br.com.projlib.bookshelf.entrypoint.http.response.UserAccountResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +30,10 @@ public class UserAccountController {
 
     private final FindAllUser findAllUser;
     private final CreateUser createUser;
+    private final FindProfileById findProfileById;
+    private final FindUserById findUserById;
+
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     @GetMapping
     @SecurityRequirement(name = "Bearer Authentication")

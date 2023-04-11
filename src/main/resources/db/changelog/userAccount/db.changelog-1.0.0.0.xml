@@ -10,6 +10,8 @@
         <insert tableName="user_account">
             <column name="id" value="1"/>
             <column name="cpf" value="55566699974"/>
+            <column name="person_name" value="Guilherme Nono"/>
+            <column name="birth_day" value="2002-03-05" />
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -19,6 +21,30 @@
         <insert tableName="user_account">
             <column name="id" value="2"/>
             <column name="cpf" value="55566699975"/>
+            <column name="person_name" value="Kauan Moreira"/>
+            <column name="birth_day" value="2002-03-05" />
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="1"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="3"/>
+            <column name="cpf" value="55566699976"/>
+            <column name="person_name" value="Gabriel Morais"/>
+            <column name="birth_day" value="2002-03-05" />
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="1"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="4"/>
+            <column name="cpf" value="55566699977"/>
+            <column name="person_name" value="Caio Almeida"/>
+            <column name="birth_day" value="2002-03-05" />
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -26,8 +52,21 @@
         </insert>
 
         <insert tableName="user_account">
-            <column name="id" value="3"/>
-            <column name="cpf" value="55566699976"/>
+            <column name="id" value="5"/>
+            <column name="cpf" value="55566699978"/>
+            <column name="person_name" value="Breno da silva"/>
+            <column name="birth_day" value="2002-03-05" />
+            <column name="active" value="1"/>
+            <column name="created_at" value="${now}"/>
+            <column name="updated_at" value="${now}"/>
+            <column name="fk_user_account_user_profile" value="2"/>
+        </insert>
+
+        <insert tableName="user_account">
+            <column name="id" value="6"/>
+            <column name="cpf" value="55566699979"/>
+            <column name="person_name" value="Suzane Chimenas"/>
+            <column name="birth_day" value="2002-03-05" />
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
@@ -35,66 +74,47 @@
         </insert>
 
         <insert tableName="user_account">
-            <column name="id" value="4"/>
-            <column name="cpf" value="55566699977"/>
-            <column name="active" value="1"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-            <column name="fk_user_account_user_profile" value="4"/>
-        </insert>
-
-        <insert tableName="user_account">
-            <column name="id" value="5"/>
-            <column name="cpf" value="55566699978"/>
-            <column name="active" value="1"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-            <column name="fk_user_account_user_profile" value="5"/>
-        </insert>
-
-        <insert tableName="user_account">
-            <column name="id" value="6"/>
-            <column name="cpf" value="55566699979"/>
-            <column name="active" value="1"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-            <column name="fk_user_account_user_profile" value="6"/>
-        </insert>
-
-        <insert tableName="user_account">
             <column name="id" value="7"/>
             <column name="cpf" value="55566699980"/>
+            <column name="person_name" value="Ana Julia"/>
+            <column name="birth_day" value="2002-03-05" />
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
-            <column name="fk_user_account_user_profile" value="7"/>
+            <column name="fk_user_account_user_profile" value="2"/>
         </insert>
 
         <insert tableName="user_account">
             <column name="id" value="8"/>
             <column name="cpf" value="55566699981"/>
+            <column name="person_name" value="Juan Primo"/>
+            <column name="birth_day" value="2002-03-05" />
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
-            <column name="fk_user_account_user_profile" value="8"/>
+            <column name="fk_user_account_user_profile" value="2"/>
         </insert>
 
         <insert tableName="user_account">
             <column name="id" value="9"/>
             <column name="cpf" value="55566699982"/>
+            <column name="person_name" value="Luan Ribeiro de Barros"/>
+            <column name="birth_day" value="2002-03-05" />
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
-            <column name="fk_user_account_user_profile" value="9"/>
+            <column name="fk_user_account_user_profile" value="3"/>
         </insert>
 
         <insert tableName="user_account">
             <column name="id" value="10"/>
             <column name="cpf" value="55566699983"/>
+            <column name="person_name" value="Lucas Adriano"/>
+            <column name="birth_day" value="2002-03-05" />
             <column name="active" value="1"/>
             <column name="created_at" value="${now}"/>
             <column name="updated_at" value="${now}"/>
-            <column name="fk_user_account_user_profile" value="10"/>
+            <column name="fk_user_account_user_profile" value="3"/>
         </insert>
     </changeSet>
 

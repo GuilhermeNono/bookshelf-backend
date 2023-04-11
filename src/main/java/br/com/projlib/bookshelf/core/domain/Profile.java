@@ -7,8 +7,5 @@ import java.time.LocalDateTime;
 @Value
 public class Profile {
     long id;
-    String personName;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
-
+    String name;
 }

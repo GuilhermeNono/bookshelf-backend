@@ -21,9 +21,9 @@ public interface UserAccountGateway {
 
     List<UserAccount> findAllActiveAccounts();
 
-    UserAccount findUserById(final long id);
+    UserAccountJpa findUserById(final long id);
 
-    UserAccount create(UserAccount userAccount);
+    UserAccountJpa create(UserAccountJpa userAccount);
 
     Collection<SysPermissionJpa> findAuthoritiesByUser(UserDetails userDetails);
 

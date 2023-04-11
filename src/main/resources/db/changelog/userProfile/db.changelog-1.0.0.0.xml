@@ -9,74 +9,19 @@
     <changeSet id="populating user_profile table" author="guilherme.nono">
         <insert tableName="user_profile">
             <column name="id" value="1"/>
-            <column name="person_name" value="Guilherme Nono"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
+            <column name="name" value="administrator"/>
         </insert>
-
 
         <insert tableName="user_profile">
             <column name="id" value="2"/>
-            <column name="person_name" value="Kauan Moreira"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
+            <column name="name" value="user"/>
         </insert>
 
         <insert tableName="user_profile">
             <column name="id" value="3"/>
-            <column name="person_name" value="Gabriel Morais"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
+            <column name="name" value="support"/>
         </insert>
 
-        <insert tableName="user_profile">
-            <column name="id" value="4"/>
-            <column name="person_name" value="Caio Almeida"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-        </insert>
-
-        <insert tableName="user_profile">
-            <column name="id" value="5"/>
-            <column name="person_name" value="Breno da silva"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-        </insert>
-
-        <insert tableName="user_profile">
-            <column name="id" value="6"/>
-            <column name="person_name" value="Suzane Chimenas"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-        </insert>
-
-        <insert tableName="user_profile">
-            <column name="id" value="7"/>
-            <column name="person_name" value="Ana Julia"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-        </insert>
-
-        <insert tableName="user_profile">
-            <column name="id" value="8"/>
-            <column name="person_name" value="Juan Primo"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-        </insert>
-
-        <insert tableName="user_profile">
-            <column name="id" value="9"/>
-            <column name="person_name" value="Luan Ribeiro de Barros"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-        </insert>
-
-        <insert tableName="user_profile">
-            <column name="id" value="10"/>
-            <column name="person_name" value="Lucas Adriano"/>
-            <column name="created_at" value="${now}"/>
-            <column name="updated_at" value="${now}"/>
-        </insert>
     </changeSet>
 
 </databaseChangeLog>

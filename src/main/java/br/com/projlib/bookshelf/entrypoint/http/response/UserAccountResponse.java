@@ -5,13 +5,13 @@ import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.core.usecase.FindUserByEmail;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserAccountResponse {
 
-    private FindUserByEmail findUserByEmail;
 
     String email;
     boolean active;

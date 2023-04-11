@@ -1,8 +1,7 @@
 package br.com.projlib.bookshelf.entrypoint.http.request;
 
-import br.com.projlib.bookshelf.core.domain.UserAccount;
-import br.com.projlib.bookshelf.core.usecase.FindUserByCpf;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -11,28 +10,35 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserAccountRequest {
 
-    private FindUserByCpf findUserByCpf;
-
     @NotBlank
+    @NotNull
     private String firstName;
     @NotBlank
+    @NotNull
     private String lastName;
     @NotBlank
+    @NotNull
     private String email;
     @NotBlank
+    @NotNull
     private String password;
     @NotBlank
+    @NotNull
     private String confirmPassword;
     @NotBlank
+    @NotNull
     private String CPF;
-    @NotBlank
     private Date birthDay;
     @NotBlank
+    @NotNull
     private String phone;
+    @NotNull
     @NotBlank
-    private Character gender;
+    private String gender;
+    @NotNull
+    private long profileId;
 
-    public UserAccountRequest(String firstName, String lastName, String email, String password, String confirmPassword, String CPF, Date birthDay, String phone, Character gender) {
+    public UserAccountRequest(long profileId, String firstName, String lastName, String email, String password, String confirmPassword, String CPF, Date birthDay, String phone, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -42,10 +48,7 @@ public class UserAccountRequest {
         this.birthDay = birthDay;
         this.phone = phone;
         this.gender = gender;
-    }
-
-    public UserAccount toDomain() {
-        return findUserByCpf.process(this.getCPF());
+        this.profileId = profileId;
     }
 
     public String getFirstName() {
@@ -112,11 +115,19 @@ public class UserAccountRequest {
         this.phone = phone;
     }
 
-    public Character getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Character gender) {
+    public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public long getProfileId() {
+        return profileId;
+    }
+
+    public void setProfileId(long profileId) {
+        this.profileId = profileId;
     }
 }

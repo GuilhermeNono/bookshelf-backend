@@ -14,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -24,8 +25,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Entity
@@ -48,13 +52,19 @@ public class UserAccountJpa implements Serializable, UserDetails {
     private LocalDateTime createdAt;
 
     @Column(nullable = false)
+    private String personName;
+
+    @Column
+    private Date birthDay;
+
+    @Column(nullable = false)
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "userAccount",orphanRemoval = true,
             cascade = CascadeType.ALL)
     private List<PasswordJpa> passwords;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "fk_user_account_user_profile", referencedColumnName = "id")
     private UserProfileJpa userProfile;
 
@@ -65,6 +75,15 @@ public class UserAccountJpa implements Serializable, UserDetails {
     @OneToMany(mappedBy = "userAccount",orphanRemoval = true,
             cascade = CascadeType.ALL)
     private List<UserLibraryJpa> userLibraries;
+
+    private UserAccountJpa() {
+        super();
+    }
+    public UserAccountJpa(String cpf, String password) {
+        this();
+        this.setCpf(cpf);
+        this.addPassword(password);
+    }
 
     public UserAccount toDomain() {
         List<Contact> contactList = this.getUserContact()
@@ -83,6 +102,8 @@ public class UserAccountJpa implements Serializable, UserDetails {
                 this.isActive(),
                 this.getCreatedAt(),
                 this.getUpdatedAt(),
+                this.getPersonName(),
+                this.getBirthDay(),
                 this.getUserProfile().toDomain(),
                 contactList,
                 passwordList
@@ -128,6 +149,26 @@ public class UserAccountJpa implements Serializable, UserDetails {
                 .findFirst();
 
         return userPasswordJpa.map(PasswordJpa::getPassword).orElse(null);
+    }
+
+    public void addPassword(final String password) {
+        if (Objects.isNull(this.getPasswords())) {
+            this.setUserPasswords(new ArrayList<>());
+        }
+
+        final PasswordJpa user = new PasswordJpa(this, password, true);
+
+        for (PasswordJpa userPassword : this.getPasswords()) {
+            if (userPassword.isActive()) {
+                userPassword.setActive(false);
+            }
+        }
+
+        this.getPasswords().add(user);
+    }
+
+    public void setUserPasswords(List<PasswordJpa> userPasswords) {
+        this.passwords = userPasswords;
     }
 
     @Override

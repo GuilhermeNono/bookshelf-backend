@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -18,6 +19,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,14 +32,8 @@ public class UserProfileJpa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private String personName;
-
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
-
-    @Column(nullable = false)
-    private LocalDateTime updatedAt;
+    @Column
+    private String name;
 
     @ManyToMany
     @JoinTable(
@@ -46,15 +42,13 @@ public class UserProfileJpa implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "fk_sys_permission_user_profile", referencedColumnName = "id"))
     private Set<SysPermissionJpa> systemPermissions;
 
-    @OneToOne(mappedBy = "userProfile")
-    private UserAccountJpa userAccount;
+    @OneToMany(mappedBy = "userProfile")
+    private List<UserAccountJpa> userAccounts;
 
     public Profile toDomain() {
         return new Profile(
                 this.getId(),
-                this.getPersonName(),
-                this.getCreatedAt(),
-                this.getUpdatedAt()
+                this.getName()
         );
     }
 
@@ -62,9 +56,7 @@ public class UserProfileJpa implements Serializable {
         UserProfileJpa userProfileJpa = new UserProfileJpa();
 
         userProfileJpa.setId(userProfile.getId());
-        userProfileJpa.setCreatedAt(userProfile.getCreatedAt());
-        userProfileJpa.setUpdatedAt(userProfile.getUpdatedAt());
-        userProfileJpa.setPersonName(userProfile.getPersonName());
+        userProfileJpa.setName(userProfile.getName());
 
         return userProfileJpa;
     }
