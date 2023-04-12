@@ -8,7 +8,10 @@
 ### 📓 To-do list
 
 - [x] Construir o codigo base do Backend.
-- [ ] In Development...
+- [ ] Criar todas as Exceções customizadas para o sistema.
+- [ ] Desenvolver todos os endpoints estabelecidos no Caso de uso.
+- [ ] Implementar o Swagger ao projeto.
+- [ ] Inserir uma base de dados com livros.
 
 ### 🗜️ Functionalities
 
