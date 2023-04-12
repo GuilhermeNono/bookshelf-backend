@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class UserAccountRequest {
+public class UserAccountCreateRequest {
 
     @NotBlank
     @NotNull
@@ -38,7 +38,7 @@ public class UserAccountRequest {
     @NotNull
     private long profileId;
 
-    public UserAccountRequest(long profileId, String firstName, String lastName, String email, String password, String confirmPassword, String CPF, Date birthDay, String phone, String gender) {
+    public UserAccountCreateRequest(long profileId, String firstName, String lastName, String email, String password, String confirmPassword, String CPF, Date birthDay, String phone, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
