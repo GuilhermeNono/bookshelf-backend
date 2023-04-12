@@ -17,47 +17,6 @@
             <column name="fk_sys_permission_user_profile" value="1" />
         </insert>
 
-        <insert tableName="sys_permission_user_profile">
-            <column name="fk_user_profile_sys_permission" value="3" />
-            <column name="fk_sys_permission_user_profile" value="1" />
-        </insert>
-
-        <insert tableName="sys_permission_user_profile">
-            <column name="fk_user_profile_sys_permission" value="4" />
-            <column name="fk_sys_permission_user_profile" value="1" />
-        </insert>
-
-        <insert tableName="sys_permission_user_profile">
-            <column name="fk_user_profile_sys_permission" value="5" />
-            <column name="fk_sys_permission_user_profile" value="1" />
-        </insert>
-
-        <insert tableName="sys_permission_user_profile">
-            <column name="fk_user_profile_sys_permission" value="6" />
-            <column name="fk_sys_permission_user_profile" value="1" />
-        </insert>
-
-        <insert tableName="sys_permission_user_profile">
-            <column name="fk_user_profile_sys_permission" value="7" />
-            <column name="fk_sys_permission_user_profile" value="1" />
-        </insert>
-
-        <insert tableName="sys_permission_user_profile">
-            <column name="fk_user_profile_sys_permission" value="8" />
-            <column name="fk_sys_permission_user_profile" value="1" />
-        </insert>
-
-        <insert tableName="sys_permission_user_profile">
-            <column name="fk_user_profile_sys_permission" value="9" />
-            <column name="fk_sys_permission_user_profile" value="1" />
-        </insert>
-
-        <insert tableName="sys_permission_user_profile">
-            <column name="fk_user_profile_sys_permission" value="10" />
-            <column name="fk_sys_permission_user_profile" value="1" />
-        </insert>
-
-
     </changeSet>
 
 </databaseChangeLog>

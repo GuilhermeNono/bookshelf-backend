@@ -12,6 +12,12 @@
             <column name="active" type="tinyint">
                 <constraints nullable="false"/>
             </column>
+            <column name="person_name" type="varchar(60)">
+                <constraints nullable="false" />
+            </column>
+            <column name="birth_day" type="date">
+                <constraints nullable="false" />
+            </column>
             <column name="cpf" type="varchar(11)">
                 <constraints nullable="false"/>
             </column>

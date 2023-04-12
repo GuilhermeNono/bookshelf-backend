@@ -9,13 +9,7 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="pk_user_profile" nullable="false"/>
             </column>
-            <column name="person_name" type="varchar(80)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="created_at" type="datetime">
-                <constraints nullable="false"/>
-            </column>
-            <column name="updated_at" type="datetime">
+            <column name="name" type="varchar(80)">
                 <constraints nullable="false"/>
             </column>
         </createTable>

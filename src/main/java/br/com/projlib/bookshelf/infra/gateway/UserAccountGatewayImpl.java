@@ -44,12 +44,14 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
     }
 
     @Override
+    @Transactional
     public UserAccount findUserByCpf(String cpf) {
         return userAccountRepository.findByCpf(cpf)
                 .orElseThrow().toDomain();
     }
 
     @Override
+    @Transactional
     public Optional<UserAccountJpa> findUserByEmail(String email) {
         return userAccountRepository.findByEmail(email);
     }
@@ -65,15 +67,15 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
 
     @Override
     @Transactional
-    public UserAccount findUserById(long id) {
+    public UserAccountJpa findUserById(long id) {
         return userAccountRepository
-                .findById(id).orElseThrow().toDomain();
+                .findById(id).orElseThrow();
     }
 
     @Override
     @Transactional
-    public UserAccount create(UserAccount userAccount) {
-        return userAccountRepository.save(UserAccountJpa.fromDomain(userAccount)).toDomain();
+    public UserAccountJpa create(UserAccountJpa userAccount) {
+        return userAccountRepository.save(userAccount);
     }
 
     @Override
@@ -95,7 +97,7 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
     @Override
     public UserAccountQuery getAuthenticatedUserAccount() {
         UserAccountJpa userAccount = this.loadAuthenticatedUserAccount();
-        UserAccountQuery userAccountQuery = new UserAccountQuery(userAccount.getUsername(), userAccount.getUserProfile().getPersonName(), userAccount.isActive(), userAccount.getUserProfile().getId());
+        UserAccountQuery userAccountQuery = new UserAccountQuery(userAccount.getUsername(), userAccount.getPersonName(), userAccount.isActive(), userAccount.getUserProfile().getId());
         userAccountQuery.setId(userAccount.getId());
 
         return userAccountQuery;
