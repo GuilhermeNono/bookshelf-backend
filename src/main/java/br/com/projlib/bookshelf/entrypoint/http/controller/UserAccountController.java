@@ -53,7 +53,6 @@ public class UserAccountController {
     }
 
     @PostMapping
-    @SecurityRequirement(name = "Bearer Authentication")
     @Transactional
     public ResponseEntity<UserAccountResponse> createUser(@RequestBody @Valid UserAccountCreateRequest userAccountCreateRequest) {
 
