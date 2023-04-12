@@ -193,6 +193,6 @@ public class UserAccountJpa implements Serializable, UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return active;
     }
 }
