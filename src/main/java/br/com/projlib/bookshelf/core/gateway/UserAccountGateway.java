@@ -12,14 +12,14 @@ import java.util.Optional;
 
 public interface UserAccountGateway {
 
-    List<UserAccount> findAll();
+    List<UserAccountJpa> findAll();
 
-    UserAccount findUserByCpf(String cpf);
+    Optional<UserAccountJpa> findUserByCpf(String cpf);
 
 
     Optional<UserAccountJpa> findUserByEmail(String email);
 
-    List<UserAccount> findAllActiveAccounts();
+    List<UserAccountJpa> findAllActiveAccounts();
 
     UserAccountJpa findUserById(final long id);
 

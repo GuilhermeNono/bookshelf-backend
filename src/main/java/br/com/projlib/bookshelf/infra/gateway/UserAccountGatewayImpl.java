@@ -35,38 +35,28 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
     }
 
     @Override
-    @Transactional
-    public List<UserAccount> findAll() {
-        return userAccountRepository.findAll()
-                .stream()
-                .map(UserAccountJpa::toDomain)
-                .collect(Collectors.toList());
+    public List<UserAccountJpa> findAll() {
+        return userAccountRepository.findAll();
     }
 
     @Override
-    @Transactional
-    public UserAccount findUserByCpf(String cpf) {
-        return userAccountRepository.findByCpf(cpf)
-                .orElseThrow().toDomain();
+    public Optional<UserAccountJpa> findUserByCpf(String cpf) {
+        return userAccountRepository.findByCpf(cpf);
     }
 
     @Override
-    @Transactional
     public Optional<UserAccountJpa> findUserByEmail(String email) {
         return userAccountRepository.findByEmail(email);
     }
 
     @Override
-    @Transactional
-    public List<UserAccount> findAllActiveAccounts() {
+    public List<UserAccountJpa> findAllActiveAccounts() {
         return userAccountRepository
-                .findAllByActiveIsTrue()
-                .stream().map(UserAccountJpa::toDomain)
-                .toList();
+                .findAllByActiveIsTrue();
+
     }
 
     @Override
-    @Transactional
     public UserAccountJpa findUserById(long id) {
         return userAccountRepository
                 .findById(id).orElseThrow();
@@ -111,24 +101,4 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
         return this.userAccountRepository.findByCpf(userDetails.getUsername()).orElseThrow(() -> new RuntimeException("Load authenticated User error"));
 
     }
-
-
-//    @Override
-//    public Page<UserAccountJpa> findByQuery(QueryCriteria query) {
-//        return userAccountRepository.findAll(this.buildSpecification(query), query.getPageable());
-//    }
-
-//    private Specification<UserAccountJpa> buildSpecification(final QueryCriteria query) {
-//        Specification<UserAccountJpa> specification = Specification.not(null);
-//
-//        if (Objects.nonNull(query) && Objects.nonNull(query.getFilter())) {
-//            final UserAccountFilter filter = (UserAccountFilter) query.getFilter();
-//
-//            if (Objects.nonNull(filter.getUsername())) {
-//                specification = specification.and(UserAccountSpecification.usernameEqualsIgnoreCase(filter.getUsername()));
-//            }
-//        }
-//
-//        return specification;
-//    }
 }

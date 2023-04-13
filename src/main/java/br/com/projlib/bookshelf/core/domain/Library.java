@@ -3,7 +3,9 @@ package br.com.projlib.bookshelf.core.domain;
 import lombok.Value;
 
 @Value
-public class Product {
+public class Library {
+    long id;
     String name;
-    Long Price;
+    boolean active;
+    Institution institution;
 }
