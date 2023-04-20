@@ -1,13 +1,18 @@
 package br.com.projlib.bookshelf.core.domain;
 
 import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
-import lombok.Value;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Value
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
+@Getter
+@Setter
 public class LinkContactAccount {
-
-    String phone;
-    String email;
-    UserAccountJpa userAccount;
-
+    private String phone;
+    private String email;
+    private UserAccountJpa userAccount;
 }

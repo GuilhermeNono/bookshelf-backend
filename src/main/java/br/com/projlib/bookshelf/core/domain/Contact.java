@@ -1,15 +1,22 @@
 package br.com.projlib.bookshelf.core.domain;
 
-import lombok.Value;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Value
+@Getter
+@Setter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class Contact {
-    long id;
-    boolean active;
-    String contact;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
-    String type;
+    private long id;
+    private boolean active;
+    private String contact;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private String type;
 }

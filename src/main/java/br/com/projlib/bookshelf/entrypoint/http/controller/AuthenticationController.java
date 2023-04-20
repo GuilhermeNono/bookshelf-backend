@@ -12,25 +12,28 @@ import br.com.projlib.bookshelf.infra.gateway.syspermissionjpa.SysPermissionJpa;
 import br.com.projlib.bookshelf.infra.query.UserAccountQuery;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import static br.com.projlib.bookshelf.infra.config.AuthenticationFilter.TOKEN_BEARER;
+
 @RestController
 @RequestMapping(value = "/api/v1/authentication")
-@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
+@Slf4j
 @Tag(name = "Authentication")
 public class AuthenticationController implements Serializable {
 
@@ -48,11 +51,12 @@ public class AuthenticationController implements Serializable {
         return ResponseEntity.ok(this.buildToken.process(loginCommand.getEmail()));
     }
 
-    @PostMapping(value = "/validate", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/validate")
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<Void> validate(@RequestBody AuthenticationToken token) {
-        this.validateAuthToken.process(token);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Void> validate(@RequestHeader(value = "Authorization") String authToken) {
+            String token = authToken.substring(TOKEN_BEARER.length());
+            this.validateAuthToken.process(new AuthenticationToken(token));
+            return ResponseEntity.ok().build();
     }
 
     @GetMapping(value = "me", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -1,11 +1,15 @@
 package br.com.projlib.bookshelf.core.domain;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
-
-@Value
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Profile {
-    long id;
-    String name;
+    private long id;
+    private String name;
 }

@@ -17,10 +17,13 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +37,10 @@ import java.util.List;
 @RequestMapping("api/v1/user")
 @RequiredArgsConstructor
 @Tag(name = "User Account")
+@Slf4j
 public class UserAccountController {
+
+    private final ModelMapper modelMapper;
 
     private final FindAllUser findAllUser;
     private final CreateUser createUser;
@@ -46,14 +52,35 @@ public class UserAccountController {
     @GetMapping
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<UserAccountResponse>> getAll() {
-        final List<UserAccountResponse> responses = findAllUser.process().stream()
-                .map(UserAccountResponse::fromDomain).toList();
+        try {
+            List<UserAccountResponse> responses = findAllUser.process()
+                    .stream()
+                    .map(user -> modelMapper.map(user, UserAccountResponse.class))
+                    .toList();
 
-        return ResponseEntity.ok(responses);
+            return ResponseEntity.ok(responses);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping(value = "/{id}")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<UserAccountResponse> getOne(@PathVariable final long id) {
+        try {
+            UserAccountResponse responses = modelMapper.map(findUserById.process(id), UserAccountResponse.class);
+
+            return ResponseEntity.ok(responses);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping
     @Transactional
+    //TODO: Separar o codigo em funções.
     public ResponseEntity<UserAccountResponse> createUser(@RequestBody @Valid UserAccountCreateRequest userAccountCreateRequest) {
 
         //Criando User Account

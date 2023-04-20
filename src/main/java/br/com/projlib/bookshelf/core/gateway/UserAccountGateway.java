@@ -1,6 +1,5 @@
 package br.com.projlib.bookshelf.core.gateway;
 
-import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.infra.gateway.syspermissionjpa.SysPermissionJpa;
 import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
 import br.com.projlib.bookshelf.infra.query.UserAccountQuery;
@@ -14,18 +13,17 @@ public interface UserAccountGateway {
 
     List<UserAccountJpa> findAll();
 
-    Optional<UserAccountJpa> findUserByCpf(String cpf);
+    Optional<UserAccountJpa> findUserByCpf(final String cpf);
 
-
-    Optional<UserAccountJpa> findUserByEmail(String email);
+    Optional<UserAccountJpa> findUserByEmail(final String email);
 
     List<UserAccountJpa> findAllActiveAccounts();
 
-    UserAccountJpa findUserById(final long id);
+    Optional<UserAccountJpa> findUserById(final long id);
 
-    UserAccountJpa create(UserAccountJpa userAccount);
+    UserAccountJpa create(final UserAccountJpa userAccount);
 
-    Collection<SysPermissionJpa> findAuthoritiesByUser(UserDetails userDetails);
+    Collection<SysPermissionJpa> findAuthoritiesByUser(final UserDetails userDetails);
 
     Collection<SysPermissionJpa> findAuthoritiesByAuthenticatedUser();
 

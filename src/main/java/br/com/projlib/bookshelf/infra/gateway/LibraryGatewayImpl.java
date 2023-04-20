@@ -19,4 +19,9 @@ public class LibraryGatewayImpl implements LibraryGateway {
     public List<LibraryJpa> getAll() {
         return libraryRepository.findAll();
     }
+
+    @Override
+    public Optional<LibraryJpa> getOne(long id) {
+        return libraryRepository.findById(id);
+    }
 }

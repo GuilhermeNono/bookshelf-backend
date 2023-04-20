@@ -1,11 +1,18 @@
 package br.com.projlib.bookshelf.core.domain;
 
-import lombok.Value;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Value
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
+@Getter
+@Setter
 public class Library {
-    long id;
-    String name;
-    boolean active;
-    Institution institution;
+    private long id;
+    private String name;
+    private boolean active;
+    private Institution institution;
 }

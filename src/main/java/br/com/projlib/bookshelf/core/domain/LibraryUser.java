@@ -1,9 +1,15 @@
 package br.com.projlib.bookshelf.core.domain;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Value
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class LibraryUser {
-    long id;
-    String name;
+    private long id;
+    private String name;
 }

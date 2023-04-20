@@ -26,7 +26,7 @@ import java.util.Objects;
 @Slf4j
 public class AuthenticationFilter extends OncePerRequestFilter {
 
-    private static final String TOKEN_BEARER = "Bearer ";
+    public static final String TOKEN_BEARER = "Bearer ";
     private static final String REQUEST_HEADER_AUTHORIZATION = "Authorization";
 
     private final LoadUserByUsername loadUserByUsername;

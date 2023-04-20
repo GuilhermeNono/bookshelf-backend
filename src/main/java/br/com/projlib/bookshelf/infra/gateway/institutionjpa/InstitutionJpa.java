@@ -1,7 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway.institutionjpa;
 
 
-import br.com.projlib.bookshelf.core.domain.Institution;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,7 +14,6 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "institution")
@@ -39,16 +37,42 @@ public class InstitutionJpa implements Serializable {
     public InstitutionJpa() {
     }
 
-    public InstitutionJpa(Institution institution, LibraryJpa libraryJpa) {
-        //TODO: Analisar a melhor maneira de construir um objeto utlizando uma VO como base.
-        this.id = institution.getId();
-        this.cnpj = institution.getCnpj();
-//        this.libraries = libraryJpa;
+    public InstitutionJpa(List<LibraryJpa> library) {
+        this();
+        this.setLibraries(library);
     }
 
-    public Institution toDomain() {
-        return new Institution(this.getId(),
-                this.getName(),
-                this.getCnpj());
-    }
+//    public Institution toDomain(){
+//        return new Institution(
+//                this.getId(),
+//                this.getName(),
+//                this.getCnpj(),
+//                this.getLibraries()
+//                        .stream()
+//                        .map(LibraryJpa::toDomain)
+//                        .toList()
+//        );
+//    }
+
+//    public static InstitutionJpa fromDomain(Institution institution) {
+////        final InstitutionJpa institutionJpa = new InstitutionJpa();
+////
+////        institutionJpa.setCnpj(institutionJpa.getCnpj());
+////        institutionJpa.setId(institution.getId());
+////        institutionJpa.setName(institution.getName());
+////        institutionJpa.setLibraries(institution.getLibraries());
+//
+//        return null;
+//    }
+//
+//    public LibraryJpa createLibraryFromVO(Library vo) {
+////        LibraryJpa library = new LibraryJpa();
+////        library.setName(vo.getName());
+////        library.setActive(vo.isActive());
+////        library.setId(library.getId());
+////        library.set
+////        library.setInstitution(this);
+//        return null;
+//    }
+
 }

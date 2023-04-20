@@ -1,6 +1,5 @@
 package br.com.projlib.bookshelf.infra.gateway;
 
-import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.core.gateway.UserAccountGateway;
 import br.com.projlib.bookshelf.infra.gateway.syspermissionjpa.SysPermissionJpa;
 import br.com.projlib.bookshelf.infra.gateway.syspermissionjpa.SysPermissionRepository;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -57,9 +55,9 @@ public class UserAccountGatewayImpl implements UserAccountGateway, UserDetailsSe
     }
 
     @Override
-    public UserAccountJpa findUserById(long id) {
+    public Optional<UserAccountJpa> findUserById(long id) {
         return userAccountRepository
-                .findById(id).orElseThrow();
+                .findById(id);
     }
 
     @Override
