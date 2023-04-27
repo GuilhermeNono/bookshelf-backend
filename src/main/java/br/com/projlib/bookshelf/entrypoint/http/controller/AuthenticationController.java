@@ -78,12 +78,4 @@ public class AuthenticationController implements Serializable {
                 )
         );
     }
-
-//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<UserAccountQuery> findByUsername(@PathParam("username") String username) {
-//        return ResponseEntity.ok(this.userAccountService
-//                .findByUsername(username)
-//                .map(this.userAccountQueryAssembler::toModel)
-//                .orElseThrow(() -> new EntityNotFoundException(UserAccount.class)));
-//    }
 }

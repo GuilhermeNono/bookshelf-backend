@@ -30,4 +30,6 @@ public interface UserAccountGateway {
     UserAccountQuery getAuthenticatedUserAccount();
 
     UserAccountJpa loadAuthenticatedUserAccount();
+
+
 }

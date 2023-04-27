@@ -22,7 +22,8 @@
                              nullable="false"
                              foreignKeyName="fk_category_book"
                              referencedTableName="category"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

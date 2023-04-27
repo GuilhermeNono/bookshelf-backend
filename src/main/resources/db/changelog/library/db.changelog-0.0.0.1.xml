@@ -19,7 +19,8 @@
                 <constraints nullable="false"
                              foreignKeyName="fk_libary_institution"
                              referencedTableName="institution"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

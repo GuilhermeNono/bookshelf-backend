@@ -14,7 +14,8 @@
                              nullable="false"
                              foreignKeyName="fk_user_profile_sys_permission"
                              referencedTableName="user_profile"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
             <column name="fk_sys_permission_user_profile" type="bigint">
                 <constraints primaryKey="true"
@@ -22,7 +23,8 @@
                              nullable="false"
                              foreignKeyName="fk_sys_permission_user_profile"
                              referencedTableName="sys_permission"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

@@ -25,13 +25,15 @@
                 <constraints nullable="false"
                              foreignKeyName="fk_user_library_library"
                              referencedTableName="library"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
             <column name="fk_user_library_user_account" type="bigint">
                 <constraints nullable="false"
                              foreignKeyName="fk_user_library_user_account"
                              referencedTableName="user_account"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

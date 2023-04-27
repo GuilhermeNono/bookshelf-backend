@@ -14,7 +14,9 @@
                              nullable="false"
                              foreignKeyName="fk_book_author"
                              referencedTableName="book"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
+
             </column>
             <column name="fk_author_book" type="bigint">
                 <constraints primaryKey="true"
@@ -22,7 +24,8 @@
                              nullable="false"
                              foreignKeyName="fk_author_book"
                              referencedTableName="author"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

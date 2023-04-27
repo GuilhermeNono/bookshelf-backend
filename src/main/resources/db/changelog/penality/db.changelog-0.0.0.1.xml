@@ -19,13 +19,15 @@
                 <constraints nullable="false"
                              foreignKeyName="fk_penality_penality_type"
                              referencedTableName="penality_type"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
             <column name="fk_penality_user_library" type="bigint">
                 <constraints nullable="false"
                              foreignKeyName="fk_penality_user_library"
                              referencedTableName="user_library"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

@@ -8,6 +8,7 @@ import br.com.projlib.bookshelf.core.usecase.FindContactTypeById;
 import br.com.projlib.bookshelf.core.usecase.FindProfileById;
 import br.com.projlib.bookshelf.core.usecase.FindUserById;
 import br.com.projlib.bookshelf.entrypoint.http.request.UserAccountCreateRequest;
+import br.com.projlib.bookshelf.entrypoint.http.response.ListLibraryResponse;
 import br.com.projlib.bookshelf.entrypoint.http.response.UserAccountResponse;
 import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
 import br.com.projlib.bookshelf.infra.gateway.usercontact.UserContactJpa;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
