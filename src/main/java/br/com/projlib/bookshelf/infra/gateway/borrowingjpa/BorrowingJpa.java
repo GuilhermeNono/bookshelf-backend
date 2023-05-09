@@ -32,7 +32,7 @@ public class BorrowingJpa implements Serializable {
     @Column(nullable = false)
     private Date returnDate;
 
-    @Column(nullable = true)
+    @Column
     private Date renewalDate;
 
     @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
