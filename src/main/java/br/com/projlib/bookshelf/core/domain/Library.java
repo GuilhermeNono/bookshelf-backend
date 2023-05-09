@@ -6,12 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class Password {
+@Getter
+@Setter
+public class Library {
     private long id;
-    private String password;
+    private String name;
     private boolean active;
+    private Institution institution;
 }

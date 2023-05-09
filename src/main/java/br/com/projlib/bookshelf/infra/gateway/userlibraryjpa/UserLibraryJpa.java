@@ -22,6 +22,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,7 +38,7 @@ public class UserLibraryJpa implements Serializable {
     @Column(nullable = false)
     private boolean active;
 
-    @Column(nullable = true)
+    @Column
     private String rmRa;
 
     @Column(nullable = false)
@@ -55,10 +56,10 @@ public class UserLibraryJpa implements Serializable {
     private UserAccountJpa userAccount;
 
     @OneToMany(mappedBy = "userLibrary")
-    private Set<PenalityJpa> penalties;
+    private List<PenalityJpa> penalties;
 
     @OneToMany(mappedBy = "userLibrary")
-    private Set<BorrowingJpa> borrowings;
+    private List<BorrowingJpa> borrowings;
 
     @ManyToMany
     @JoinTable(

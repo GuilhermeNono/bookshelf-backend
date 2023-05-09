@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class Password {
+public class Institution {
     private long id;
-    private String password;
-    private boolean active;
+    private String name;
+    private String cnpj;
 }

@@ -22,7 +22,9 @@
                 <constraints nullable="false"
                              foreignKeyName="fk_book_publisher"
                              referencedTableName="publisher"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"
+                />
             </column>
         </createTable>
     </changeSet>

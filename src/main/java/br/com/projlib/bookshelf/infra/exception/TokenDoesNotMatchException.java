@@ -6,7 +6,7 @@ public class TokenDoesNotMatchException extends GenericException {
         super(message);
     }
 
-    public TokenDoesNotMatchException() {
-        super("test");
+    public TokenDoesNotMatchException(String message, Throwable throwable) {
+        super(message, throwable);
     }
 }

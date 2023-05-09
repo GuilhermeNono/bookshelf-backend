@@ -18,7 +18,8 @@
             <column name="fk_password_user_account" type="bigint">
                 <constraints foreignKeyName="fk_password_user_account"
                              referencedTableName="user_account"
-                             referencedColumnNames="id"/>
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

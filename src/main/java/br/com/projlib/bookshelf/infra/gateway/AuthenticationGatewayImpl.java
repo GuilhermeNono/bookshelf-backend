@@ -47,10 +47,10 @@ public class AuthenticationGatewayImpl implements AuthenticationGateway {
         try {
             Optional<UserDetails> userDetails = getLoggedUser();
             if (userDetails.isPresent() && !this.validateToken.process(token.getToken(), userDetails.get())) {
-                throw new TokenDoesNotMatchException();
+                throw new TokenDoesNotMatchException("Token Expired.");
             }
         } catch (SignatureException ex) {
-            throw new TokenDoesNotMatchException();
+            throw new TokenDoesNotMatchException("Token does not exist.", ex.getCause());
         }
     }
 

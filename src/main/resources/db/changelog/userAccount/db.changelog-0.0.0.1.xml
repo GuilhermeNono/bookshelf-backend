@@ -31,7 +31,8 @@
                 <constraints
                         foreignKeyName="fk_user_account_user_profile"
                         referencedTableName="user_profile"
-                        referencedColumnNames="id" />
+                        referencedColumnNames="id"
+                        deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>

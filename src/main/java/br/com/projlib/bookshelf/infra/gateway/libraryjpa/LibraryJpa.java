@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "library")
@@ -34,10 +34,45 @@ public class LibraryJpa implements Serializable {
     private boolean active;
 
     @OneToMany(mappedBy = "library")
-    private Set<UserLibraryJpa> libraryUsers;
+    private List<UserLibraryJpa> libraryUsers;
 
     @ManyToOne
     @JoinColumn(name = "fk_libary_institution", referencedColumnName = "id")
     private InstitutionJpa institution;
 
+    public LibraryJpa() {
+    }
+
+//    public LibraryJpa(Library library) {
+//        this.id = library.getId();
+//        this.active = library.isActive();
+//        this.name = library.getName();
+////      this.libraryUsers;
+////      this.institution;
+//    }
+
+//        public Library toDomain() {
+//        return new Library(
+//                this.getId(),
+//                this.getName(),
+//                this.isActive(),
+//                this.getInstitution()
+//        );
+
+
+//    public static LibraryJpa fromDomain(Library library){
+//        final LibraryJpa libraryJpa = new LibraryJpa();
+//
+//        libraryJpa.setId(libraryJpa.getId());
+//        libraryJpa.setName(library.getName());
+//        libraryJpa.setActive(library.isActive());
+//        libraryJpa.setInstitution(library.getInstitution());
+//
+//        return null;
+//    }
+//
+//    public void setInstitution(InstitutionJpa institution) {
+//        this.institution = institution;
+//        institution.getLibraries().add(this);
+//    }
 }

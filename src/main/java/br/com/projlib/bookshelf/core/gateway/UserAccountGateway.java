@@ -1,6 +1,5 @@
 package br.com.projlib.bookshelf.core.gateway;
 
-import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.infra.gateway.syspermissionjpa.SysPermissionJpa;
 import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
 import br.com.projlib.bookshelf.infra.query.UserAccountQuery;
@@ -12,24 +11,25 @@ import java.util.Optional;
 
 public interface UserAccountGateway {
 
-    List<UserAccount> findAll();
+    List<UserAccountJpa> findAll();
 
-    UserAccount findUserByCpf(String cpf);
+    Optional<UserAccountJpa> findUserByCpf(final String cpf);
 
+    Optional<UserAccountJpa> findUserByEmail(final String email);
 
-    Optional<UserAccountJpa> findUserByEmail(String email);
+    List<UserAccountJpa> findAllActiveAccounts();
 
-    List<UserAccount> findAllActiveAccounts();
+    Optional<UserAccountJpa> findUserById(final long id);
 
-    UserAccountJpa findUserById(final long id);
+    UserAccountJpa create(final UserAccountJpa userAccount);
 
-    UserAccountJpa create(UserAccountJpa userAccount);
-
-    Collection<SysPermissionJpa> findAuthoritiesByUser(UserDetails userDetails);
+    Collection<SysPermissionJpa> findAuthoritiesByUser(final UserDetails userDetails);
 
     Collection<SysPermissionJpa> findAuthoritiesByAuthenticatedUser();
 
     UserAccountQuery getAuthenticatedUserAccount();
 
     UserAccountJpa loadAuthenticatedUserAccount();
+
+
 }
