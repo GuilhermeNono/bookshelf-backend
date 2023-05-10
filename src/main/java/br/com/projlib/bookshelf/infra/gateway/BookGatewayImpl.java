@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,5 +18,10 @@ public class BookGatewayImpl implements BookGateway {
     @Override
     public List<BookJpa> findAll() {
         return bookRepository.findAll();
+    }
+
+    @Override
+    public Optional<BookJpa> findById(long id) {
+        return bookRepository.findById(id);
     }
 }
