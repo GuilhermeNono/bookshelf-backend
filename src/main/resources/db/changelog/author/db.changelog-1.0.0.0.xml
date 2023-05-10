@@ -8,8 +8,34 @@
 
     <changeSet id="populating author table" author="guilherme.nono">
         <insert tableName="author">
+            <column name="id" value="1" />
             <column name="first_name" value="J. K." />
             <column name="last_name" value="Rowling" />
+        </insert>
+        <insert tableName="author">
+            <column name="id" value="2" />
+            <column name="first_name" value="Antoine" />
+            <column name="last_name" value="de Saint-Exupéry" />
+        </insert>
+        <insert tableName="author">
+            <column name="id" value="3" />
+            <column name="first_name" value="Koyoharu" />
+            <column name="last_name" value="Gotouge" />
+        </insert>
+        <insert tableName="author">
+            <column name="id" value="4" />
+            <column name="first_name" value="Robert" />
+            <column name="last_name" value="C. Martin" />
+        </insert>
+        <insert tableName="author">
+            <column name="id" value="5" />
+            <column name="first_name" value="Eiichiro" />
+            <column name="last_name" value="Oda" />
+        </insert>
+        <insert tableName="author">
+            <column name="id" value="6" />
+            <column name="first_name" value="Alex" />
+            <column name="last_name" value="Michaelides" />
         </insert>
     </changeSet>
 

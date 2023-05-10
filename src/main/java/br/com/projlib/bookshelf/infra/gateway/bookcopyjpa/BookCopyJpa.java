@@ -1,6 +1,7 @@
 package br.com.projlib.bookshelf.infra.gateway.bookcopyjpa;
 
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
+import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,5 +31,9 @@ public class BookCopyJpa implements Serializable {
     @ManyToOne
     @JoinColumn(name = "fk_book_copy_book", referencedColumnName = "id")
     private BookJpa book;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_book_copy_library", referencedColumnName = "id")
+    private LibraryJpa library;
 
 }

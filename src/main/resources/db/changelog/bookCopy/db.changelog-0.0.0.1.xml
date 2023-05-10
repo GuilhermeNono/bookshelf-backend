@@ -19,6 +19,13 @@
                              referencedColumnNames="id"
                              deleteCascade="true"/>
             </column>
+            <column name="fk_book_copy_library" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_book_copy_library"
+                             referencedTableName="library"
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
         </createTable>
     </changeSet>
 

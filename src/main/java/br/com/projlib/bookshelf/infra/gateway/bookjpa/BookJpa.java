@@ -21,6 +21,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -42,15 +43,30 @@ public class BookJpa implements Serializable {
     @Column(nullable = false)
     private Date publicationDate;
 
+    @Column(nullable = false)
+    private String isbn;
+
+    @Column(nullable = false)
+    private String sinopse;
+
+    @Column(nullable = false)
+    private String edition;
+
+    @Column(nullable = false)
+    private int numberPages;
+
+    @Column(nullable = false)
+    private String cape;
+
     @ManyToOne
     @JoinColumn(name = "fk_book_publisher", referencedColumnName = "id")
     private PublisherJpa publisher;
 
     @OneToMany(mappedBy = "book")
-    private Set<BookCopyJpa> copies;
+    private List<BookCopyJpa> copies;
 
     @OneToMany(mappedBy = "book")
-    private Set<BorrowingJpa> borrowings;
+    private List<BorrowingJpa> borrowings;
 
     @ManyToMany
     @JoinTable(
@@ -58,7 +74,7 @@ public class BookJpa implements Serializable {
             joinColumns = @JoinColumn(name = "fk_book_author", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "fk_author_book", referencedColumnName = "id")
     )
-    private Set<AuthorJpa> authors;
+    private List<AuthorJpa> authors;
 
     @ManyToMany
     @JoinTable(
@@ -66,7 +82,7 @@ public class BookJpa implements Serializable {
             joinColumns = @JoinColumn(name = "fk_book_category", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "fk_category_book", referencedColumnName = "id")
     )
-    private Set<CategoryJpa> categories;
+    private List<CategoryJpa> categories;
 
 
 

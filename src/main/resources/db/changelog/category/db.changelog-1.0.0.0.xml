@@ -8,7 +8,24 @@
 
     <changeSet id="populating category table" author="guilherme.nono">
         <insert tableName="category">
+            <column name="id" value="1"/>
             <column name="name" value="Literatura e Ficção" />
+        </insert>
+        <insert tableName="category">
+            <column name="id" value="2"/>
+            <column name="name" value="Clássicos de Ação e Aventura" />
+        </insert>
+        <insert tableName="category">
+            <column name="id" value="3"/>
+            <column name="name" value="Mangá" />
+        </insert>
+        <insert tableName="category">
+            <column name="id" value="4"/>
+            <column name="name" value="Thriller e Suspense" />
+        </insert>
+        <insert tableName="category">
+            <column name="id" value="5"/>
+            <column name="name" value="Programação" />
         </insert>
     </changeSet>
 

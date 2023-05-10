@@ -12,6 +12,17 @@
             <column name="cnpj" value="62.823.257/0001-09" />
             <column name="name" value="Centro Estadual de Educação Tecnológica Paula Souza" />
         </insert>
+        <insert tableName="institution">
+            <column name="id" value="2" />
+            <column name="cnpj" value="46.379.400/0001" />
+            <column name="name" value="Estado de São Paulo" />
+        </insert>
+        <insert tableName="institution">
+            <column name="id" value="3" />
+            <column name="cnpj" value="23.901.949/0001-68" />
+            <column name="name" value="SOCIEDADE EDUCACIONAL OBJETIVO LTDA" />
+        </insert>
+
     </changeSet>
 
 </databaseChangeLog>

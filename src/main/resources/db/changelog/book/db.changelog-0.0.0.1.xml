@@ -18,6 +18,21 @@
             <column name="publication_date" type="date">
                 <constraints nullable="false"/>
             </column>
+            <column name="isbn" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sinopse" type="varchar(3000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="edition" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_pages" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cape" type="varchar(400)">
+                <constraints nullable="false"/>
+            </column>
             <column name="fk_book_publisher" type="bigint">
                 <constraints nullable="false"
                              foreignKeyName="fk_book_publisher"

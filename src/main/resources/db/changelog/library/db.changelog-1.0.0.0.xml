@@ -10,8 +10,26 @@
         <insert tableName="library">
             <column name="id" value="1" />
             <column name="active" value="1" />
-            <column name="name" value="ETEC Comendador João Rays" />
+            <column name="name" value="Etec Comendador João Rays" />
             <column name="fk_libary_institution" value="1" />
+        </insert>
+        <insert tableName="library">
+            <column name="id" value="2" />
+            <column name="active" value="1" />
+            <column name="name" value="Etec Joaquim Ferreira do Amaral" />
+            <column name="fk_libary_institution" value="1" />
+        </insert>
+        <insert tableName="library">
+            <column name="id" value="3" />
+            <column name="active" value="1" />
+            <column name="name" value="Escola Estadual Camilo Sahade" />
+            <column name="fk_libary_institution" value="2" />
+        </insert>
+        <insert tableName="library">
+            <column name="id" value="4" />
+            <column name="active" value="1" />
+            <column name="name" value="Colégio Saber" />
+            <column name="fk_libary_institution" value="3" />
         </insert>
     </changeSet>
 

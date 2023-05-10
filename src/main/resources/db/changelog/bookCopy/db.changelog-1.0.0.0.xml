@@ -8,8 +8,76 @@
 
     <changeSet id="populating book_copy table" author="guilherme.nono">
         <insert tableName="book_copy">
-            <column name="code" value="54264" />
+            <column name="id" value="1" />
+            <column name="code" value="23422" />
             <column name="fk_book_copy_book" value="1" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="2" />
+            <column name="code" value="12346" />
+            <column name="fk_book_copy_book" value="2" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="3" />
+            <column name="code" value="34235" />
+            <column name="fk_book_copy_book" value="3" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="4" />
+            <column name="code" value="00983" />
+            <column name="fk_book_copy_book" value="4" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="5" />
+            <column name="code" value="15678" />
+            <column name="fk_book_copy_book" value="5" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="6" />
+            <column name="code" value="22214" />
+            <column name="fk_book_copy_book" value="6" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="7" />
+            <column name="code" value="66432" />
+            <column name="fk_book_copy_book" value="7" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="8" />
+            <column name="code" value="78653" />
+            <column name="fk_book_copy_book" value="8" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="9" />
+            <column name="code" value="54264" />
+            <column name="fk_book_copy_book" value="9" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="10" />
+            <column name="code" value="12312" />
+            <column name="fk_book_copy_book" value="10" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="11" />
+            <column name="code" value="56132" />
+            <column name="fk_book_copy_book" value="11" />
+            <column name="fk_book_copy_library" value="1" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="12" />
+            <column name="code" value="76523" />
+            <column name="fk_book_copy_book" value="12" />
+            <column name="fk_book_copy_library" value="1" />
         </insert>
     </changeSet>
 

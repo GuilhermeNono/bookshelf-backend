@@ -8,7 +8,24 @@
 
     <changeSet id="populating publisher table" author="guilherme.nono">
         <insert tableName="publisher">
+            <column name="id" value="1"/>
             <column name="name" value="Rocco" />
+        </insert>
+        <insert tableName="publisher">
+            <column name="id" value="2"/>
+            <column name="name" value="Record" />
+        </insert>
+        <insert tableName="publisher">
+            <column name="id" value="3"/>
+            <column name="name" value="Panini" />
+        </insert>
+        <insert tableName="publisher">
+            <column name="id" value="4"/>
+            <column name="name" value="Alta Books" />
+        </insert>
+        <insert tableName="publisher">
+            <column name="id" value="5"/>
+            <column name="name" value="Via Leitura" />
         </insert>
     </changeSet>
 

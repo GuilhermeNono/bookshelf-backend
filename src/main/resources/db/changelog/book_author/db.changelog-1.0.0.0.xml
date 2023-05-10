@@ -8,9 +8,55 @@
 
     <changeSet id="populating book_author table" author="guilherme.nono">
         <insert tableName="book_author">
-            <column name="fk_book_author" value="1" />
-            <column name="fk_author_book" value="1" />
+            <column name="fk_book_author" value="1"/>
+            <column name="fk_author_book" value="1"/>
         </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="2"/>
+            <column name="fk_author_book" value="1"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="3"/>
+            <column name="fk_author_book" value="1"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="4"/>
+            <column name="fk_author_book" value="1"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="5"/>
+            <column name="fk_author_book" value="1"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="6"/>
+            <column name="fk_author_book" value="1"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="7"/>
+            <column name="fk_author_book" value="1"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="8"/>
+            <column name="fk_author_book" value="2"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="9"/>
+            <column name="fk_author_book" value="5"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="10"/>
+            <column name="fk_author_book" value="3"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="11"/>
+            <column name="fk_author_book" value="4"/>
+        </insert>
+        <insert tableName="book_author">
+            <column name="fk_book_author" value="12"/>
+            <column name="fk_author_book" value="2"/>
+        </insert>
+
+
     </changeSet>
 
 </databaseChangeLog>
