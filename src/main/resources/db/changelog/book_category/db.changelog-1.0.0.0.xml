@@ -8,9 +8,55 @@
 
     <changeSet id="populating book_category table" author="guilherme.nono">
         <insert tableName="book_category">
-            <column name="fk_book_category" value="1" />
-            <column name="fk_category_book" value="1" />
+            <column name="fk_book_category" value="1"/>
+            <column name="fk_category_book" value="1"/>
         </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="2"/>
+            <column name="fk_category_book" value="1"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="3"/>
+            <column name="fk_category_book" value="1"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="4"/>
+            <column name="fk_category_book" value="1"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="5"/>
+            <column name="fk_category_book" value="1"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="6"/>
+            <column name="fk_category_book" value="1"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="7"/>
+            <column name="fk_category_book" value="1"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="8"/>
+            <column name="fk_category_book" value="4"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="9"/>
+            <column name="fk_category_book" value="3"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="10"/>
+            <column name="fk_category_book" value="3"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="11"/>
+            <column name="fk_category_book" value="5"/>
+        </insert>
+        <insert tableName="book_category">
+            <column name="fk_book_category" value="12"/>
+            <column name="fk_category_book" value="2"/>
+        </insert>
+
+
     </changeSet>
 
 </databaseChangeLog>
