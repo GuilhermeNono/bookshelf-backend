@@ -11,14 +11,7 @@
             <column name="created_at" value="${now}" />
             <column name="updated_at" value="${now}" />
             <column name="fk_penality_penality_type" value="1" />
-            <column name="fk_penality_user_library" value="1" />
-        </insert>
-
-        <insert tableName="penality">
-            <column name="created_at" value="${now}" />
-            <column name="updated_at" value="${now}" />
-            <column name="fk_penality_penality_type" value="1" />
-            <column name="fk_penality_user_library" value="2" />
+            <column name="fk_penality_borrowing" value="1" />
         </insert>
     </changeSet>
 

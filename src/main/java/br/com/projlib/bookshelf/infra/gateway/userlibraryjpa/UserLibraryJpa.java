@@ -56,9 +56,6 @@ public class UserLibraryJpa implements Serializable {
     private UserAccountJpa userAccount;
 
     @OneToMany(mappedBy = "userLibrary")
-    private List<PenalityJpa> penalties;
-
-    @OneToMany(mappedBy = "userLibrary")
     private List<BorrowingJpa> borrowings;
 
     @ManyToMany

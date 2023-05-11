@@ -1,6 +1,7 @@
 package br.com.projlib.bookshelf.infra.gateway.borrowingjpa;
 
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
+import br.com.projlib.bookshelf.infra.gateway.penalityjpa.PenalityJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,12 +10,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "borrowing")
@@ -37,6 +40,9 @@ public class BorrowingJpa implements Serializable {
 
     @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
     private boolean active;
+
+    @OneToMany(mappedBy = "borrowing")
+    private List<PenalityJpa> penalties;
 
     @ManyToOne
     @JoinColumn(name = "fk_borrowing_user_library", referencedColumnName = "id")
