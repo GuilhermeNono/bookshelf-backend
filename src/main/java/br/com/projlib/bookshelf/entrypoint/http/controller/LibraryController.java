@@ -1,8 +1,12 @@
 package br.com.projlib.bookshelf.entrypoint.http.controller;
 
+import br.com.projlib.bookshelf.core.usecase.FindAllBooksOfLibrary;
 import br.com.projlib.bookshelf.core.usecase.GetAllLibraries;
 import br.com.projlib.bookshelf.core.usecase.GetOneLibrary;
+import br.com.projlib.bookshelf.entrypoint.http.response.ListBookCopyResponse;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListLibraryResponse;
+import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
+import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,6 +33,7 @@ public class LibraryController {
 
     private final GetAllLibraries getAllLibraries;
     private final GetOneLibrary getOneLibrary;
+    private final FindAllBooksOfLibrary findAllBooksOfLibrary;
 
     private final ModelMapper modelMapper;
 
@@ -67,6 +72,20 @@ public class LibraryController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+    }
+
+    @GetMapping(value = "/{id}/books")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<List<ListBookCopyResponse>> getAllBooks(@PathVariable long id){
+        try {
+            List<ListBookCopyResponse> books = findAllBooksOfLibrary.process(id)
+                    .stream()
+                    .map(lb -> modelMapper.map(lb, ListBookCopyResponse.class))
+                    .toList();
+            return new ResponseEntity<>(books, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 
