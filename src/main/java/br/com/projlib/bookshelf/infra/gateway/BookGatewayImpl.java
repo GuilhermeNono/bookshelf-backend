@@ -21,6 +21,16 @@ public class BookGatewayImpl implements BookGateway {
     }
 
     @Override
+    public List<BookJpa> findByName(String name) {
+        return bookRepository.findByName("%"+ name + "%");
+    }
+
+    @Override
+    public List<BookJpa> findByIsbn(String isbn) {
+        return bookRepository.findByIsbn(isbn);
+    }
+
+    @Override
     public Optional<BookJpa> findById(long id) {
         return bookRepository.findById(id);
     }

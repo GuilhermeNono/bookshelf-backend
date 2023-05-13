@@ -9,4 +9,7 @@ public interface BookCopyGateway {
 
     List<BookCopyJpa> findAllBooksOfLibrary(long LibraryId);
 
+    List<BookCopyJpa> findBooksOfLibraryByName(String name, long id);
+
+    List<BookCopyJpa> findBooksOfLibraryByIsbn(String isbn, long id);
 }

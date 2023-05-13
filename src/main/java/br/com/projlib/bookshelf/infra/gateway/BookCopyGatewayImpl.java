@@ -23,4 +23,16 @@ public class BookCopyGatewayImpl implements BookCopyGateway {
         LibraryJpa library = getOneLibrary.process(libraryId);
         return bookCopyRepository.findAllByLibrary(library);
     }
+
+    @Override
+    public List<BookCopyJpa> findBooksOfLibraryByName(String name, long id) {
+        LibraryJpa library = getOneLibrary.process(id);
+        return bookCopyRepository.findCopyByLibraryAndName(library, "%" + name + "%");
+    }
+
+    @Override
+    public List<BookCopyJpa> findBooksOfLibraryByIsbn(String isbn, long id) {
+        LibraryJpa library = getOneLibrary.process(id);
+        return bookCopyRepository.findCopyByLibraryAndIsbn(library, isbn);
+    }
 }

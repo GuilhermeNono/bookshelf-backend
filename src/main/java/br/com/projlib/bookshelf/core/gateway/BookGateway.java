@@ -9,6 +9,10 @@ public interface BookGateway {
 
     List<BookJpa> findAll();
 
+    List<BookJpa> findByName(String name);
+
+    List<BookJpa> findByIsbn(String isbn);
+
     Optional<BookJpa> findById(final long id);
 
 }
