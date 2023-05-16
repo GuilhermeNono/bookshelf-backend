@@ -8,6 +8,7 @@
 
     <changeSet id="populating borrowing table" author="guilherme.nono">
         <insert tableName="borrowing">
+            <column name="id" value="1" />
             <column name="active" value="1" />
             <column name="loan_date" value="2023-01-01" />
             <column name="return_date" value="2023-01-01" />

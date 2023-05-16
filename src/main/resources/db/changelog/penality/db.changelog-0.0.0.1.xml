@@ -22,10 +22,10 @@
                              referencedColumnNames="id"
                              deleteCascade="true"/>
             </column>
-            <column name="fk_penality_user_library" type="bigint">
+            <column name="fk_penality_borrowing" type="bigint">
                 <constraints nullable="false"
-                             foreignKeyName="fk_penality_user_library"
-                             referencedTableName="user_library"
+                             foreignKeyName="fk_penality_borrowing"
+                             referencedTableName="borrowing"
                              referencedColumnNames="id"
                              deleteCascade="true"/>
             </column>

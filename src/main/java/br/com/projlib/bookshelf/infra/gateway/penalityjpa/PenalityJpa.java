@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway.penalityjpa;
 
+import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
 import br.com.projlib.bookshelf.infra.gateway.penalitytypejpa.PenalityTypeJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import jakarta.persistence.Column;
@@ -33,8 +34,8 @@ public class PenalityJpa implements Serializable {
     private LocalDateTime updatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "fk_penality_user_library", referencedColumnName = "id")
-    private UserLibraryJpa userLibrary;
+    @JoinColumn(name = "fk_penality_borrowing", referencedColumnName = "id")
+    private BorrowingJpa borrowing;
 
     @ManyToOne
     @JoinColumn(name = "fk_penality_penality_type", referencedColumnName = "id")

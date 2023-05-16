@@ -10,6 +10,7 @@ import br.com.projlib.bookshelf.infra.command.AuthenticationToken;
 import br.com.projlib.bookshelf.infra.command.LoginCommand;
 import br.com.projlib.bookshelf.infra.gateway.syspermissionjpa.SysPermissionJpa;
 import br.com.projlib.bookshelf.infra.query.UserAccountQuery;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -44,6 +45,7 @@ public class AuthenticationController implements Serializable {
     private final FindAuthoritiesByAuthenticatedUser findAuthoritiesByAuthenticatedUser;
 
 
+    @Operation(summary = "Authenticate user and Get access token")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AuthenticationToken> login(@RequestBody @Valid LoginCommand loginCommand) {
         this.authenticate.process(loginCommand.getEmail(), loginCommand.getPassword());
@@ -51,6 +53,7 @@ public class AuthenticationController implements Serializable {
         return ResponseEntity.ok(this.buildToken.process(loginCommand.getEmail()));
     }
 
+    @Operation(summary = "Validate token")
     @PostMapping(value = "/validate")
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<Void> validate(@RequestHeader(value = "Authorization") String authToken) {
@@ -59,12 +62,14 @@ public class AuthenticationController implements Serializable {
             return ResponseEntity.ok().build();
     }
 
+    @Operation(summary = "Get authenticated user informations")
     @GetMapping(value = "me", produces = MediaType.APPLICATION_JSON_VALUE)
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<UserAccountQuery> getAuthenticatedUser() {
         return ResponseEntity.ok(this.getAuthenticatedUserAccount.process());
     }
-    //
+
+    @Operation(summary = "Get authenticated user permissions")
     @GetMapping(value = "/me/permissions", produces = MediaType.APPLICATION_JSON_VALUE)
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<UserPermissionsResponse> getAuthorizations() {

@@ -1,20 +1,34 @@
 package br.com.projlib.bookshelf.entrypoint.http.controller;
 
+import br.com.projlib.bookshelf.core.usecase.FindAllBooksOfLibrary;
+import br.com.projlib.bookshelf.core.usecase.FindBookCopyBySearchCriteria;
+import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByIsbn;
+import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByName;
 import br.com.projlib.bookshelf.core.usecase.GetAllLibraries;
 import br.com.projlib.bookshelf.core.usecase.GetOneLibrary;
+import br.com.projlib.bookshelf.entrypoint.http.response.ListBookCopyResponse;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListLibraryResponse;
+import br.com.projlib.bookshelf.infra.command.BookCopyDTO;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
+import br.com.projlib.bookshelf.infra.query.SearchCriteria;
+import br.com.projlib.bookshelf.infra.specification.BookCopySpecificationBuilder;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,6 +43,10 @@ public class LibraryController {
 
     private final GetAllLibraries getAllLibraries;
     private final GetOneLibrary getOneLibrary;
+    private final FindAllBooksOfLibrary findAllBooksOfLibrary;
+    private final FindBookCopyBySearchCriteria findBookCopyBySearchCriteria;
+    private final FindBookOnLibraryByName findBookOnLibraryByName;
+    private final FindBookOnLibraryByIsbn findBookOnLibraryByIsbn;
 
     private final ModelMapper modelMapper;
 
@@ -68,6 +86,74 @@ public class LibraryController {
         }
 
     }
+
+    @GetMapping(value = "/{id}/books")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<List<ListBookCopyResponse>> getAllBooks(@PathVariable long id){
+        try {
+            List<ListBookCopyResponse> books = findAllBooksOfLibrary.process(id)
+                    .stream()
+                    .map(lb -> modelMapper.map(lb, ListBookCopyResponse.class))
+                    .toList();
+            return new ResponseEntity<>(books, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @Operation(summary = "Search Book")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody()
+    @PostMapping("/books/search")
+    public ResponseEntity<Page<ListBookCopyResponse>> searchBookCopies
+            (@RequestParam(name = "pageNum",
+                    defaultValue = "0") int pageNum,
+             @RequestParam(name = "pageSize",
+                     defaultValue = "10") int pageSize,
+             @RequestBody BookCopyDTO
+                     bookCopyDTO){
+        BookCopySpecificationBuilder builder = new
+                BookCopySpecificationBuilder();
+        List<SearchCriteria> criteriaList =
+                bookCopyDTO.getSearchCriteriaList();
+        if(criteriaList != null){
+            criteriaList.forEach(x->
+            {x.setDataOption(bookCopyDTO
+                    .getDataOption());
+                builder.with(x);
+            });
+        }
+
+        Pageable page = PageRequest.of(pageNum, pageSize);
+
+        Page<ListBookCopyResponse> employeePage =
+                findBookCopyBySearchCriteria.process(builder.build(),
+                        page);
+
+        return new ResponseEntity<>(employeePage, HttpStatus.OK);
+    }
+//    @GetMapping("")
+//    @SecurityRequirement(name = "Bearer Authentication")
+//    public ResponseEntity<List<ListBookCopyResponse>> getBookByQuery(@RequestBody BookSearchQuery book,
+//                                                                      @PathVariable long id) {
+//        try {
+//            if(book.getName() != null) {
+//                List<ListBookCopyResponse> list = findBookOnLibraryByName.process(book.getName(), id)
+//                        .stream()
+//                        .map(p -> modelMapper.map(p, ListBookCopyResponse.class))
+//                        .toList();
+//
+//                return new ResponseEntity<>(list, HttpStatus.OK);
+//            } else if(book.getIsbn() != null) {
+//                List<ListBookCopyResponse> books = findBookOnLibraryByIsbn.process(book.getIsbn(), id).stream()
+//                        .map(p -> modelMapper.map(p, ListBookCopyResponse.class))
+//                        .toList();
+//
+//                return new ResponseEntity<>(books, HttpStatus.OK);
+//            }
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        } catch (RuntimeException e) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//    }
 
 
 }

@@ -9,16 +9,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@JsonPropertyOrder({"name", "publisherName", "edition", "sinopse", "language", "publication_date", "number_pages", "cape"})
+@JsonPropertyOrder({"name", "publisherName", "edition", "sinopse", "language", "publication_date", "isbn", "number_pages", "cape", "categories", "authors"})
 public class ListBooksResponse {
 
     private String name;
     private String language;
+    private List<AuthorResponse> authors;
+    private List<CategoryResponse> categories;
     @JsonProperty("publication_date")
     private Date publicationDate;
     @JsonProperty("publisher")

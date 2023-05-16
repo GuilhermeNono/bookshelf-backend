@@ -79,6 +79,30 @@
             <column name="fk_book_copy_book" value="12" />
             <column name="fk_book_copy_library" value="1" />
         </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="13" />
+            <column name="code" value="23422" />
+            <column name="fk_book_copy_book" value="1" />
+            <column name="fk_book_copy_library" value="2" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="14" />
+            <column name="code" value="12346" />
+            <column name="fk_book_copy_book" value="2" />
+            <column name="fk_book_copy_library" value="2" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="15" />
+            <column name="code" value="34235" />
+            <column name="fk_book_copy_book" value="3" />
+            <column name="fk_book_copy_library" value="2" />
+        </insert>
+        <insert tableName="book_copy">
+            <column name="id" value="16" />
+            <column name="code" value="00983" />
+            <column name="fk_book_copy_book" value="4" />
+            <column name="fk_book_copy_library" value="2" />
+        </insert>
     </changeSet>
 
 </databaseChangeLog>

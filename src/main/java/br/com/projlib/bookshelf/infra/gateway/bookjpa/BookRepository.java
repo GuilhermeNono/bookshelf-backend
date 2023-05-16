@@ -1,6 +1,16 @@
 package br.com.projlib.bookshelf.infra.gateway.bookjpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 
-public interface BookRepository extends JpaRepository<BookJpa, Long> {
+import java.util.List;
+
+public interface BookRepository extends JpaRepository<BookJpa, Long>, JpaSpecificationExecutor<BookJpa> {
+
+    @Query("select b from BookJpa b where b.name like ?1")
+    List<BookJpa> findByName(String name);
+
+    @Query("select b from BookJpa b where b.isbn like ?1")
+    List<BookJpa> findByIsbn(String isbn);
 }
