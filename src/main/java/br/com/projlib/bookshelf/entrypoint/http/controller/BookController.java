@@ -79,20 +79,20 @@ public class BookController {
 
     @Operation(summary = "Search Book")
     @PostMapping("/search")
-    public ResponseEntity<Page<ListBooksResponse>> searchEmployees
+    public ResponseEntity<Page<ListBooksResponse>> searchBooks
             (@RequestParam(name = "pageNum",
                     defaultValue = "0") int pageNum,
              @RequestParam(name = "pageSize",
                      defaultValue = "10") int pageSize,
              @RequestBody BookDTO
-                     employeeSearchDto){
+                     bookDTO){
         BookSpecificationBuilder builder = new
                 BookSpecificationBuilder();
         List<SearchCriteria> criteriaList =
-                employeeSearchDto.getSearchCriteriaList();
+                bookDTO.getSearchCriteriaList();
         if(criteriaList != null){
             criteriaList.forEach(x->
-            {x.setDataOption(employeeSearchDto
+            {x.setDataOption(bookDTO
                     .getDataOption());
                 builder.with(x);
             });

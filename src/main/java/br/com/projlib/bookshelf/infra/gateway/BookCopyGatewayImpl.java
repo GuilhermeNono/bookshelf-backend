@@ -4,9 +4,11 @@ import br.com.projlib.bookshelf.core.gateway.BookCopyGateway;
 import br.com.projlib.bookshelf.core.usecase.GetOneLibrary;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyRepository;
-import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +25,18 @@ public class BookCopyGatewayImpl implements BookCopyGateway {
         LibraryJpa library = getOneLibrary.process(libraryId);
         return bookCopyRepository.findAllByLibrary(library);
     }
+
+    @Override
+    public List<BookCopyJpa> findAll() {
+        return bookCopyRepository.findAll();
+    }
+
+    @Override
+    public Page<BookCopyJpa> findAll(Specification<BookCopyJpa> spec, Pageable pageable) {
+        return bookCopyRepository.findAll(spec, pageable);
+    }
+
+
 
     @Override
     public List<BookCopyJpa> findBooksOfLibraryByName(String name, long id) {
