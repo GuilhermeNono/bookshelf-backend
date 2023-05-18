@@ -25,8 +25,11 @@ public class BookCopyJpa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @Column(nullable = false)
     private String code;
+
+    @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
+    private boolean active;
 
     @ManyToOne
     @JoinColumn(name = "fk_book_copy_book", referencedColumnName = "id")

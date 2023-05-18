@@ -15,13 +15,15 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@JsonPropertyOrder({"lib_code", "book", "language", "publication_date", "publisher", "sinopse", "isbn", "edition", "number_pages", "cape", "author", "categories"})
+@JsonPropertyOrder({"lib_code", "book", "available", "language", "publication_date", "publisher", "sinopse", "isbn", "edition", "number_pages", "cape", "author", "categories"})
 public class ListBookCopyResponse {
 
     @JsonProperty("lib_code")
     private String code;
     @JsonProperty("book")
     private String bookName;
+    @JsonProperty("available")
+    private boolean active;
     @JsonProperty("language")
     private String bookLanguage;
     @JsonProperty("publication_date")
