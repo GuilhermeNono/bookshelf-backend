@@ -1,6 +1,7 @@
 package br.com.projlib.bookshelf.infra.gateway.bookcopyjpa;
 
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
+import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,11 +10,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "book_copy")
@@ -31,6 +34,9 @@ public class BookCopyJpa implements Serializable {
     @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
     private boolean active;
 
+    @OneToMany(mappedBy = "book")
+    private List<BorrowingJpa> borrowings;
+    
     @ManyToOne
     @JoinColumn(name = "fk_book_copy_book", referencedColumnName = "id")
     private BookJpa book;
