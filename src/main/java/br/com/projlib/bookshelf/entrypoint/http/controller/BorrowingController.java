@@ -109,6 +109,7 @@ public class BorrowingController {
     @PostMapping
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<Void> createBorrowing() {
+        //TODO: Terminar endpoint de criação de emprestimos.
         return null;
     }
 
