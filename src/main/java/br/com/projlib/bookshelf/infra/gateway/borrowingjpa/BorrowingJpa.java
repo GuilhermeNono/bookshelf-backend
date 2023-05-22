@@ -51,6 +51,6 @@ public class BorrowingJpa implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "fk_borrowing_book_copy", referencedColumnName = "id")
-    private BookCopyJpa book;
+    private BookCopyJpa bookCopy;
 
 }

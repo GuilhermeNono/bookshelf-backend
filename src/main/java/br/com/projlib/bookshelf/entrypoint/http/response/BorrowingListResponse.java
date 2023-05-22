@@ -15,8 +15,9 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @JsonPropertyOrder({
-                "user_library_id",
-                "user_library_name",
+                "user_id",
+                "user_name",
+                "book_identifier",
                 "book",
                 "loan_date",
                 "return_date",
@@ -30,12 +31,14 @@ public class BorrowingListResponse {
     Date returnDate;
     @JsonProperty("renewal_date")
     Date renewalDate;
-    @JsonProperty("user_library_id")
+    @JsonProperty("user_id")
     long userLibraryId;
-    @JsonProperty("user_library_name")
+    @JsonProperty("user_name")
     String userLibraryUserAccountPersonName;
     @JsonProperty("book")
-    String bookName;
+    String bookCopyBookName;
+    @JsonProperty("book_identifier")
+    String bookCopyCode;
     @JsonProperty("is_active")
     boolean active;
 

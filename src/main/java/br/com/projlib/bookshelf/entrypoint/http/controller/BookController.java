@@ -79,6 +79,7 @@ public class BookController {
 
     @Operation(summary = "Search Book")
     @PostMapping("/search")
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<Page<ListBooksResponse>> searchBooks
             (@RequestParam(name = "pageNum",
                     defaultValue = "0") int pageNum,
