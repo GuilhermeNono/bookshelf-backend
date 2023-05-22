@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway.borrowingjpa;
 
+import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.penalityjpa.PenalityJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
@@ -49,7 +50,7 @@ public class BorrowingJpa implements Serializable {
     private UserLibraryJpa userLibrary;
 
     @ManyToOne
-    @JoinColumn(name = "fk_borrowing_book", referencedColumnName = "id")
-    private BookJpa book;
+    @JoinColumn(name = "fk_borrowing_book_copy", referencedColumnName = "id")
+    private BookCopyJpa book;
 
 }

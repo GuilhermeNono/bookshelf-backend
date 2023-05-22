@@ -23,10 +23,10 @@
             <column name="active" type="tinyint">
                 <constraints nullable="false"/>
             </column>
-            <column name="fk_borrowing_book" type="bigint">
+            <column name="fk_borrowing_book_copy" type="bigint">
                 <constraints nullable="false"
-                             foreignKeyName="fk_borrowing_book"
-                             referencedTableName="book"
+                             foreignKeyName="fk_borrowing_book_copy"
+                             referencedTableName="book_copy"
                              referencedColumnNames="id"
                              deleteCascade="true"/>
             </column>
