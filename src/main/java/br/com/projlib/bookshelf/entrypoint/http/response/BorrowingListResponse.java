@@ -15,6 +15,7 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @JsonPropertyOrder({
+                "id",
                 "user_id",
                 "user_name",
                 "book_identifier",
@@ -25,6 +26,8 @@ import java.util.Date;
                 "is_active"
 })
 public class BorrowingListResponse {
+
+    long id;
     @JsonProperty("loan_date")
     Date loanDate;
     @JsonProperty("return_date")

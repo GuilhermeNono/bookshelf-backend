@@ -6,12 +6,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BorrowingGateway {
     List<BorrowingJpa> findAll();
 
     Page<BorrowingJpa> findAll(Specification<BorrowingJpa> spec, Pageable pageable);
 
-    List<BorrowingJpa> getAll();
+    Optional<BorrowingJpa> findById(long id);
 }
 

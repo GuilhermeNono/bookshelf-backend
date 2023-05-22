@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,8 +28,10 @@ public class BorrowingGatewayImpl implements BorrowingGateway {
     public Page<BorrowingJpa> findAll(Specification<BorrowingJpa> spec, Pageable page) {
         return borrowingRepository.findAll(spec, page);
     }
+
     @Override
-    public List<BorrowingJpa> getAll() {
-        return borrowingRepository.findAll();
+    public Optional<BorrowingJpa> findById(long id) {
+        return borrowingRepository.findById(id);
     }
+
 }

@@ -2,6 +2,7 @@ package br.com.projlib.bookshelf.entrypoint.http.controller;
 
 import br.com.projlib.bookshelf.core.usecase.FindBorrowingBySearchCriteria;
 import br.com.projlib.bookshelf.core.usecase.GetAllBorrowings;
+import br.com.projlib.bookshelf.core.usecase.GetBorrowing;
 import br.com.projlib.bookshelf.entrypoint.http.response.BorrowingListResponse;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListBooksResponse;
 import br.com.projlib.bookshelf.infra.command.BookDTO;
@@ -23,6 +24,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,8 +44,11 @@ public class BorrowingController {
     private final GetAllBorrowings getAllBorrowings;
     private final FindBorrowingBySearchCriteria findBorrowingBySearchCriteria;
     private final ModelMapper modelMapper;
+    private final GetBorrowing getBorrowing;
 
     @GetMapping
+    @Operation(summary = "Get All Borrowings")
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<BorrowingListResponse>> getAllBorrowing() {
         try {
             List<BorrowingListResponse> response = getAllBorrowings.process()
@@ -52,6 +57,18 @@ public class BorrowingController {
                     .toList();
 
             return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Get a Borrowing")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<BorrowingListResponse> getABorrowing(@PathVariable long id) {
+        try {
+            BorrowingListResponse borrowing = modelMapper.map(getBorrowing.process(id), BorrowingListResponse.class);
+            return new ResponseEntity<>(borrowing, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -87,4 +104,12 @@ public class BorrowingController {
 
         return new ResponseEntity<>(borrowingPage, HttpStatus.OK);
     }
+
+    @Operation(summary = "Create new borrowing")
+    @PostMapping
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<Void> createBorrowing() {
+        return null;
+    }
+
 }
