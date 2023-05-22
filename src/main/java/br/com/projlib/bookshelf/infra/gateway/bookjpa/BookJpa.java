@@ -65,9 +65,6 @@ public class BookJpa implements Serializable {
     @OneToMany(mappedBy = "book")
     private List<BookCopyJpa> copies;
 
-    @OneToMany(mappedBy = "book")
-    private List<BorrowingJpa> borrowings;
-
     @ManyToMany
     @JoinTable(
             name = "book_author",

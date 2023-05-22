@@ -12,7 +12,7 @@
             <column name="active" value="1" />
             <column name="loan_date" value="2023-01-01" />
             <column name="return_date" value="2023-01-01" />
-            <column name="fk_borrowing_book" value="1" />
+            <column name="fk_borrowing_book_copy" value="1" />
             <column name="fk_borrowing_user_library" value="1" />
         </insert>
     </changeSet>
