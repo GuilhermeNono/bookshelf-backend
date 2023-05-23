@@ -4,6 +4,7 @@ import br.com.projlib.bookshelf.core.usecase.GetAllLibrariesOfUser;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListLibraryResponse;
 import br.com.projlib.bookshelf.infra.command.LibraryUserInfo;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ import java.util.List;
 @Slf4j
 public class UserLibraryController {
     private final GetAllLibrariesOfUser getAllLibrariesOfUser;
+    @Operation(summary = "Get all libraries of the authenticated user")
     @GetMapping
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<List<LibraryUserInfo>>> getAllUserLibrary(){

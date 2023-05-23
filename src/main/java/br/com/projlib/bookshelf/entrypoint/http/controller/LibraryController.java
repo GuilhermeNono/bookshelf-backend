@@ -58,6 +58,7 @@ public class LibraryController {
      *  @throws org.springframework.web.client.HttpClientErrorException.BadRequest
      *  @throws RuntimeException
      * */
+    @Operation(summary = "Get all libraries of system")
     @GetMapping
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<ListLibraryResponse>> getAllLibraries() {
@@ -73,6 +74,7 @@ public class LibraryController {
 
     }
 
+    @Operation(summary = "Get a library by id")
     @GetMapping(value = "/{id}")
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<ListLibraryResponse> getLibrary(@PathVariable long id) {
@@ -87,7 +89,9 @@ public class LibraryController {
 
     }
 
+    @Operation(summary = "Get all books of a library")
     @GetMapping(value = "/{id}/books")
+    @Deprecated
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<ListBookCopyResponse>> getAllBooks(@PathVariable long id){
         try {
@@ -130,30 +134,5 @@ public class LibraryController {
 
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }
-//    @GetMapping("")
-//    @SecurityRequirement(name = "Bearer Authentication")
-//    public ResponseEntity<List<ListBookCopyResponse>> getBookByQuery(@RequestBody BookSearchQuery book,
-//                                                                      @PathVariable long id) {
-//        try {
-//            if(book.getName() != null) {
-//                List<ListBookCopyResponse> list = findBookOnLibraryByName.process(book.getName(), id)
-//                        .stream()
-//                        .map(p -> modelMapper.map(p, ListBookCopyResponse.class))
-//                        .toList();
-//
-//                return new ResponseEntity<>(list, HttpStatus.OK);
-//            } else if(book.getIsbn() != null) {
-//                List<ListBookCopyResponse> books = findBookOnLibraryByIsbn.process(book.getIsbn(), id).stream()
-//                        .map(p -> modelMapper.map(p, ListBookCopyResponse.class))
-//                        .toList();
-//
-//                return new ResponseEntity<>(books, HttpStatus.OK);
-//            }
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        } catch (RuntimeException e) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
-
 
 }

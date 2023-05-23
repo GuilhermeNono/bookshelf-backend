@@ -14,6 +14,7 @@ import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
 import br.com.projlib.bookshelf.infra.gateway.usercontact.UserContactJpa;
 import br.com.projlib.bookshelf.infra.gateway.usercontacttype.UserContactTypeJpa;
 import br.com.projlib.bookshelf.infra.gateway.userprofile.UserProfileJpa;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -51,6 +52,7 @@ public class UserAccountController {
     private final FindContactTypeById findContactTypeById;
     private final CreateContact createContact;
 
+    @Operation(summary = "Get all users")
     @GetMapping
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<UserAccountResponse>> getAll() {
@@ -67,6 +69,7 @@ public class UserAccountController {
         }
     }
 
+    @Operation(summary = "Get a user by id")
     @GetMapping(value = "/{id}")
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<UserAccountResponse> getOne(@PathVariable final long id) {
@@ -80,6 +83,7 @@ public class UserAccountController {
         }
     }
 
+    @Operation(summary = "Create a new user account")
     @PostMapping
     @Transactional
     //TODO: Separar o codigo em funções.
