@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BookCopyRepository extends JpaRepository<BookCopyJpa, Long>, JpaSpecificationExecutor<BookCopyJpa> {
     List<BookCopyJpa> findAllByLibrary(LibraryJpa libraryJpa);
@@ -15,4 +16,7 @@ public interface BookCopyRepository extends JpaRepository<BookCopyJpa, Long>, Jp
 
     @Query("select bc from BookCopyJpa bc where bc.library = ?1 and bc.book.isbn like ?2")
     List<BookCopyJpa> findCopyByLibraryAndIsbn(LibraryJpa libraryJpa, String isbn);
+
+    @Query("select bc from BookCopyJpa bc where bc.code = ?1")
+    Optional<BookCopyJpa> findByCode(String code);
 }

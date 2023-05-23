@@ -14,5 +14,7 @@ public interface BorrowingGateway {
     Page<BorrowingJpa> findAll(Specification<BorrowingJpa> spec, Pageable pageable);
 
     Optional<BorrowingJpa> findById(long id);
+
+    void create(BorrowingJpa borrowing);
 }
 

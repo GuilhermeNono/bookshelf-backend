@@ -10,8 +10,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +31,22 @@ public class BookCopyGatewayImpl implements BookCopyGateway {
     @Override
     public List<BookCopyJpa> findAll() {
         return bookCopyRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void create(BookCopyJpa bookCopy) {
+        bookCopyRepository.save(bookCopy);
+    }
+
+    @Override
+    public Optional<BookCopyJpa> findById(long id) {
+        return bookCopyRepository.findById(id);
+    }
+
+    @Override
+    public Optional<BookCopyJpa> findByCode(String code) {
+        return bookCopyRepository.findByCode(code);
     }
 
     @Override
