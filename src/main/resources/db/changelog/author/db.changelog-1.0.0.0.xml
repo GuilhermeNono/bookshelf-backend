@@ -11,31 +11,37 @@
             <column name="id" value="1" />
             <column name="first_name" value="J. K." />
             <column name="last_name" value="Rowling" />
+            <column name="avatar" value="https://m.media-amazon.com/images/S/amzn-author-media-prod/8cigckin175jtpsk3gs361r4ss.jpg"/>
         </insert>
         <insert tableName="author">
             <column name="id" value="2" />
             <column name="first_name" value="Antoine" />
             <column name="last_name" value="de Saint-Exupéry" />
+            <column name="avatar" value="https://www.aliancafrancesa.com.br/wp-content/uploads/2019/06/antoine-de-saint-exupery-2-l.jpg"/>
         </insert>
         <insert tableName="author">
             <column name="id" value="3" />
             <column name="first_name" value="Koyoharu" />
             <column name="last_name" value="Gotouge" />
+            <column name="avatar" value="https://cdn.mainichi.jp/vol1/2021/03/04/20210304p2g00m0et076000p/8.jpg?2" />
         </insert>
         <insert tableName="author">
             <column name="id" value="4" />
             <column name="first_name" value="Robert" />
             <column name="last_name" value="C. Martin" />
+            <column name="avatar" value="https://cleancoders.com/images/portraits/robert-martin.jpg"/>
         </insert>
         <insert tableName="author">
             <column name="id" value="5" />
             <column name="first_name" value="Eiichiro" />
             <column name="last_name" value="Oda" />
+            <column name="avatar" value="https://static.wixstatic.com/media/dbcaf3_2d50c7cebab8475989ddea7569a2c399~mv2.jpg/v1/fill/w_621,h_580,al_c,q_85,enc_auto/dbcaf3_2d50c7cebab8475989ddea7569a2c399~mv2.jpg" />
         </insert>
         <insert tableName="author">
             <column name="id" value="6" />
             <column name="first_name" value="Alex" />
             <column name="last_name" value="Michaelides" />
+            <column name="avatar" value="https://images.gr-assets.com/authors/1526317750p8/17621440.jpg"/>
         </insert>
     </changeSet>
 

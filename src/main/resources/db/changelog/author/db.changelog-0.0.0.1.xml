@@ -15,6 +15,9 @@
             <column name="last_name" type="varchar(45)">
                 <constraints nullable="false"/>
             </column>
+            <column name="avatar" type="varchar(300)">
+                <constraints nullable="true"/>
+            </column>
         </createTable>
     </changeSet>
 
