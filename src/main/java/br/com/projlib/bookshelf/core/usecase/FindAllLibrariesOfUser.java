@@ -12,7 +12,7 @@ import java.util.List;
 public class FindAllLibrariesOfUser {
     private final LibraryGateway libraryGateway;
 
-    public List<List<LibraryUserInfo>> process() {
+    public List<LibraryUserInfo> process() {
         return libraryGateway.getAllLibrariesOfUser();
     }
 }

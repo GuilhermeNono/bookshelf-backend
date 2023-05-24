@@ -1,12 +1,16 @@
 package br.com.projlib.bookshelf.entrypoint.http.controller;
 
+import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.core.usecase.Authenticate;
 import br.com.projlib.bookshelf.core.usecase.BuildToken;
+import br.com.projlib.bookshelf.core.usecase.FindAllLibrariesOfUser;
 import br.com.projlib.bookshelf.core.usecase.FindAuthoritiesByAuthenticatedUser;
 import br.com.projlib.bookshelf.core.usecase.FindAuthenticatedUserAccount;
+import br.com.projlib.bookshelf.core.usecase.FindUserByEmail;
 import br.com.projlib.bookshelf.core.usecase.ValidateAuthToken;
 import br.com.projlib.bookshelf.entrypoint.http.response.UserPermissionsResponse;
 import br.com.projlib.bookshelf.infra.command.AuthenticationToken;
+import br.com.projlib.bookshelf.infra.command.LibraryUserInfo;
 import br.com.projlib.bookshelf.infra.command.LoginCommand;
 import br.com.projlib.bookshelf.infra.gateway.syspermissionjpa.SysPermissionJpa;
 import br.com.projlib.bookshelf.infra.query.UserAccountQuery;
@@ -16,6 +20,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static br.com.projlib.bookshelf.infra.config.AuthenticationFilter.TOKEN_BEARER;
@@ -42,15 +48,33 @@ public class AuthenticationController implements Serializable {
     private final BuildToken buildToken;
     private final ValidateAuthToken validateAuthToken;
     private final FindAuthenticatedUserAccount findAuthenticatedUserAccount;
+    private final FindUserByEmail findUserByEmail;
+    private final FindAllLibrariesOfUser findAllLibrariesOfUser;
     private final FindAuthoritiesByAuthenticatedUser findAuthoritiesByAuthenticatedUser;
 
 
     @Operation(summary = "Authenticate user and Get access token")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AuthenticationToken> login(@RequestBody @Valid LoginCommand loginCommand) {
-        this.authenticate.process(loginCommand.getEmail(), loginCommand.getPassword());
+        try {
+            this.authenticate.process(loginCommand.getEmail(), loginCommand.getPassword());
 
-        return ResponseEntity.ok(this.buildToken.process(loginCommand.getEmail()));
+            AuthenticationToken authentication = this.buildToken.process(loginCommand.getEmail());
+
+            UserAccount user = findUserByEmail.process(loginCommand.getEmail());
+            List<LibraryUserInfo> libraries = findAllLibrariesOfUser.process();
+
+            authentication.setLibrariesAccount(libraries);
+            authentication.setUserId(user.getId());
+
+            return new ResponseEntity<>(authentication, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+
+
+
     }
 
     @Operation(summary = "Validate token")

@@ -1,8 +1,8 @@
 package br.com.projlib.bookshelf.infra.gateway;
 
 import br.com.projlib.bookshelf.core.gateway.LibraryGateway;
-import br.com.projlib.bookshelf.core.usecase.FindUserById;
 import br.com.projlib.bookshelf.core.usecase.FindAuthenticatedUserAccount;
+import br.com.projlib.bookshelf.core.usecase.FindUserById;
 import br.com.projlib.bookshelf.infra.command.LibraryUserInfo;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryRepository;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -39,17 +38,18 @@ public class LibraryGatewayImpl implements LibraryGateway {
     }
 
     @Override
-    public List<List<LibraryUserInfo>> getAllLibrariesOfUser() {
+    public List<LibraryUserInfo> getAllLibrariesOfUser() {
         try {
             UserAccountQuery userQuery = findAuthenticatedUserAccount.process();
             UserAccountJpa user = findUserById.process(userQuery.getId());
-            List<List<LibraryUserInfo>> response = new ArrayList<>();
+            List<LibraryUserInfo> response = new ArrayList<>();
 
             for (UserLibraryJpa userLibraryJpa: user.getUserLibraries()) {
-                List<LibraryJpa> libraries = userLibraryRepository.findAllLibraryUser(userLibraryJpa);
-                response.add(libraries.stream().map(lib -> modelMapper
-                                .map(lib, LibraryUserInfo.class))
-                        .collect(Collectors.toList()));
+//                List<LibraryJpa> libraries = userLibraryRepository.findAllLibraryUser(userLibraryJpa);
+                response.add(modelMapper.map(userLibraryJpa, LibraryUserInfo.class));
+//                response.add(libraries.stream().map(lib -> modelMapper
+//                                .map(lib, LibraryUserInfo.class))
+//                        .collect(Collectors.toList()));
             }
             return response;
         } catch (RuntimeException e){

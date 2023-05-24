@@ -25,7 +25,7 @@ public class UserLibraryController {
     @Operation(summary = "Get all libraries of the authenticated user")
     @GetMapping
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<List<List<LibraryUserInfo>>> getAllUserLibrary(){
+    public ResponseEntity<List<LibraryUserInfo>> getAllUserLibrary(){
         try {
             return new ResponseEntity<>(findAllLibrariesOfUser.process(), HttpStatus.OK) ;
         } catch (RuntimeException e) {
