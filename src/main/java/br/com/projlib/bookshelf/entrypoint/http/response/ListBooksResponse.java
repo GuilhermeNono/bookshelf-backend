@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@JsonPropertyOrder({"name", "publisherName", "edition", "sinopse", "language", "publication_date", "isbn", "number_pages", "cape", "categories", "authors"})
+@JsonPropertyOrder({"name", "capeType", "publisherName", "edition", "sinopse", "language", "publication_date", "isbn", "number_pages", "cape", "categories", "authors"})
 public class ListBooksResponse {
 
     private String name;
@@ -26,6 +26,7 @@ public class ListBooksResponse {
     private Date publicationDate;
     @JsonProperty("publisher")
     private String publisherName;
+    private String capeType;
     private String sinopse;
     private String isbn;
     private String edition;
