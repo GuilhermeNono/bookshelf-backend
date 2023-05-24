@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.core.gateway;
 
+import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.infra.command.LibraryUserInfo;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 
@@ -11,5 +12,5 @@ public interface LibraryGateway {
 
     Optional<LibraryJpa> getOne(long id);
 
-    List<LibraryUserInfo> getAllLibrariesOfUser();
+    List<LibraryUserInfo> getAllLibrariesOfUser(UserAccount userAccount);
 }

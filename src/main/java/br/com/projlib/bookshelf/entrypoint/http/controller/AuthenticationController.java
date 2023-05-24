@@ -62,7 +62,7 @@ public class AuthenticationController implements Serializable {
             AuthenticationToken authentication = this.buildToken.process(loginCommand.getEmail());
 
             UserAccount user = findUserByEmail.process(loginCommand.getEmail());
-            List<LibraryUserInfo> libraries = findAllLibrariesOfUser.process();
+            List<LibraryUserInfo> libraries = findAllLibrariesOfUser.process(user);
 
             authentication.setLibrariesAccount(libraries);
             authentication.setUserId(user.getId());

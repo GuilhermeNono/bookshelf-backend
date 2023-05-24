@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.core.usecase;
 
+import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.core.gateway.LibraryGateway;
 import br.com.projlib.bookshelf.infra.command.LibraryUserInfo;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.List;
 public class FindAllLibrariesOfUser {
     private final LibraryGateway libraryGateway;
 
-    public List<LibraryUserInfo> process() {
-        return libraryGateway.getAllLibrariesOfUser();
+    public List<LibraryUserInfo> process(UserAccount userAccount) {
+        return libraryGateway.getAllLibrariesOfUser(userAccount);
     }
 }
