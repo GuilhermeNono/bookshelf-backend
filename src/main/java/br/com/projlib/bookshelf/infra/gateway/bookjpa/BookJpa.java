@@ -52,6 +52,9 @@ public class BookJpa implements Serializable {
     @Column(nullable = false)
     private String edition;
 
+    @Column
+    private String capeType;
+
     @Column(nullable = false)
     private int numberPages;
 

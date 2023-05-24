@@ -12,6 +12,7 @@
             <column name="id" value="1"/>
             <column name="name" value="Harry Potter e a Ordem da Fênix: 5" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Dura" />
             <column name="publication_date" value="2017-08-19" />
             <column name="isbn" value="978-8532530820" />
             <column name="sinopse" value="Harry não é mais um garoto. Aos 15 anos, continua sofrendo a rejeição dos Dursdley, sua estranha família no mundo dos 'trouxas'. Também continua contando com Rony Weasley e Hermione Granger, seus melhores amigos em Hogwarts, para levar adiante suas investigações e aventuras. Mas o bruxinho começa a sentir e descobrir coisas novas, como o primeiro amor e a sexualidade. Nos volumes anteriores, J. K. Rowling mostrou como Harry foi transformado em celebridade no mundo da magia por ter derrotado, ainda bebê, Voldemort, o todopoderoso bruxo das trevas que assassinou seus pais. Neste quinto livro da saga, o protagonista, numa crise típica da adolescência, tem ataques de mau humor com a perseguição da imprensa, que o segue por todos os lugares e chega a inventar declarações que nunca deu. Harry vai enfrentar as investidas de Voldemort sem a proteção de Dumbledore, já que o diretor de Hogwarts é afastado da escola. E vai ser sem a ajuda de seu protetor que o jovem herói enfrentará descobertas sobre a personalidade controversa de seu pai, Tiago Potter, e a morte de alguém muito próximo." />
@@ -25,6 +26,7 @@
             <column name="id" value="2"/>
             <column name="name" value="Harry Potter e a Pedra Filosofal: 1" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Dura" />
             <column name="publication_date" value="2017-08-19" />
             <column name="isbn" value="978-8532530783" />
             <column name="sinopse" value="Harry Potter é um garoto cujos pais, feiticeiros, foram assassinados por um poderosíssimo bruxo quando ele ainda era um bebê. Ele foi levado, então, para a casa dos tios que nada tinham a ver com o sobrenatural. Pelo contrário. Até os 10 anos, Harry foi uma espécie de gata borralheira: maltratado pelos tios, herdava roupas velhas do primo gorducho, tinha óculos remendados e era tratado como um estorvo. No dia de seu aniversário de 11 anos, entretanto, ele parece deslizar por um buraco sem fundo, como o de Alice no país das maravilhas, que o conduz a um mundo mágico. Descobre sua verdadeira história e seu destino: ser um aprendiz de feiticeiro até o dia em que terá que enfrentar a pior força do mal, o homem que assassinou seus pais. O menino de olhos verde, magricela e desengonçado, tão habituado à rejeição, descobre, também, que é um herói no universo dos magos. Potter fica sabendo que é a única pessoa a ter sobrevivido a um ataque do tal bruxo do mal e essa é a causa da marca em forma de raio que ele carrega na testa. Ele não é um garoto qualquer, ele sequer é um feiticeiro qualquer ele é Harry Potter, símbolo de poder, resistência e um líder natural entre os sobrenaturais. A fábula, recheada de fantasmas, paredes que falam, caldeirões, sapos, unicórnios, dragões e gigantes, não é, entretanto, apenas um passatempo." />
@@ -38,6 +40,7 @@
             <column name="id" value="3"/>
             <column name="name" value="Harry Potter e o Prisioneiro de Azkaban: 3" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Dura" />
             <column name="publication_date" value="2017-08-19" />
             <column name="isbn" value="978-8532530806" />
             <column name="sinopse" value="As aulas estão de volta à Hogwarts e Harry Potter não vê a hora de embarcar no expresso a vapor que o levará de volta à escola de bruxaria. Mais uma vez suas férias na rua dos Alfeneiros foi triste e solitária. Com muita ação, humor e magia, 'Harry Potter e o prisioneiro de Azkaban' traz de volta o gigante atrapalhado Rúbeo Hagrid, o sábio diretor Alvo Dumbledore, a exigente professora de transformação Minerva MacGonagall e o novo mestre Lupin, que guarda grandes surpresas para Harry." />
@@ -51,6 +54,7 @@
             <column name="id" value="4"/>
             <column name="name" value="Harry Potter e a Câmara Secreta: 2" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Dura" />
             <column name="publication_date" value="2017-08-19" />
             <column name="isbn" value="978-8532530790" />
             <column name="sinopse" value="Depois de férias aborrecidas na casa dos tios trouxas, está na hora de Harry Potter voltar a estudar. Coisas acontecem, no entanto, para dificultar o regresso de Harry. Persistente e astuto, o herói não se deixa intimidar pelos obstáculos e, com a ajuda dos fiéis amigos Weasley, começa o ano letivo na Escola de Magia e Bruxaria de Hogwarts. As novidades não são poucas. Novos colegas, novos professores, muitas e boas descobertas e um grande e perigosos desafio. Alguém ou alguma coisa ameaça a segurança e a tranquilidade dos membros de Hogwarts." />
@@ -64,6 +68,7 @@
             <column name="id" value="5"/>
             <column name="name" value="Harry Potter e o Cálice de Fogo: 4" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Dura" />
             <column name="publication_date" value="2017-08-19" />
             <column name="isbn" value="978-8532530813" />
             <column name="sinopse" value="Nesta aventura, o feiticeiro cresceu e está com 14 anos. O início do ano letivo de Harry Potter reserva muitas emoções, mágicas, e acontecimentos inesperados, além de um novo torneio em que os alunos de Hogwarts terão de demonstrar todas as habilidade mágicas e nãomágicas que vêm adquirindo ao longo de suas vidas. Harry é escolhido pelo Cálice de Fogo para competir como um dos campeões de Hogwarts, tendo ao lado seus fiéis amigos. Muitos desafios, feitiços, poções e confusões estão reservados para Harry. Além disso, ele terá que lidar ainda com os problemas comuns da adolescência amor, amizade, aceitação e rejeição." />
@@ -77,6 +82,7 @@
             <column name="id" value="6"/>
             <column name="name" value="Harry Potter e o Enigma do Príncipe: 6" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Dura" />
             <column name="publication_date" value="2017-08-19" />
             <column name="isbn" value="978-8532530837" />
             <column name="sinopse" value="Harry Potter e o enigma do príncipe' dá continuidade à saga do jovem bruxo Harry Potter a partir do ponto em que o livro anterior parou o momento em que fica provado que o poder de Voldemort e dos Comensais da Morte, seus seguidores, cresce mais a cada dia, em meio à batalha entre o bem e o mal. A onda de terror provocada pelo Lorde das Trevas estaria afetando, até mesmo, o mundo dos trouxas (nãobruxos), e sendo agravada pela ação dos dementadores, criaturas mágicas aterrorizantes que 'sugam' a esperança e a felicidade das pessoas. Harry, que acabou de completar 16 anos, parte rumo ao sexto ano na Escola de Magia e Bruxaria de Hogwarts, animado e ao mesmo tempo apreensivo com a perspectiva de ter aulas particulares com o professor Dumbledore, o diretor da escola e o bruxo mais respeitado em toda comunidade mágica. Harry, longe de ser aquele menino magricela que vivia no quarto debaixo da escada na casa dos tios trouxas, é um dos principais nomes entre aqueles que lutam contra Voldemort, e se vê cada vez mais isolado à medida que os rumores de que ele é O Eleito o único capaz de derrotar o Lorde das Trevas, se espalham pelo mundo dos bruxos. Dois atentados contra a vida de estudantes, a certeza de Harry quanto ao envolvimento de Draco Malfoy com os Comensais da Morte e o comportamento de Snape, suspeito como sempre, adicionam ainda mais tensão ao já inquietante período. Apesar de tudo isso, Harry e os amigos são adolescentes típicos dividem tarefas escolares e dormitórios bagunçados, correm das aulas para os treinos de quadribol, e namoram." />
@@ -90,6 +96,7 @@
             <column name="id" value="7"/>
             <column name="name" value="Harry Potter e as Relíquias da Morte: 7" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Dura" />
             <column name="publication_date" value="2017-08-19" />
             <column name="isbn" value="978-8532530844" />
             <column name="sinopse" value="Harry Potter e as relíquias da morte', de J.K. Rowling, é o sétimo e último livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar e aniquilar as Horcruxes para enfraquecer o lorde e poder enfrentálo. Nessa busca desenfreada, contando apenas com os amigos Rony e Hermione, Harry descobre as Relíquias da Morte, que serão úteis na batalha do bem contra o mal." />
@@ -103,6 +110,7 @@
             <column name="id" value="8"/>
             <column name="name" value="A paciente silenciosa" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Comum" />
             <column name="publication_date" value="2019-05-20" />
             <column name="isbn" value="978-8501116437" />
             <column name="sinopse" value="Alicia Berenson tinha uma vida perfeita. Ela era uma pintora famosa casada com um fotógrafo bem-sucedido e morava numa área nobre de Londres que dá para o parque de Hampstead Heath. Certa noite, Gabriel, seu marido, voltou tarde para casa depois de um ensaio para a Vogue, e de repente a vida de Alicia mudou completamente...
@@ -126,6 +134,7 @@ A paciente silenciosa é thrillers psicológico impactante, com um mistério env
             <column name="id" value="9"/>
             <column name="name" value="One Piece Vol. 1" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Comum" />
             <column name="publication_date" value="2023-04-03" />
             <column name="isbn" value="978-8573516975" />
             <column name="sinopse" value="A tripulação pirata mais famosa dos quadrinhos finalmente joga sua âncora de novo no Brasil! Com roteiro e arte de Eiichiro Oda, o mangá de maior sucesso de todos os tempos retorna ao país, agora sob a bandeira Planet Mangá, da Panini Comics! Para ser o rei dos piratas, Luffy, o homem-borracha, precisa reunir uma tripulação e encontrar o maior de todos os tesouros. No caminho, enfrentará a Marinha, monstros, e muitos outros piratas que têm o mesmo objetivo. Então prepare-se pra encarar os perigos dos mares. A maior aventura de todas vai recomeçar!" />
@@ -139,6 +148,7 @@ A paciente silenciosa é thrillers psicológico impactante, com um mistério env
             <column name="id" value="10"/>
             <column name="name" value="Demon Slayer - Kimetsu No Yaiba Vol. 1" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Comum" />
             <column name="publication_date" value="2020-04-13" />
             <column name="isbn" value="978-8542629286" />
             <column name="sinopse" value="Produto em pré-venda, tendo início de postagem a partir da 2º quinzena do mês de Março/20! Estamos na Era Taishou. O dia-a-dia pacato de Tanjiro, um gentil garoto que vende carvão, se transforma radicalmente quando sua família é assassinada por um demônio. A única sobrevivente é Nezuko, sua irmã mais nova. Porém, agora, ela se transformou em um Oni. Diante dessa tragédia, os dois irmãos partem em uma jornada para derrotar o Oni que matou sua mãe e irmãozinhos. E assim tem início uma aventura sanguinolenta de espadachins!" />
@@ -152,6 +162,7 @@ A paciente silenciosa é thrillers psicológico impactante, com um mistério env
             <column name="id" value="11"/>
             <column name="name" value="Código limpo: Habilidades práticas do Agile Software" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Comum" />
             <column name="publication_date" value="2009-09-08" />
             <column name="isbn" value="978-8576082675" />
             <column name="sinopse" value="Mesmo um código ruim pode funcionar. Mas se ele não for limpo, pode acabar com uma empresa de desenvolvimento. Perdem-se a cada ano horas incontáveis e recursos importantes devido a um código mal escrito. Mas não precisa ser assim.O renomado especialista em software, Robert C. Martin, apresenta um paradigma revolucionário com Código limpo: Habilidades Práticas do Agile Software. Martin se reuniu com seus colegas do Mentor Object para destilar suas melhores e mais ágeis práticas de limpar códigos “dinamicamente” em um livro que introduzirá gradualmente dentro de você os valores da habilidade de um profissional de softwares e lhe tornar um programador melhor –mas só se você praticar.Que tipo de trabalho você fará? Você lerá códigos aqui, muitos códigos. E você deverá descobrir o que está correto e errado nos códigos. E, o mais importante, você terá de reavaliar seus valores profissionais e seu comprometimento com o seu ofício.Código limpo está divido em três partes. Na primeira há diversos capítulos que descrevem os princípios, padrões e práticas para criar um código limpo.A segunda parte consiste em diversos casos de estudo de complexidade cada vez maior. Cada um é um exercício para limpar um código – transformar o código base que possui alguns problemas em um melhor e eficiente. A terceira parte é a compensação: um único capítulo com uma lista de heurísticas e “odores” reunidos durante a criação dos estudos de caso. O resultado será um conhecimento base que descreve a forma como pensamos quando criamos, lemos e limpamos um código.Após ler este livro os leitores saberão:✔ Como distinguir um código bom de um ruim✔ Como escrever códigos bons e como transformar um ruim em um bom✔ Como criar bons nomes, boas funções, bons objetos e boas classes✔ Como formatar o código para ter uma legibilidade máxima✔ Como implementar completamente o tratamento de erro sem obscurecer a lógica✔ Como aplicar testes de unidade e praticar o desenvolvimento dirigido a testesEste livro é essencial para qualquer desenvolvedor, engenheiro de software, gerente de projeto, líder de equipes ou analistas de sistemas com interesse em construir códigos melhores." />
@@ -165,6 +176,7 @@ A paciente silenciosa é thrillers psicológico impactante, com um mistério env
             <column name="id" value="12"/>
             <column name="name" value="O Pequeno Príncipe: Edição integral com ilustrações originais coloridas" />
             <column name="language" value="Português" />
+            <column name="cape_type" value="Comum" />
             <column name="publication_date" value="2015-02-01" />
             <column name="isbn" value="978-8567097107" />
             <column name="sinopse" value="As sábias, encantadoras e inesquecíveis histórias contadas pelo pequeno príncipe falam de seu próprio planeta, com seus três vulcões e uma flor presunçosa." />

@@ -18,6 +18,9 @@
             <column name="publication_date" type="date">
                 <constraints nullable="false"/>
             </column>
+            <column name="cape_type" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
             <column name="isbn" type="varchar(45)">
                 <constraints nullable="false"/>
             </column>

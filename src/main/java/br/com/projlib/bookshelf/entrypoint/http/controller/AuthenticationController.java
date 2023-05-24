@@ -71,10 +71,6 @@ public class AuthenticationController implements Serializable {
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
-
-
-
     }
 
     @Operation(summary = "Validate token")
