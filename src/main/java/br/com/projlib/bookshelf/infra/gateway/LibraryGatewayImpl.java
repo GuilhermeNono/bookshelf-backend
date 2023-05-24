@@ -2,10 +2,7 @@ package br.com.projlib.bookshelf.infra.gateway;
 
 import br.com.projlib.bookshelf.core.gateway.LibraryGateway;
 import br.com.projlib.bookshelf.core.usecase.FindUserById;
-import br.com.projlib.bookshelf.core.usecase.GetAllLibrariesOfUser;
-import br.com.projlib.bookshelf.core.usecase.GetAuthenticatedUserAccount;
-import br.com.projlib.bookshelf.core.usecase.ValidateAuthToken;
-import br.com.projlib.bookshelf.infra.command.AuthenticationToken;
+import br.com.projlib.bookshelf.core.usecase.FindAuthenticatedUserAccount;
 import br.com.projlib.bookshelf.infra.command.LibraryUserInfo;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryRepository;
@@ -22,15 +19,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static br.com.projlib.bookshelf.infra.config.AuthenticationFilter.TOKEN_BEARER;
-
 @Service
 @RequiredArgsConstructor
 public class LibraryGatewayImpl implements LibraryGateway {
 
     private final LibraryRepository libraryRepository;
     private final UserLibraryRepository userLibraryRepository;
-    private final GetAuthenticatedUserAccount getAuthenticatedUserAccount;
+    private final FindAuthenticatedUserAccount findAuthenticatedUserAccount;
     private final FindUserById findUserById;
     private final ModelMapper modelMapper;
     @Override
@@ -46,7 +41,7 @@ public class LibraryGatewayImpl implements LibraryGateway {
     @Override
     public List<List<LibraryUserInfo>> getAllLibrariesOfUser() {
         try {
-            UserAccountQuery userQuery = getAuthenticatedUserAccount.process();
+            UserAccountQuery userQuery = findAuthenticatedUserAccount.process();
             UserAccountJpa user = findUserById.process(userQuery.getId());
             List<List<LibraryUserInfo>> response = new ArrayList<>();
 

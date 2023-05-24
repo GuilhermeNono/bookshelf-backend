@@ -3,7 +3,7 @@ package br.com.projlib.bookshelf.entrypoint.http.controller;
 import br.com.projlib.bookshelf.core.usecase.Authenticate;
 import br.com.projlib.bookshelf.core.usecase.BuildToken;
 import br.com.projlib.bookshelf.core.usecase.FindAuthoritiesByAuthenticatedUser;
-import br.com.projlib.bookshelf.core.usecase.GetAuthenticatedUserAccount;
+import br.com.projlib.bookshelf.core.usecase.FindAuthenticatedUserAccount;
 import br.com.projlib.bookshelf.core.usecase.ValidateAuthToken;
 import br.com.projlib.bookshelf.entrypoint.http.response.UserPermissionsResponse;
 import br.com.projlib.bookshelf.infra.command.AuthenticationToken;
@@ -41,7 +41,7 @@ public class AuthenticationController implements Serializable {
     private final Authenticate authenticate;
     private final BuildToken buildToken;
     private final ValidateAuthToken validateAuthToken;
-    private final GetAuthenticatedUserAccount getAuthenticatedUserAccount;
+    private final FindAuthenticatedUserAccount findAuthenticatedUserAccount;
     private final FindAuthoritiesByAuthenticatedUser findAuthoritiesByAuthenticatedUser;
 
 
@@ -66,7 +66,7 @@ public class AuthenticationController implements Serializable {
     @GetMapping(value = "me", produces = MediaType.APPLICATION_JSON_VALUE)
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<UserAccountQuery> getAuthenticatedUser() {
-        return ResponseEntity.ok(this.getAuthenticatedUserAccount.process());
+        return ResponseEntity.ok(this.findAuthenticatedUserAccount.process());
     }
 
     @Operation(summary = "Get authenticated user permissions")

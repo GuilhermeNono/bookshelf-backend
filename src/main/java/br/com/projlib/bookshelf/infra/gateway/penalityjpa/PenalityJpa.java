@@ -33,7 +33,7 @@ public class PenalityJpa implements Serializable {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "fk_penality_borrowing", referencedColumnName = "id")
     private BorrowingJpa borrowing;
 

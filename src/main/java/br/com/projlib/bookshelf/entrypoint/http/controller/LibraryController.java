@@ -4,8 +4,8 @@ import br.com.projlib.bookshelf.core.usecase.FindAllBooksOfLibrary;
 import br.com.projlib.bookshelf.core.usecase.FindBookCopyBySearchCriteria;
 import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByIsbn;
 import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByName;
-import br.com.projlib.bookshelf.core.usecase.GetAllLibraries;
-import br.com.projlib.bookshelf.core.usecase.GetOneLibrary;
+import br.com.projlib.bookshelf.core.usecase.FindAllLibraries;
+import br.com.projlib.bookshelf.core.usecase.FindOneLibrary;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListBookCopyResponse;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListLibraryResponse;
 import br.com.projlib.bookshelf.infra.command.BookCopyDTO;
@@ -41,8 +41,8 @@ import java.util.stream.Collectors;
 @Slf4j
 public class LibraryController {
 
-    private final GetAllLibraries getAllLibraries;
-    private final GetOneLibrary getOneLibrary;
+    private final FindAllLibraries findAllLibraries;
+    private final FindOneLibrary findOneLibrary;
     private final FindAllBooksOfLibrary findAllBooksOfLibrary;
     private final FindBookCopyBySearchCriteria findBookCopyBySearchCriteria;
     private final FindBookOnLibraryByName findBookOnLibraryByName;
@@ -58,11 +58,12 @@ public class LibraryController {
      *  @throws org.springframework.web.client.HttpClientErrorException.BadRequest
      *  @throws RuntimeException
      * */
+    @Operation(summary = "Get all libraries of system")
     @GetMapping
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<ListLibraryResponse>> getAllLibraries() {
         try{
-            List<ListLibraryResponse> libraries = getAllLibraries
+            List<ListLibraryResponse> libraries = findAllLibraries
                     .process().stream()
                     .map(lib -> modelMapper.map(lib, ListLibraryResponse.class))
                     .collect(Collectors.toList());
@@ -73,11 +74,12 @@ public class LibraryController {
 
     }
 
+    @Operation(summary = "Get a library by id")
     @GetMapping(value = "/{id}")
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<ListLibraryResponse> getLibrary(@PathVariable long id) {
         try{
-            LibraryJpa library = getOneLibrary.process(id);
+            LibraryJpa library = findOneLibrary.process(id);
             ListLibraryResponse libResponse = modelMapper.map(library, ListLibraryResponse.class);
             return new ResponseEntity<>(libResponse, HttpStatus.OK);
         }catch (RuntimeException e){
@@ -87,7 +89,9 @@ public class LibraryController {
 
     }
 
+    @Operation(summary = "Get all books of a library")
     @GetMapping(value = "/{id}/books")
+    @Deprecated
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<ListBookCopyResponse>> getAllBooks(@PathVariable long id){
         try {
@@ -101,8 +105,8 @@ public class LibraryController {
         }
     }
     @Operation(summary = "Search Book")
-    @io.swagger.v3.oas.annotations.parameters.RequestBody()
     @PostMapping("/books/search")
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<Page<ListBookCopyResponse>> searchBookCopies
             (@RequestParam(name = "pageNum",
                     defaultValue = "0") int pageNum,
@@ -130,30 +134,5 @@ public class LibraryController {
 
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
     }
-//    @GetMapping("")
-//    @SecurityRequirement(name = "Bearer Authentication")
-//    public ResponseEntity<List<ListBookCopyResponse>> getBookByQuery(@RequestBody BookSearchQuery book,
-//                                                                      @PathVariable long id) {
-//        try {
-//            if(book.getName() != null) {
-//                List<ListBookCopyResponse> list = findBookOnLibraryByName.process(book.getName(), id)
-//                        .stream()
-//                        .map(p -> modelMapper.map(p, ListBookCopyResponse.class))
-//                        .toList();
-//
-//                return new ResponseEntity<>(list, HttpStatus.OK);
-//            } else if(book.getIsbn() != null) {
-//                List<ListBookCopyResponse> books = findBookOnLibraryByIsbn.process(book.getIsbn(), id).stream()
-//                        .map(p -> modelMapper.map(p, ListBookCopyResponse.class))
-//                        .toList();
-//
-//                return new ResponseEntity<>(books, HttpStatus.OK);
-//            }
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        } catch (RuntimeException e) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
-
 
 }

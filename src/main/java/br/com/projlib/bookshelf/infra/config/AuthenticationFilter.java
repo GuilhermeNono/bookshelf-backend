@@ -1,7 +1,7 @@
 package br.com.projlib.bookshelf.infra.config;
 
 import br.com.projlib.bookshelf.core.usecase.FindAuthoritiesByUser;
-import br.com.projlib.bookshelf.core.usecase.GetUsernameFromToken;
+import br.com.projlib.bookshelf.core.usecase.FindUsernameFromToken;
 import br.com.projlib.bookshelf.core.usecase.LoadUserByUsername;
 import br.com.projlib.bookshelf.core.usecase.ValidateToken;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -31,18 +31,18 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     private final LoadUserByUsername loadUserByUsername;
     private final FindAuthoritiesByUser findAuthoritiesByUser;
-    private final GetUsernameFromToken getUsernameFromToken;
+    private final FindUsernameFromToken findUsernameFromToken;
     private final ValidateToken validateToken;
 
     @Autowired
     public AuthenticationFilter(
                                 LoadUserByUsername loadUserByUsername,
                                 FindAuthoritiesByUser findAuthoritiesByUser,
-                                GetUsernameFromToken getUsernameFromToken,
+                                FindUsernameFromToken findUsernameFromToken,
                                 ValidateToken validateToken) {
         super();
         this.validateToken = validateToken;
-        this.getUsernameFromToken = getUsernameFromToken;
+        this.findUsernameFromToken = findUsernameFromToken;
         this.loadUserByUsername = loadUserByUsername;
         this.findAuthoritiesByUser = findAuthoritiesByUser;
     }
@@ -56,7 +56,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         if (Objects.nonNull(requestTokenAuthentication) && requestTokenAuthentication.startsWith(TOKEN_BEARER)) {
             token = requestTokenAuthentication.substring(TOKEN_BEARER.length());
             try {
-                username = this.getUsernameFromToken.process(token);
+                username = this.findUsernameFromToken.process(token);
             } catch (IllegalArgumentException e) {
                 log.warn("Unable to get JWT Token");
             } catch (ExpiredJwtException e){

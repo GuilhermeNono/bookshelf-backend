@@ -34,7 +34,7 @@ public class BookCopyJpa implements Serializable {
     @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
     private boolean active;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "bookCopy")
     private List<BorrowingJpa> borrowings;
     
     @ManyToOne
