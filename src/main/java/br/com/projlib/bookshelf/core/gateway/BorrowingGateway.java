@@ -15,6 +15,6 @@ public interface BorrowingGateway {
 
     Optional<BorrowingJpa> findById(long id);
 
-    void create(BorrowingJpa borrowing);
+    void save(BorrowingJpa borrowing);
 }
 

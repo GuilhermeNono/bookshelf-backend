@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class GetAuthenticatedUserAccount {
+public class FindAuthenticatedUserAccount {
     private final UserAccountGateway userAccountGateway;
 
     public UserAccountQuery process() {

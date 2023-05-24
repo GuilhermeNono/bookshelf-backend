@@ -11,6 +11,6 @@ public class SaveBorrowing {
     private final BorrowingGateway borrowingGateway;
 
     public void process(BorrowingJpa borrowingJpa) {
-        borrowingGateway.create(borrowingJpa);
+        borrowingGateway.save(borrowingJpa);
     }
 }

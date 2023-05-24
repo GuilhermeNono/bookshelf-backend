@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class GetUsernameFromToken {
+public class FindUsernameFromToken {
     private final TokenGateway tokenGateway;
     public String process(String token) {
         return tokenGateway.getUsernameFromToken(token);

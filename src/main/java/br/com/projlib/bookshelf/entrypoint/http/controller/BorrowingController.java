@@ -1,13 +1,14 @@
 package br.com.projlib.bookshelf.entrypoint.http.controller;
 
+import br.com.projlib.bookshelf.core.usecase.FindAllBorrowings;
 import br.com.projlib.bookshelf.core.usecase.FindBookCopyByCode;
+import br.com.projlib.bookshelf.core.usecase.FindBorrowingById;
 import br.com.projlib.bookshelf.core.usecase.FindBorrowingBySearchCriteria;
 import br.com.projlib.bookshelf.core.usecase.FindUserLibraryById;
-import br.com.projlib.bookshelf.core.usecase.GetAllBorrowings;
-import br.com.projlib.bookshelf.core.usecase.GetBorrowing;
 import br.com.projlib.bookshelf.core.usecase.SaveBookCopy;
 import br.com.projlib.bookshelf.core.usecase.SaveBorrowing;
 import br.com.projlib.bookshelf.entrypoint.http.request.BorrowingCreateRequest;
+import br.com.projlib.bookshelf.entrypoint.http.request.BorrowingRenewalRequest;
 import br.com.projlib.bookshelf.entrypoint.http.response.BorrowingListResponse;
 import br.com.projlib.bookshelf.infra.command.BorrowingDTO;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
@@ -27,7 +28,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +38,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -44,13 +48,16 @@ import java.util.List;
 @Slf4j
 public class BorrowingController {
 
-    private final GetAllBorrowings getAllBorrowings;
-    private final FindBorrowingBySearchCriteria findBorrowingBySearchCriteria;
+    private final FindAllBorrowings findAllBorrowings;
+    private final FindBorrowingById findBorrowingById;
+
     private final SaveBorrowing saveBorrowing;
-    private final GetBorrowing getBorrowing;
+    private final SaveBookCopy saveBookCopy;
+
+    private final FindBorrowingBySearchCriteria findBorrowingBySearchCriteria;
     private final FindUserLibraryById findUserLibraryById;
     private final FindBookCopyByCode findBookCopyByCode;
-    private final SaveBookCopy saveBookCopy;
+
 
     private final ModelMapper modelMapper;
 
@@ -59,7 +66,7 @@ public class BorrowingController {
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<BorrowingListResponse>> getAllBorrowing() {
         try {
-            List<BorrowingListResponse> response = getAllBorrowings.process()
+            List<BorrowingListResponse> response = findAllBorrowings.process()
                     .stream()
                     .map(b -> modelMapper.map(b, BorrowingListResponse.class))
                     .toList();
@@ -75,7 +82,7 @@ public class BorrowingController {
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<BorrowingListResponse> getABorrowing(@PathVariable long id) {
         try {
-            BorrowingListResponse borrowing = modelMapper.map(getBorrowing.process(id), BorrowingListResponse.class);
+            BorrowingListResponse borrowing = modelMapper.map(findBorrowingById.process(id), BorrowingListResponse.class);
             return new ResponseEntity<>(borrowing, HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -141,6 +148,41 @@ public class BorrowingController {
         }
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Renewal a existent borrowing")
+    @PatchMapping("/renewal")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<Void> updateRenewalBorrowing(@RequestBody @Valid BorrowingRenewalRequest borrowingRenewal){
+        try {
+            final BorrowingJpa borrowing = findBorrowingById.process(borrowingRenewal.getBorrowingId());
+
+            borrowing.setRenewalDate(LocalDate.now());
+            borrowing.setReturnDate(borrowingRenewal.getDateToReturn());
+
+            saveBorrowing.process(borrowing);
+
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Operation(summary = "Close the loan")
+    @DeleteMapping("/close/{id}")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<Void> closeLoan(@PathVariable long id) {
+        try {
+            final BorrowingJpa borrowing = findBorrowingById.process(id);
+
+            borrowing.setActive(false);
+
+            saveBorrowing.process(borrowing);
+
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

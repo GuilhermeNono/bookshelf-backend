@@ -1,6 +1,5 @@
 package br.com.projlib.bookshelf.entrypoint.http.request;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,13 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public class BorrowingCreateRequest {
-    @NotNull
-    private LocalDate loanDate;
-    @NotNull
-    private LocalDate returnDate;
-    @NotNull
-    private String bookCode;
-    @NotNull
-    private Long userId;
+public class BorrowingRenewalRequest {
+    LocalDate dateToReturn;
+    long borrowingId;
 }

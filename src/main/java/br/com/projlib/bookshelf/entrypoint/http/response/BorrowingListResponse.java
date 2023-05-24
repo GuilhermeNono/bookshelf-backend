@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -29,11 +29,11 @@ public class BorrowingListResponse {
 
     long id;
     @JsonProperty("loan_date")
-    Date loanDate;
+    LocalDate loanDate;
     @JsonProperty("return_date")
-    Date returnDate;
+    LocalDate returnDate;
     @JsonProperty("renewal_date")
-    Date renewalDate;
+    LocalDate renewalDate;
     @JsonProperty("user_id")
     long userLibraryId;
     @JsonProperty("user_name")

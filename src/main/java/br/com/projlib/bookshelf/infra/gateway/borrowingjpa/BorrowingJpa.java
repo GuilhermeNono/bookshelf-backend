@@ -1,7 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway.borrowingjpa;
 
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
-import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.penalityjpa.PenalityJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import jakarta.persistence.Column;
@@ -17,7 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -31,13 +30,13 @@ public class BorrowingJpa implements Serializable {
     private long id;
 
     @Column(nullable = false)
-    private Date loanDate;
+    private LocalDate loanDate;
 
     @Column(nullable = false)
-    private Date returnDate;
+    private LocalDate returnDate;
 
     @Column
-    private Date renewalDate;
+    private LocalDate renewalDate;
 
     @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
     private boolean active;

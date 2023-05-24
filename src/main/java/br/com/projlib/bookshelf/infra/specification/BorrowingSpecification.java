@@ -3,6 +3,7 @@ package br.com.projlib.bookshelf.infra.specification;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
+import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import br.com.projlib.bookshelf.infra.query.SearchCriteria;
 import br.com.projlib.bookshelf.infra.query.SearchOperation;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -50,6 +51,8 @@ public class BorrowingSpecification implements
                             strToSearch);
                 } else if (searchCriteria.getFilterKey().equals("bookName")) {
                     return cb.equal(bookJoin(root).get("name"), strToSearch);
+                } else if(searchCriteria.getFilterKey().equals("userId")){
+                    return cb.equal(userLibraryJoin(root).get("id"), strToSearch);
                 }
                 return cb.equal(root
                                 .get(searchCriteria.getFilterKey()),
@@ -62,9 +65,13 @@ public class BorrowingSpecification implements
                                                         root){
         return root.join("bookCopy");
     }
-//
+
     private Join<BorrowingJpa, BookJpa> bookJoin(Root<BorrowingJpa>
                                                               root){
         return root.join("bookCopy").join("book");
+    }
+
+    private Join<BorrowingJpa, UserLibraryJpa> userLibraryJoin(Root<BorrowingJpa> root) {
+        return root.join("userLibrary");
     }
 }

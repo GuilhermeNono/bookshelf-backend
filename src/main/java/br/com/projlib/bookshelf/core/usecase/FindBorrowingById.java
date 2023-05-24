@@ -5,14 +5,12 @@ import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 @RequiredArgsConstructor
-public class GetAllBorrowings {
+public class FindBorrowingById {
     private final BorrowingGateway borrowingGateway;
 
-    public List<BorrowingJpa> process() {
-        return borrowingGateway.findAll();
+    public BorrowingJpa process(long id) {
+        return borrowingGateway.findById(id).orElseThrow();
     }
 }

@@ -36,7 +36,7 @@ public class BorrowingGatewayImpl implements BorrowingGateway {
 
     @Override
     @Transactional
-    public void create(BorrowingJpa borrowing) {
+    public void save(BorrowingJpa borrowing) {
         borrowingRepository.save(borrowing);
     }
 
