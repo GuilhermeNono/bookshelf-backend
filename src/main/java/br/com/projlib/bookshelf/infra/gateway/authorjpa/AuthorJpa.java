@@ -30,6 +30,9 @@ public class AuthorJpa implements Serializable {
     @Column(nullable = false)
     private String lastName;
 
+    @Column
+    private String avatar;
+
     @ManyToMany(mappedBy = "authors")
     private Set<BookJpa> books;
 

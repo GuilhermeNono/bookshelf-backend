@@ -13,4 +13,5 @@ import lombok.Setter;
 public class AuthorResponse {
     private String firstName;
     private String lastName;
+    private String avatar;
 }
