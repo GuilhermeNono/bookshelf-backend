@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="creating book_copy table" author="guilherme.nono">
+    <changeSet id="adding active on book_copy table" author="guilherme.nono">
         <addColumn tableName="book_copy">
             <column name="active" type="tinyint" value="1">
                 <constraints nullable="false"/>

@@ -12,6 +12,12 @@
             <column name="code" type="varchar(15)">
                 <constraints nullable="false"/>
             </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
             <column name="fk_book_copy_book" type="bigint">
                 <constraints nullable="false"
                              foreignKeyName="fk_book_copy_book"
