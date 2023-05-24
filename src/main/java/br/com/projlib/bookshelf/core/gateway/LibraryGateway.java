@@ -11,5 +11,5 @@ public interface LibraryGateway {
 
     Optional<LibraryJpa> getOne(long id);
 
-    List<List<LibraryUserInfo>> getAllLibrariesOfUser();
+    List<LibraryUserInfo> getAllLibrariesOfUser();
 }
