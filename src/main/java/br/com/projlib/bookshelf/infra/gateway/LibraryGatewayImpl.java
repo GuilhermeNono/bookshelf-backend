@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway;
 
+import br.com.projlib.bookshelf.core.domain.UserAccount;
 import br.com.projlib.bookshelf.core.gateway.LibraryGateway;
 import br.com.projlib.bookshelf.core.usecase.FindAuthenticatedUserAccount;
 import br.com.projlib.bookshelf.core.usecase.FindUserById;
@@ -9,7 +10,6 @@ import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryRepository;
 import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryRepository;
-import br.com.projlib.bookshelf.infra.query.UserAccountQuery;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -38,10 +38,9 @@ public class LibraryGatewayImpl implements LibraryGateway {
     }
 
     @Override
-    public List<LibraryUserInfo> getAllLibrariesOfUser() {
+    public List<LibraryUserInfo> getAllLibrariesOfUser(UserAccount userAccount) {
         try {
-            UserAccountQuery userQuery = findAuthenticatedUserAccount.process();
-            UserAccountJpa user = findUserById.process(userQuery.getId());
+            UserAccountJpa user = findUserById.process(userAccount.getId());
             List<LibraryUserInfo> response = new ArrayList<>();
 
             for (UserLibraryJpa userLibraryJpa: user.getUserLibraries()) {

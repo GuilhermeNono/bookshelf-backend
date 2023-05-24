@@ -27,7 +27,7 @@ public class UserLibraryController {
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<LibraryUserInfo>> getAllUserLibrary(){
         try {
-            return new ResponseEntity<>(findAllLibrariesOfUser.process(), HttpStatus.OK) ;
+            return new ResponseEntity<>(null, HttpStatus.OK) ;
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
