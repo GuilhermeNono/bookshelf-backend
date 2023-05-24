@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -33,6 +34,12 @@ public class BookCopyJpa implements Serializable {
 
     @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
     private boolean active;
+
+    @Column
+    private LocalDateTime createdAt;
+
+    @Column
+    private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "bookCopy")
     private List<BorrowingJpa> borrowings;
