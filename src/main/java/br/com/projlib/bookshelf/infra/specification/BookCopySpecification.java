@@ -62,6 +62,8 @@ public class BookCopySpecification implements
                             strToSearch);
                 } else if (searchCriteria.getFilterKey().equals("id")) {
                     return cb.equal(libraryJoin(root).get(searchCriteria.getFilterKey()), strToSearch);
+                } else if (searchCriteria.getFilterKey().equals("code")) {
+                    return cb.equal(root.get(searchCriteria.getFilterKey()), strToSearch);
                 }
                 return cb.equal(bookJoin(root)
                                 .get(searchCriteria.getFilterKey()),
