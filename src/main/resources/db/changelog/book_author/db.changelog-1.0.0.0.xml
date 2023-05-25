@@ -37,7 +37,7 @@
         </insert>
         <insert tableName="book_author">
             <column name="fk_book_author" value="8"/>
-            <column name="fk_author_book" value="2"/>
+            <column name="fk_author_book" value="6"/>
         </insert>
         <insert tableName="book_author">
             <column name="fk_book_author" value="9"/>
