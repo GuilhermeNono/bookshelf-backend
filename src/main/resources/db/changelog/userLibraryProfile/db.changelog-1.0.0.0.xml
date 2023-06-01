@@ -6,20 +6,20 @@
 
     <property name="now" value="now()" dbms="mysql"/>
 
-    <changeSet id="populating user_profile table" author="guilherme.nono">
-        <insert tableName="user_profile">
+    <changeSet id="populating user_library_profile table" author="guilherme.nono">
+        <insert tableName="user_library_profile">
             <column name="id" value="1"/>
-            <column name="name" value="BOOKSHELF_ADMIN"/>
+            <column name="name" value="BOOKSHELF_LIB_ADMIN"/>
         </insert>
 
-        <insert tableName="user_profile">
+        <insert tableName="user_library_profile">
             <column name="id" value="2"/>
-            <column name="name" value="BOOKSHELF_USER"/>
+            <column name="name" value="BOOKSHELF_LIB_USER"/>
         </insert>
 
-        <insert tableName="user_profile">
+        <insert tableName="user_library_profile">
             <column name="id" value="3"/>
-            <column name="name" value="BOOKSHELF_SUPPORT"/>
+            <column name="name" value="BOOKSHELF_LIB_SUPPORT"/>
         </insert>
 
     </changeSet>

@@ -10,13 +10,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-@JsonPropertyOrder({"userId", "libraryId", "library"})
+@JsonPropertyOrder({"userLibraryId", "libraryId", "library", "profile"})
 public class LibraryUserInfo {
 
-    @JsonProperty("userId")
+    @JsonProperty("userLibraryId")
     long id;
     @JsonProperty("library")
     String libraryName;
     @JsonProperty("libraryId")
     long libraryId;
+    @JsonProperty("profile")
+    String profileName;
 }

@@ -1,6 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway.libpermissionjpa;
 
-import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
+import br.com.projlib.bookshelf.infra.gateway.userlibraryprofileJpa.UserLibraryProfileJpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +13,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "lib_permission")
@@ -32,7 +32,7 @@ public class LibPermissionJpa implements GrantedAuthority, Serializable {
     private String code;
 
     @ManyToMany(mappedBy = "libraryPermissions")
-    private Set<UserLibraryJpa> libraryUsers;
+    private List<UserLibraryProfileJpa> libraryUserProfile;
 
     @Override
     public String getAuthority() {
