@@ -44,11 +44,7 @@ public class LibraryGatewayImpl implements LibraryGateway {
             List<LibraryUserInfo> response = new ArrayList<>();
 
             for (UserLibraryJpa userLibraryJpa: user.getUserLibraries()) {
-//                List<LibraryJpa> libraries = userLibraryRepository.findAllLibraryUser(userLibraryJpa);
                 response.add(modelMapper.map(userLibraryJpa, LibraryUserInfo.class));
-//                response.add(libraries.stream().map(lib -> modelMapper
-//                                .map(lib, LibraryUserInfo.class))
-//                        .collect(Collectors.toList()));
             }
             return response;
         } catch (RuntimeException e){

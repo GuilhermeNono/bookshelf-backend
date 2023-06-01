@@ -12,6 +12,9 @@
             <column name="rm_ra" type="varchar(45)">
                 <constraints nullable="true"/>
             </column>
+            <column name="profile_picture" type="varchar(250)">
+                <constraints nullable="true"/>
+            </column>
             <column name="active" type="tinyint">
                 <constraints nullable="false"/>
             </column>
@@ -35,6 +38,14 @@
                              referencedColumnNames="id"
                              deleteCascade="true"/>
             </column>
+            <column name="fk_user_library_user_library_profile" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_user_library_user_library_profile"
+                             referencedTableName="user_library_profile"
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
+
         </createTable>
     </changeSet>
 
