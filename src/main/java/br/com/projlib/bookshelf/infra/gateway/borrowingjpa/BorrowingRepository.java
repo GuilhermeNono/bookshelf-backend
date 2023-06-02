@@ -11,7 +11,9 @@ public interface BorrowingRepository extends JpaRepository<BorrowingJpa, Long>, 
 
     @Query("select bw" +
             " from BorrowingJpa bw" +
-            " where Month(bw.loanDate) = ?1 and bw.bookCopy.library = ?2" +
+            " where Month(bw.loanDate) = ?1 " +
+            "or Month(bw.returnDate) = ?1 " +
+            "and bw.bookCopy.library = ?2" +
             " order by bw.loanDate desc ")
     List<BorrowingJpa> findAllByMonthAndLibrary(int month, LibraryJpa library);
 }
