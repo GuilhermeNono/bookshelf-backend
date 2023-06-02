@@ -19,4 +19,7 @@ public interface BookCopyRepository extends JpaRepository<BookCopyJpa, Long>, Jp
 
     @Query("select bc from BookCopyJpa bc where bc.code = ?1")
     Optional<BookCopyJpa> findByCode(String code);
+
+    @Query("select bc from BookCopyJpa bc where Month(bc.createdAt) = ?1 and bc.library = ?2 order by bc.createdAt desc")
+    List<BookCopyJpa> findAllByMonthAndLibrary(int month, LibraryJpa libraryJpa);
 }

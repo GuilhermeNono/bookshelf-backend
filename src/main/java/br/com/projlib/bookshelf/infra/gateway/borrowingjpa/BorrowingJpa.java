@@ -38,6 +38,9 @@ public class BorrowingJpa implements Serializable {
     @Column
     private LocalDate renewalDate;
 
+    @Column
+    private boolean overdue;
+
     @Column(columnDefinition = "TINYINT", length = 1, nullable = false)
     private boolean active;
 

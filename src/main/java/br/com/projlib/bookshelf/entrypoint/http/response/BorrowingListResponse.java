@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,7 +24,8 @@ import java.time.LocalDate;
                 "loan_date",
                 "return_date",
                 "renewal_date",
-                "is_active"
+                "is_active",
+                "user_courses"
 })
 public class BorrowingListResponse {
 
@@ -44,5 +46,9 @@ public class BorrowingListResponse {
     String bookCopyCode;
     @JsonProperty("is_active")
     boolean active;
+    @JsonProperty("overdue")
+    boolean overdue;
+    @JsonProperty("user_courses")
+    List<BorrowingCourseResponse> userLibraryCourses;
 
 }

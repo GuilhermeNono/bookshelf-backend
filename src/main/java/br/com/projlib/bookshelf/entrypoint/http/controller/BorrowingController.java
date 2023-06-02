@@ -1,9 +1,11 @@
 package br.com.projlib.bookshelf.entrypoint.http.controller;
 
+import br.com.projlib.bookshelf.core.usecase.FindAllBorrowingOfMonth;
 import br.com.projlib.bookshelf.core.usecase.FindAllBorrowings;
 import br.com.projlib.bookshelf.core.usecase.FindBookCopyByCode;
 import br.com.projlib.bookshelf.core.usecase.FindBorrowingById;
 import br.com.projlib.bookshelf.core.usecase.FindBorrowingBySearchCriteria;
+import br.com.projlib.bookshelf.core.usecase.FindOneLibrary;
 import br.com.projlib.bookshelf.core.usecase.FindUserLibraryById;
 import br.com.projlib.bookshelf.core.usecase.SaveBookCopy;
 import br.com.projlib.bookshelf.core.usecase.SaveBorrowing;
@@ -13,6 +15,7 @@ import br.com.projlib.bookshelf.entrypoint.http.response.BorrowingListResponse;
 import br.com.projlib.bookshelf.infra.command.BorrowingDTO;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
+import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import br.com.projlib.bookshelf.infra.query.SearchCriteria;
 import br.com.projlib.bookshelf.infra.specification.BorrowingSpecificationBuilder;
@@ -57,6 +60,8 @@ public class BorrowingController {
     private final FindBorrowingBySearchCriteria findBorrowingBySearchCriteria;
     private final FindUserLibraryById findUserLibraryById;
     private final FindBookCopyByCode findBookCopyByCode;
+    private final FindOneLibrary findOneLibrary;
+    private final FindAllBorrowingOfMonth findAllBorrowingOfMonth;
 
 
     private final ModelMapper modelMapper;
@@ -164,6 +169,23 @@ public class BorrowingController {
 
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Operation(summary = "Get all borrowings of the month")
+    @GetMapping(value = "/{id}/month")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<List<BorrowingListResponse>> getAllLoanOfMonth(@PathVariable long id){
+        try {
+            LibraryJpa library = findOneLibrary.process(id);
+            List<BorrowingListResponse> loanList = findAllBorrowingOfMonth.process(library)
+                    .stream()
+                    .map(b -> modelMapper.map(b, BorrowingListResponse.class))
+                    .toList();
+            return new ResponseEntity<>(loanList, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            log.info(e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
