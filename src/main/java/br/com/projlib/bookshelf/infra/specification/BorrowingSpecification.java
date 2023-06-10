@@ -55,6 +55,8 @@ public class BorrowingSpecification implements
                     return cb.equal(userLibraryJoin(root).get("id"), strToSearch);
                 } else if(searchCriteria.getFilterKey().equals("overdue")){
                     return cb.equal(root.get(searchCriteria.getFilterKey()), Boolean.parseBoolean(strToSearch));
+                }else if(searchCriteria.getFilterKey().equals("library")){
+                    return cb.equal(bookCopyJoin(root).get(searchCriteria.getFilterKey()), strToSearch);
                 }
                 return cb.equal(root
                                 .get(searchCriteria.getFilterKey()),
