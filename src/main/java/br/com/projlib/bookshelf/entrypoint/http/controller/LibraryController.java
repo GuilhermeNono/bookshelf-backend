@@ -3,20 +3,28 @@ package br.com.projlib.bookshelf.entrypoint.http.controller;
 import br.com.projlib.bookshelf.core.usecase.FindAllBooksOfLibrary;
 import br.com.projlib.bookshelf.core.usecase.FindAllBooksOfMonth;
 import br.com.projlib.bookshelf.core.usecase.FindAllLibraries;
+import br.com.projlib.bookshelf.core.usecase.FindBookById;
 import br.com.projlib.bookshelf.core.usecase.FindBookCopyBySearchCriteria;
 import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByIsbn;
 import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByName;
 import br.com.projlib.bookshelf.core.usecase.FindOneLibrary;
+import br.com.projlib.bookshelf.core.usecase.FindUserLibraryById;
+import br.com.projlib.bookshelf.core.usecase.SaveBookCopy;
+import br.com.projlib.bookshelf.entrypoint.http.request.CreateBookCopyRequest;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListBookCopyOfMonthResponse;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListBookCopyResponse;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListLibraryResponse;
 import br.com.projlib.bookshelf.infra.command.BookCopyDTO;
+import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
+import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
+import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import br.com.projlib.bookshelf.infra.query.SearchCriteria;
 import br.com.projlib.bookshelf.infra.specification.BookCopySpecificationBuilder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -33,6 +41,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,6 +59,10 @@ public class LibraryController {
     private final FindBookOnLibraryByName findBookOnLibraryByName;
     private final FindAllBooksOfMonth findAllBooksOfMonth;
     private final FindBookOnLibraryByIsbn findBookOnLibraryByIsbn;
+    private final FindUserLibraryById findUserLibraryById;
+    private final FindBookById findBookById;
+
+    private final SaveBookCopy saveBookCopy;
 
     private final ModelMapper modelMapper;
 
@@ -154,6 +167,31 @@ public class LibraryController {
                         page);
 
         return new ResponseEntity<>(employeePage, HttpStatus.OK);
+    }
+
+    @Operation(summary = "Add a book copy")
+    @PostMapping(value = "/book/add")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<Void> addNewCopy(@Valid @RequestBody CreateBookCopyRequest bookCopyRequest){
+        try {
+            LibraryJpa library = findOneLibrary.process(bookCopyRequest.getLibId());
+            UserLibraryJpa user = findUserLibraryById.process(bookCopyRequest.getUserId());
+            BookJpa book = findBookById.process(bookCopyRequest.getBookId());
+
+            BookCopyJpa newBook = new BookCopyJpa(bookCopyRequest.getCode(),
+                    book, library);
+
+            newBook.setActive(true);
+            newBook.setCreatedAt(LocalDateTime.now());
+            newBook.setUpdatedAt(LocalDateTime.now());
+
+            saveBookCopy.process(newBook);
+
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (RuntimeException e) {
+            log.info(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

@@ -52,4 +52,12 @@ public class BookCopyJpa implements Serializable {
     @JoinColumn(name = "fk_book_copy_library", referencedColumnName = "id")
     private LibraryJpa library;
 
+    public BookCopyJpa() {
+    }
+
+    public BookCopyJpa(String code, BookJpa book, LibraryJpa library) {
+        this.code = code;
+        this.book = book;
+        this.library = library;
+    }
 }
