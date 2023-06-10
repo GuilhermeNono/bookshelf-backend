@@ -42,4 +42,9 @@ public class BookGatewayImpl implements BookGateway {
     public Optional<BookJpa> findById(long id) {
         return bookRepository.findById(id);
     }
+
+    @Override
+    public BookJpa save(BookJpa book) {
+        return bookRepository.save(book);
+    }
 }

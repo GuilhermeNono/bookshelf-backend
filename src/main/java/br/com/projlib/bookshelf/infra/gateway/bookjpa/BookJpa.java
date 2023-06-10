@@ -1,8 +1,8 @@
 package br.com.projlib.bookshelf.infra.gateway.bookjpa;
 
+import br.com.projlib.bookshelf.entrypoint.http.request.CreateBookRequest;
 import br.com.projlib.bookshelf.infra.gateway.authorjpa.AuthorJpa;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
-import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
 import br.com.projlib.bookshelf.infra.gateway.categoryjpa.CategoryJpa;
 import br.com.projlib.bookshelf.infra.gateway.publisherjpa.PublisherJpa;
 import jakarta.persistence.Column;
@@ -18,16 +18,17 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "book")
 @Getter
 @Setter
+@Component
 public class BookJpa implements Serializable {
 
     @Id
@@ -41,7 +42,7 @@ public class BookJpa implements Serializable {
     private String language;
 
     @Column(nullable = false)
-    private Date publicationDate;
+    private LocalDate publicationDate;
 
     @Column(nullable = false)
     private String isbn;
@@ -84,6 +85,34 @@ public class BookJpa implements Serializable {
     )
     private List<CategoryJpa> categories;
 
+    public BookJpa() {
+    }
 
+//    public BookJpa(CreateBookRequest bookRequest) {
+//        this.name = bookRequest.getName();
+//        this.sinopse = bookRequest.getSinopse();
+//        this.isbn = bookRequest.getIsbn();
+//        this.language = bookRequest.getLanguage();
+//        this.edition = bookRequest.getEdition();
+//        this.cape = bookRequest.getCape();
+//        this.capeType = bookRequest.getCapeType();
+//        this.numberPages = bookRequest.getNumberPages();
+//        this.publisher = new PublisherJpa(bookRequest.getPublisher(), this);
+//        this.publicationDate = bookRequest.getPublicationDate();
+//        this.authors = ConverterRequestToEntity
+//                .listAuthorsRequestToListAuthorJpa(bookRequest.getAuthors(), this);
+//        this.categories = ConverterRequestToEntity
+//                .listCategoryRequestToListCategoryJpa(bookRequest.getCategories(), this);
+//    }
 
+    public BookJpa(CreateBookRequest bookRequest) {
+        this.name = bookRequest.getName();
+        this.sinopse = bookRequest.getSinopse();
+        this.isbn = bookRequest.getIsbn();
+        this.language = bookRequest.getLanguage();
+        this.edition = bookRequest.getEdition();
+        this.cape = bookRequest.getCape();
+        this.capeType = bookRequest.getCapeType();
+        this.numberPages = bookRequest.getNumberPages();
+        this.publicationDate = bookRequest.getPublicationDate();}
 }

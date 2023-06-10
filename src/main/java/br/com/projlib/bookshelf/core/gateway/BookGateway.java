@@ -20,4 +20,5 @@ public interface BookGateway {
 
     Optional<BookJpa> findById(final long id);
 
+    BookJpa save(BookJpa book);
 }

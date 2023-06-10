@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.infra.gateway.authorjpa;
 
+import br.com.projlib.bookshelf.entrypoint.http.request.AuthorRequest;
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +13,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "author")
@@ -34,6 +36,29 @@ public class AuthorJpa implements Serializable {
     private String avatar;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<BookJpa> books;
+    private List<BookJpa> books;
 
+    public AuthorJpa() {
+    }
+
+    public AuthorJpa(String firstName, String lastName, String avatar) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.avatar = avatar;
+    }
+
+    public AuthorJpa(AuthorRequest authorRequest, BookJpa bookJpa) {
+        this.avatar = authorRequest.getAvatar();
+        this.firstName = authorRequest.getFirstName();
+        this.lastName = authorRequest.getLastName();
+        this.books = this.addBooks(bookJpa);
+    }
+
+    public List<BookJpa> addBooks(BookJpa bookJpa) {
+        if(books == null) {
+            books = new ArrayList<>();
+        }
+        books.add(bookJpa);
+        return books;
+    }
 }
