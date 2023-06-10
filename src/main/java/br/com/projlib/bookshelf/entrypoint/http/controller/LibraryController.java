@@ -1,11 +1,13 @@
 package br.com.projlib.bookshelf.entrypoint.http.controller;
 
 import br.com.projlib.bookshelf.core.usecase.FindAllBooksOfLibrary;
+import br.com.projlib.bookshelf.core.usecase.FindAllBooksOfMonth;
+import br.com.projlib.bookshelf.core.usecase.FindAllLibraries;
 import br.com.projlib.bookshelf.core.usecase.FindBookCopyBySearchCriteria;
 import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByIsbn;
 import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByName;
-import br.com.projlib.bookshelf.core.usecase.FindAllLibraries;
 import br.com.projlib.bookshelf.core.usecase.FindOneLibrary;
+import br.com.projlib.bookshelf.entrypoint.http.response.ListBookCopyOfMonthResponse;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListBookCopyResponse;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListLibraryResponse;
 import br.com.projlib.bookshelf.infra.command.BookCopyDTO;
@@ -46,6 +48,7 @@ public class LibraryController {
     private final FindAllBooksOfLibrary findAllBooksOfLibrary;
     private final FindBookCopyBySearchCriteria findBookCopyBySearchCriteria;
     private final FindBookOnLibraryByName findBookOnLibraryByName;
+    private final FindAllBooksOfMonth findAllBooksOfMonth;
     private final FindBookOnLibraryByIsbn findBookOnLibraryByIsbn;
 
     private final ModelMapper modelMapper;
@@ -104,6 +107,24 @@ public class LibraryController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @Operation(summary = "Get all books of the month")
+    @GetMapping(value = "/{id}/books/month")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<List<ListBookCopyOfMonthResponse>> getAllBooksOfMonth(@PathVariable long id){
+        try {
+            LibraryJpa library = findOneLibrary.process(id);
+            List<ListBookCopyOfMonthResponse> books = findAllBooksOfMonth.process(library)
+                    .stream()
+                    .map(b -> modelMapper.map(b, ListBookCopyOfMonthResponse.class))
+                    .toList();
+            return new ResponseEntity<>(books, HttpStatus.OK);
+        } catch (RuntimeException e) {
+            log.info(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @Operation(summary = "Search Book")
     @PostMapping("/books/search")
     @SecurityRequirement(name = "Bearer Authentication")

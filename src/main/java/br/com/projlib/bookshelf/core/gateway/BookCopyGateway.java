@@ -1,6 +1,7 @@
 package br.com.projlib.bookshelf.core.gateway;
 
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
+import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -20,4 +21,6 @@ public interface BookCopyGateway {
     List<BookCopyJpa> findBooksOfLibraryByName(String name, long id);
 
     List<BookCopyJpa> findBooksOfLibraryByIsbn(String isbn, long id);
+
+    List<BookCopyJpa> findAllBooksOfMonth(LibraryJpa library, int month);
 }

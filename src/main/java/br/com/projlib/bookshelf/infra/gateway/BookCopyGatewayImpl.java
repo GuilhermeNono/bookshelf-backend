@@ -67,4 +67,9 @@ public class BookCopyGatewayImpl implements BookCopyGateway {
         LibraryJpa library = findOneLibrary.process(id);
         return bookCopyRepository.findCopyByLibraryAndIsbn(library, isbn);
     }
+
+    @Override
+    public List<BookCopyJpa> findAllBooksOfMonth(LibraryJpa library, int month) {
+        return bookCopyRepository.findAllByMonthAndLibrary(month, library);
+    }
 }

@@ -3,6 +3,7 @@ package br.com.projlib.bookshelf.infra.gateway;
 import br.com.projlib.bookshelf.core.gateway.BorrowingGateway;
 import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
 import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingRepository;
+import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,6 +39,11 @@ public class BorrowingGatewayImpl implements BorrowingGateway {
     @Transactional
     public void save(BorrowingJpa borrowing) {
         borrowingRepository.save(borrowing);
+    }
+
+    @Override
+    public List<BorrowingJpa> findAllByMonth(int month, LibraryJpa library) {
+        return borrowingRepository.findAllByMonthAndLibrary(month, library);
     }
 
 }

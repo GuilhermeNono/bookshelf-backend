@@ -6,16 +6,10 @@
 
     <property name="now" value="now()" dbms="mysql"/>
 
-    <changeSet id="populating course table" author="guilherme.nono">
-        <insert tableName="course">
-            <column name="id" value="1"/>
-            <column name="name" value="DS"/>
-            <column name="class" value="A"/>
-            <column name="module" value="3"/>
-            <column name="period" value="Noturno"/>
-            <column name="active" value="1"/>
-        </insert>
-
+    <changeSet id="creating new column to borrowing table" author="guilherme.nono">
+        <addColumn tableName="borrowing">
+            <column name="overdue" type="tinyint" value="0" />
+        </addColumn>
     </changeSet>
 
 </databaseChangeLog>
