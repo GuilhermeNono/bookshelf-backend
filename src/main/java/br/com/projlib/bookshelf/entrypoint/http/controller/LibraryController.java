@@ -18,7 +18,6 @@ import br.com.projlib.bookshelf.infra.command.BookCopyDTO;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
-import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import br.com.projlib.bookshelf.infra.query.SearchCriteria;
 import br.com.projlib.bookshelf.infra.specification.BookCopySpecificationBuilder;
 import io.swagger.v3.oas.annotations.Operation;
@@ -67,24 +66,25 @@ public class LibraryController {
     private final ModelMapper modelMapper;
 
     /**
-     *  <h1>Buscar todos os usuarios</h1>
-     *  <br/>
-     *  <p>Método responsavel por buscar todas as bibliotecas disponiveis no sistema.</p>
-     *  @return Uma lista com todas as bibliotecas.
-     *  @throws org.springframework.web.client.HttpClientErrorException.BadRequest
-     *  @throws RuntimeException
-     * */
+     * <h1>Buscar todos os usuarios</h1>
+     * <br/>
+     * <p>Método responsavel por buscar todas as bibliotecas disponiveis no sistema.</p>
+     *
+     * @return Uma lista com todas as bibliotecas.
+     * @throws org.springframework.web.client.HttpClientErrorException.BadRequest
+     * @throws RuntimeException
+     */
     @Operation(summary = "Get all libraries of system")
     @GetMapping
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<ListLibraryResponse>> getAllLibraries() {
-        try{
+        try {
             List<ListLibraryResponse> libraries = findAllLibraries
                     .process().stream()
                     .map(lib -> modelMapper.map(lib, ListLibraryResponse.class))
                     .collect(Collectors.toList());
             return new ResponseEntity<>(libraries, HttpStatus.OK);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
@@ -94,11 +94,11 @@ public class LibraryController {
     @GetMapping(value = "/{id}")
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<ListLibraryResponse> getLibrary(@PathVariable long id) {
-        try{
+        try {
             LibraryJpa library = findOneLibrary.process(id);
             ListLibraryResponse libResponse = modelMapper.map(library, ListLibraryResponse.class);
             return new ResponseEntity<>(libResponse, HttpStatus.OK);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             log.info(e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -109,7 +109,7 @@ public class LibraryController {
     @GetMapping(value = "/{id}/books")
     @Deprecated
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<List<ListBookCopyResponse>> getAllBooks(@PathVariable long id){
+    public ResponseEntity<List<ListBookCopyResponse>> getAllBooks(@PathVariable long id) {
         try {
             List<ListBookCopyResponse> books = findAllBooksOfLibrary.process(id)
                     .stream()
@@ -124,7 +124,7 @@ public class LibraryController {
     @Operation(summary = "Get all books of the month")
     @GetMapping(value = "/{id}/books/month")
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<List<ListBookCopyOfMonthResponse>> getAllBooksOfMonth(@PathVariable long id){
+    public ResponseEntity<List<ListBookCopyOfMonthResponse>> getAllBooksOfMonth(@PathVariable long id) {
         try {
             LibraryJpa library = findOneLibrary.process(id);
             List<ListBookCopyOfMonthResponse> books = findAllBooksOfMonth.process(library)
@@ -147,15 +147,16 @@ public class LibraryController {
              @RequestParam(name = "pageSize",
                      defaultValue = "10") int pageSize,
              @RequestBody BookCopyDTO
-                     bookCopyDTO){
+                     bookCopyDTO) {
         BookCopySpecificationBuilder builder = new
                 BookCopySpecificationBuilder();
         List<SearchCriteria> criteriaList =
                 bookCopyDTO.getSearchCriteriaList();
-        if(criteriaList != null){
-            criteriaList.forEach(x->
-            {x.setDataOption(bookCopyDTO
-                    .getDataOption());
+        if (criteriaList != null) {
+            criteriaList.forEach(x ->
+            {
+                x.setDataOption(bookCopyDTO
+                        .getDataOption());
                 builder.with(x);
             });
         }
@@ -172,10 +173,10 @@ public class LibraryController {
     @Operation(summary = "Add a book copy")
     @PostMapping(value = "/book/add")
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<Void> addNewCopy(@Valid @RequestBody CreateBookCopyRequest bookCopyRequest){
+    public ResponseEntity<Void> addNewCopy(@Valid @RequestBody CreateBookCopyRequest bookCopyRequest) {
         try {
             LibraryJpa library = findOneLibrary.process(bookCopyRequest.getLibId());
-            UserLibraryJpa user = findUserLibraryById.process(bookCopyRequest.getUserId());
+            //UserLibraryJpa user = findUserLibraryById.process(bookCopyRequest.getUserId());
             BookJpa book = findBookById.process(bookCopyRequest.getBookId());
 
             BookCopyJpa newBook = new BookCopyJpa(bookCopyRequest.getCode(),
