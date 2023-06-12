@@ -21,7 +21,7 @@ import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -42,7 +42,7 @@ public class BookJpa implements Serializable {
     private String language;
 
     @Column(nullable = false)
-    private LocalDate publicationDate;
+    private Date publicationDate;
 
     @Column(nullable = false)
     private String isbn;

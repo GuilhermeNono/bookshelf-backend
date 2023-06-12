@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -22,7 +22,7 @@ public class CreateBookRequest {
     @NotBlank
     String language;
     @NotNull
-    LocalDate publicationDate;
+    Date publicationDate;
     @NotBlank
     String isbn;
     @NotBlank
