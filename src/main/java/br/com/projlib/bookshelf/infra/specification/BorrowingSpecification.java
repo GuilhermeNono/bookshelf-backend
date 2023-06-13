@@ -3,6 +3,7 @@ package br.com.projlib.bookshelf.infra.specification;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
+import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import br.com.projlib.bookshelf.infra.query.SearchCriteria;
 import br.com.projlib.bookshelf.infra.query.SearchOperation;
@@ -56,7 +57,7 @@ public class BorrowingSpecification implements
                 } else if(searchCriteria.getFilterKey().equals("overdue")){
                     return cb.equal(root.get(searchCriteria.getFilterKey()), Boolean.parseBoolean(strToSearch));
                 }else if(searchCriteria.getFilterKey().equals("library")){
-                    return cb.equal(bookCopyJoin(root).get(searchCriteria.getFilterKey()), strToSearch);
+                    return cb.equal(libraryJoin(root).get("id"), strToSearch);
                 }
                 return cb.equal(root
                                 .get(searchCriteria.getFilterKey()),
@@ -68,6 +69,11 @@ public class BorrowingSpecification implements
     private Join<BorrowingJpa, BookCopyJpa> bookCopyJoin(Root<BorrowingJpa>
                                                         root){
         return root.join("bookCopy");
+    }
+
+    private Join<BorrowingJpa, LibraryJpa> libraryJoin(Root<BorrowingJpa>
+                                                                 root){
+        return root.join("bookCopy").join("library");
     }
 
     private Join<BorrowingJpa, BookJpa> bookJoin(Root<BorrowingJpa>
