@@ -2,6 +2,7 @@ package br.com.projlib.bookshelf.core.gateway;
 
 import br.com.projlib.bookshelf.infra.gateway.categoryjpa.CategoryJpa;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CategoryGateway {
@@ -10,4 +11,6 @@ public interface CategoryGateway {
     CategoryJpa save(CategoryJpa categoryJpa);
 
     CategoryJpa findByName(String name);
+
+    List<CategoryJpa> findAll();
 }

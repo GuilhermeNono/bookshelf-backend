@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,5 +30,10 @@ public class CategoryGatewayImpl implements CategoryGateway  {
     @Override
     public CategoryJpa findByName(String name) {
         return categoryRepository.findCategoryJpaByName(name);
+    }
+
+    @Override
+    public List<CategoryJpa> findAll() {
+        return categoryRepository.findAll();
     }
 }

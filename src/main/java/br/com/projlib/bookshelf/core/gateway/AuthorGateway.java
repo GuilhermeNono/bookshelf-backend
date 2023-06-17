@@ -2,6 +2,7 @@ package br.com.projlib.bookshelf.core.gateway;
 
 import br.com.projlib.bookshelf.infra.gateway.authorjpa.AuthorJpa;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface AuthorGateway {
@@ -10,4 +11,6 @@ public interface AuthorGateway {
     AuthorJpa save(AuthorJpa authorJpa);
 
     AuthorJpa findByFullName(String firstName, String lastName);
+
+    List<AuthorJpa> findAll();
 }
