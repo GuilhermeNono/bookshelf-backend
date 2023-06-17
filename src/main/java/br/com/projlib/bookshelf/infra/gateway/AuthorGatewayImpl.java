@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,5 +29,10 @@ public class AuthorGatewayImpl implements AuthorGateway {
     @Override
     public AuthorJpa findByFullName(String firstName, String lastName) {
         return authorRepository.findByFullName(firstName, lastName);
+    }
+
+    @Override
+    public List<AuthorJpa> findAll() {
+        return authorRepository.findAll();
     }
 }
