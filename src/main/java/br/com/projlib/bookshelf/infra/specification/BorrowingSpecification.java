@@ -58,8 +58,16 @@ public class BorrowingSpecification implements
                     return cb.equal(root.get(searchCriteria.getFilterKey()), Boolean.parseBoolean(strToSearch));
                 }else if(searchCriteria.getFilterKey().equals("library")){
                     return cb.equal(libraryJoin(root).get("id"), strToSearch);
+                }else if(searchCriteria.getFilterKey().equals("loanDateMonth")){
+                    return cb.equal(cb.function("MONTH", Integer.class, root.get("loanDate")), strToSearch);
+                }else if(searchCriteria.getFilterKey().equals("returnDateMonth")){
+                    return cb.equal(cb.function("MONTH", Integer.class, root.get("returnDate")), strToSearch);
+                }else if(searchCriteria.getFilterKey().equals("loanDateYear")){
+                    return cb.equal(cb.function("YEAR", Integer.class, root.get("loanDate")), strToSearch);
+                }else if(searchCriteria.getFilterKey().equals("returnDateYear")) {
+                    return cb.equal(cb.function("YEAR", Integer.class, root.get("returnDate")), strToSearch);
                 }
-                return cb.equal(root
+                    return cb.equal(root
                                 .get(searchCriteria.getFilterKey()),
                         strToSearch);
             default:
