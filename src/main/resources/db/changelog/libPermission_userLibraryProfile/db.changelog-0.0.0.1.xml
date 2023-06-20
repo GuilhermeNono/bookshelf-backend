@@ -4,10 +4,8 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <property name="now" value="now()" dbms="mysql"/>
-
     <changeSet id="creating lib_permission_user_library table" author="guilherme.nono">
-        <createTable tableName="lib_permission_user_library">
+        <createTable tableName="user_library_profile_lib_permission">
             <column name="fk_user_library_profile_lib_permission" type="bigint">
                 <constraints primaryKey="true"
                              primaryKeyName="pk_user_library_profile_lib_permission"

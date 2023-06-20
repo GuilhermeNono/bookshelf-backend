@@ -7,17 +7,17 @@
     <property name="now" value="now()" dbms="mysql"/>
 
     <changeSet id="populating lib_permission_user_library table" author="guilherme.nono">
-        <insert tableName="lib_permission_user_library">
+        <insert tableName="user_library_profile_lib_permission">
             <column name="fk_user_library_profile_lib_permission" value="1" />
             <column name="fk_lib_permission_user_library_profile" value="1" />
         </insert>
 
-        <insert tableName="lib_permission_user_library">
+        <insert tableName="user_library_profile_lib_permission">
             <column name="fk_user_library_profile_lib_permission" value="2" />
             <column name="fk_lib_permission_user_library_profile" value="1" />
         </insert>
 
-        <insert tableName="lib_permission_user_library">
+        <insert tableName="user_library_profile_lib_permission">
             <column name="fk_user_library_profile_lib_permission" value="3" />
             <column name="fk_lib_permission_user_library_profile" value="1" />
         </insert>
