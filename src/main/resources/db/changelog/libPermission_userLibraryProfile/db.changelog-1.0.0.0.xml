@@ -8,20 +8,126 @@
 
     <changeSet id="populating lib_permission_user_library table" author="guilherme.nono">
         <insert tableName="user_library_profile_lib_permission">
-            <column name="fk_user_library_profile_lib_permission" value="1" />
-            <column name="fk_lib_permission_user_library_profile" value="1" />
+            <!--#Profile-->
+            <column name="fk_user_library_profile_lib_permission" value="1"/>
+            <!--#Permission-->
+            <column name="fk_lib_permission_user_library_profile" value="1"/>
         </insert>
 
         <insert tableName="user_library_profile_lib_permission">
-            <column name="fk_user_library_profile_lib_permission" value="2" />
-            <column name="fk_lib_permission_user_library_profile" value="1" />
+            <column name="fk_user_library_profile_lib_permission" value="1"/>
+            <column name="fk_lib_permission_user_library_profile" value="3"/>
         </insert>
 
         <insert tableName="user_library_profile_lib_permission">
-            <column name="fk_user_library_profile_lib_permission" value="3" />
-            <column name="fk_lib_permission_user_library_profile" value="1" />
+            <column name="fk_user_library_profile_lib_permission" value="1"/>
+            <column name="fk_lib_permission_user_library_profile" value="4"/>
+        </insert>
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="1"/>
+            <column name="fk_lib_permission_user_library_profile" value="10"/>
         </insert>
 
+        <!--        Admin-->
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="1"/>
+        </insert>
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="2"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="3"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="4"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="5"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="6"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="7"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="8"/>
+        </insert>
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="9"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="2"/>
+            <column name="fk_lib_permission_user_library_profile" value="10"/>
+        </insert>
+
+        <!--        Support-->
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="1"/>
+        </insert>
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="2"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="3"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="4"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="5"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="6"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="7"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="8"/>
+        </insert>
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="9"/>
+        </insert>
+
+        <insert tableName="user_library_profile_lib_permission">
+            <column name="fk_user_library_profile_lib_permission" value="3"/>
+            <column name="fk_lib_permission_user_library_profile" value="10"/>
+        </insert>
     </changeSet>
+
 
 </databaseChangeLog>

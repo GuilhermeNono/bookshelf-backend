@@ -49,6 +49,7 @@ public class AuthenticationController implements Serializable {
     private final ValidateAuthToken validateAuthToken;
     private final FindAuthenticatedUserAccount findAuthenticatedUserAccount;
     private final FindUserByEmail findUserByEmail;
+
     private final FindAllLibrariesOfUser findAllLibrariesOfUser;
     private final FindAuthoritiesByAuthenticatedUser findAuthoritiesByAuthenticatedUser;
 
@@ -57,7 +58,7 @@ public class AuthenticationController implements Serializable {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AuthenticationToken> login(@RequestBody @Valid LoginCommand loginCommand) {
         try {
-            this.authenticate.process(loginCommand.getEmail(), loginCommand.getPassword());
+            authenticate.process(loginCommand.getEmail(), loginCommand.getPassword());
 
             AuthenticationToken authentication = this.buildToken.process(loginCommand.getEmail());
 
@@ -65,6 +66,7 @@ public class AuthenticationController implements Serializable {
             List<LibraryUserInfo> libraries = findAllLibrariesOfUser.process(user);
 
             authentication.setLibrariesAccount(libraries);
+            authentication.setUserProfileName(user.getProfile().getName());
             authentication.setUserId(user.getId());
 
             return new ResponseEntity<>(authentication, HttpStatus.OK);
@@ -72,6 +74,21 @@ public class AuthenticationController implements Serializable {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @Operation(summary = "Find Authentication Data by token")
+    @PostMapping("/infoToken")
+    @SecurityRequirement(name = "Bearer Authentication")
+    public ResponseEntity<Void> info(@RequestHeader(value = "Authorization") String authToken) {
+        try {
+            String token = authToken.substring(TOKEN_BEARER.length());
+//            AuthenticationToken authenticationToken = findUserTokenData.process(token);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (RuntimeException e) {
+            log.warn(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
     @Operation(summary = "Validate token")
     @PostMapping(value = "/validate")

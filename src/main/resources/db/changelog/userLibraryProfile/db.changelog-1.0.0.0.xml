@@ -9,17 +9,17 @@
     <changeSet id="populating user_library_profile table" author="guilherme.nono">
         <insert tableName="user_library_profile">
             <column name="id" value="1"/>
-            <column name="name" value="BOOKSHELF_LIB_ADMIN"/>
+            <column name="name" value="bookshelf_library:user"/>
         </insert>
 
         <insert tableName="user_library_profile">
             <column name="id" value="2"/>
-            <column name="name" value="BOOKSHELF_LIB_USER"/>
+            <column name="name" value="bookshelf_library:admin"/>
         </insert>
 
         <insert tableName="user_library_profile">
             <column name="id" value="3"/>
-            <column name="name" value="BOOKSHELF_LIB_SUPPORT"/>
+            <column name="name" value="bookshelf_library:support"/>
         </insert>
 
     </changeSet>

@@ -8,9 +8,54 @@
 
     <changeSet id="populating lib_permission table" author="guilherme.nono">
         <insert tableName="lib_permission">
-            <column name="id" value="1" />
-            <column name="code" value="BOOKSHELF_LIBRARY:USERS" />
-            <column name="description" value="Users" />
+            <column name="id" value="1"/>
+            <column name="code" value="bookshelf_lib:dashboard_user"/>
+            <column name="description" value="View User Dashboard"/>
+        </insert>
+        <insert tableName="lib_permission">
+            <column name="id" value="2"/>
+            <column name="code" value="bookshelf_lib:dashboard_admin"/>
+            <column name="description" value="View Admin Dashboard"/>
+        </insert>
+        <insert tableName="lib_permission">
+            <column name="id" value="3"/>
+            <column name="code" value="bookshelf_lib:dashboard_books"/>
+            <column name="description" value="View Books page"/>
+        </insert>
+        <insert tableName="lib_permission">
+            <column name="id" value="4"/>
+            <column name="code" value="bookshelf_lib:dashboard_books_detail"/>
+            <column name="description" value="View Books Details page"/>
+        </insert>
+        <insert tableName="lib_permission">
+            <column name="id" value="5"/>
+            <column name="code" value="bookshelf_lib:dashboard_books_copy_add"/>
+            <column name="description" value="Add new Copy on Library"/>
+        </insert>
+        <insert tableName="lib_permission">
+            <column name="id" value="6"/>
+            <column name="code" value="bookshelf_lib:dashboard_books_book_add"/>
+            <column name="description" value="Add new Book on System"/>
+        </insert>
+        <insert tableName="lib_permission">
+            <column name="id" value="7"/>
+            <column name="code" value="bookshelf_lib:dashboard_loan"/>
+            <column name="description" value="View Loan Page"/>
+        </insert>
+        <insert tableName="lib_permission">
+            <column name="id" value="8"/>
+            <column name="code" value="bookshelf_lib:dashboard_loan_add"/>
+            <column name="description" value="Add new Loan"/>
+        </insert>
+        <insert tableName="lib_permission">
+            <column name="id" value="9"/>
+            <column name="code" value="bookshelf_lib:dashboard_loan_close"/>
+            <column name="description" value="Close a existent loan"/>
+        </insert>
+        <insert tableName="lib_permission">
+            <column name="id" value="10"/>
+            <column name="code" value="bookshelf_lib:dashboard_profile"/>
+            <column name="description" value="View Profile Page"/>
         </insert>
     </changeSet>
 

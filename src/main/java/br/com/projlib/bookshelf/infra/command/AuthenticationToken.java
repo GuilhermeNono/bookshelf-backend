@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonPropertyOrder({"accountId", "token", "librariesAccount"})
+@JsonPropertyOrder({"accountId", "accountProfile", "token", "librariesAccount"})
 public class AuthenticationToken implements Serializable {
 
     @JsonProperty("token")
@@ -20,6 +20,9 @@ public class AuthenticationToken implements Serializable {
 
     @JsonProperty("accountId")
     private long userId;
+
+    @JsonProperty("accountProfile")
+    private String userProfileName;
 
     private List<LibraryUserInfo> librariesAccount;
 
