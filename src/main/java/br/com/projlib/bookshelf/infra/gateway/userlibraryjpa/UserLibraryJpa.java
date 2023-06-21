@@ -22,7 +22,6 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "user_library")
@@ -69,6 +68,6 @@ public class UserLibraryJpa implements Serializable {
             name = "user_library_course",
             joinColumns = @JoinColumn(name = "fk_user_library_course", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "fk_course_user_library", referencedColumnName = "id"))
-    private Set<CourseJpa> courses;
+    private List<CourseJpa> courses;
 
 }
