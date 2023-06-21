@@ -29,6 +29,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -116,7 +117,9 @@ public class BorrowingController {
             });
         }
 
-        Pageable page = PageRequest.of(pageNum, pageSize);
+        Pageable page = PageRequest.of(pageNum, pageSize,
+                Sort.by("active")
+                        .descending());
 
         Page<BorrowingListResponse> borrowingPage =
                 findBorrowingBySearchCriteria.process(builder.build(),
