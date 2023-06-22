@@ -66,6 +66,8 @@ public class BorrowingSpecification implements
                     return cb.equal(cb.function("YEAR", Integer.class, root.get("loanDate")), strToSearch);
                 }else if(searchCriteria.getFilterKey().equals("returnDateYear")) {
                     return cb.equal(cb.function("YEAR", Integer.class, root.get("returnDate")), strToSearch);
+                }else if(searchCriteria.getFilterKey().equals("active")){
+                    return cb.equal(root.get(searchCriteria.getFilterKey()), Boolean.parseBoolean(strToSearch));
                 }
                     return cb.equal(root
                                 .get(searchCriteria.getFilterKey()),
