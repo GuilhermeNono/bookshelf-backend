@@ -32,7 +32,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -119,7 +118,9 @@ public class BorrowingController {
 
         Pageable page = PageRequest.of(pageNum, pageSize,
                 Sort.by("active")
-                        .descending());
+                        .descending()
+                        .and(Sort.by("overdue")
+                                .ascending()));
 
         Page<BorrowingListResponse> borrowingPage =
                 findBorrowingBySearchCriteria.process(builder.build(),
@@ -194,7 +195,7 @@ public class BorrowingController {
     }
 
     @Operation(summary = "Close the loan")
-    @DeleteMapping("/close/{id}")
+    @PostMapping("/close/{id}")
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<Void> closeLoan(@PathVariable long id) {
         try {
