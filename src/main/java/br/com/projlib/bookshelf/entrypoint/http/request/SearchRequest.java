@@ -1,16 +1,19 @@
-package br.com.projlib.bookshelf.infra.command;
+package br.com.projlib.bookshelf.entrypoint.http.request;
 
 import br.com.projlib.bookshelf.infra.query.SearchCriteria;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class BookCopyDTO {
+public class SearchRequest {
     private List<SearchCriteria> searchCriteriaList;
     private String dataOption;
 }

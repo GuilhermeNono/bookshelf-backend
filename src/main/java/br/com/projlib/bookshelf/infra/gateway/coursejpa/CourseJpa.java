@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "course")
@@ -40,6 +40,6 @@ public class CourseJpa implements Serializable {
     private String module;
 
     @ManyToMany(mappedBy = "courses")
-    private Set<UserLibraryJpa> libraryUsers;
+    private List<UserLibraryJpa> libraryUsers;
 
 }

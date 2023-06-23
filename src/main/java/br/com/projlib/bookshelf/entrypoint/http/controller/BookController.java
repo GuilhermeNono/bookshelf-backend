@@ -18,8 +18,8 @@ import br.com.projlib.bookshelf.core.usecase.SavePublisher;
 import br.com.projlib.bookshelf.entrypoint.http.request.AuthorRequest;
 import br.com.projlib.bookshelf.entrypoint.http.request.CategoryRequest;
 import br.com.projlib.bookshelf.entrypoint.http.request.CreateBookRequest;
-import br.com.projlib.bookshelf.entrypoint.http.response.ListBooksResponse;
-import br.com.projlib.bookshelf.infra.command.BookDTO;
+import br.com.projlib.bookshelf.entrypoint.http.request.SearchRequest;
+import br.com.projlib.bookshelf.entrypoint.http.response.BooksResponse;
 import br.com.projlib.bookshelf.infra.gateway.authorjpa.AuthorJpa;
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.categoryjpa.CategoryJpa;
@@ -80,11 +80,11 @@ public class BookController {
     @Operation(summary = "Get All books")
     @GetMapping
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<List<ListBooksResponse>> getAllBooks() {
+    public ResponseEntity<List<BooksResponse>> getAllBooks() {
         try {
             var list = findAllBooks.process()
                     .stream()
-                    .map(book -> modelMapper.map(book, ListBooksResponse.class))
+                    .map(book -> modelMapper.map(book, BooksResponse.class))
                     .toList();
 
             return new ResponseEntity<>(list, HttpStatus.OK);
@@ -96,10 +96,10 @@ public class BookController {
     @Operation(summary = "Get Book by Id")
     @GetMapping("/{id}")
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<ListBooksResponse> getBookById(@PathVariable long id) {
+    public ResponseEntity<BooksResponse> getBookById(@PathVariable long id) {
         try {
             BookJpa book = findBookById.process(id);
-            var response = modelMapper.map(book, ListBooksResponse.class);
+            var response = modelMapper.map(book, BooksResponse.class);
 
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (RuntimeException e) {
@@ -110,12 +110,12 @@ public class BookController {
     @Operation(summary = "Search Book")
     @PostMapping("/search")
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<Page<ListBooksResponse>> searchBooks
+    public ResponseEntity<Page<BooksResponse>> searchBooks
             (@RequestParam(name = "pageNum",
                     defaultValue = "0") int pageNum,
              @RequestParam(name = "pageSize",
                      defaultValue = "10") int pageSize,
-             @RequestBody BookDTO
+             @RequestBody SearchRequest
                      bookDTO){
         BookSpecificationBuilder builder = new
                 BookSpecificationBuilder();
@@ -137,7 +137,7 @@ public class BookController {
 //                        .and(Sort.by("authors"))
 //                        .ascending());
 
-        Page<ListBooksResponse> employeePage =
+        Page<BooksResponse> employeePage =
                 findBookBySearchCriteria.process(builder.build(),
                         page);
 

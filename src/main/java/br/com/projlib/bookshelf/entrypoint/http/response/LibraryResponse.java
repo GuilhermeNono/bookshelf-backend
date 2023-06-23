@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ListLibraryResponse {
+public class LibraryResponse {
     private String name;
     @JsonProperty(value = "institution_name")
     private String institutionName;

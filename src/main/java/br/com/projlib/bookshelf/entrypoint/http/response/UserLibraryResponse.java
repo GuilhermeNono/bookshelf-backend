@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 @JsonPropertyOrder({"userLibId", "rmRa", "profilePicture", "active", "account", "courses"})
-public class ListUserLibraryResponse {
+public class UserLibraryResponse {
     @JsonProperty("userLibId")
     long id;
     @JsonProperty("account")

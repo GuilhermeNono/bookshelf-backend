@@ -2,9 +2,9 @@ package br.com.projlib.bookshelf.entrypoint.http.controller;
 
 import br.com.projlib.bookshelf.core.usecase.FindAllLibrariesOfUser;
 import br.com.projlib.bookshelf.core.usecase.FindUserLibraryBySearchCriteria;
-import br.com.projlib.bookshelf.entrypoint.http.response.ListUserLibraryResponse;
+import br.com.projlib.bookshelf.entrypoint.http.request.SearchRequest;
+import br.com.projlib.bookshelf.entrypoint.http.response.UserLibraryResponse;
 import br.com.projlib.bookshelf.infra.command.LibraryUserInfo;
-import br.com.projlib.bookshelf.infra.command.UserLibraryDTO;
 import br.com.projlib.bookshelf.infra.query.SearchCriteria;
 import br.com.projlib.bookshelf.infra.specification.UserLibrarySpecificationBuilder;
 import io.swagger.v3.oas.annotations.Operation;
@@ -49,12 +49,12 @@ public class UserLibraryController {
     @Operation(summary = "Search user libraries")
     @PostMapping("/search")
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<Page<ListUserLibraryResponse>> searchUserLibs
+    public ResponseEntity<Page<UserLibraryResponse>> searchUserLibs
             (@RequestParam(name = "pageNum",
                     defaultValue = "0") int pageNum,
              @RequestParam(name = "pageSize",
                      defaultValue = "10") int pageSize,
-             @RequestBody UserLibraryDTO
+             @RequestBody SearchRequest
                      userLibraryDTO){
             try {
                 UserLibrarySpecificationBuilder builder = new
@@ -73,7 +73,7 @@ public class UserLibraryController {
                         Sort.by("rmRa")
                                 .ascending());
 
-                Page<ListUserLibraryResponse> userLibPage =
+                Page<UserLibraryResponse> userLibPage =
                         findUserLibraryBySearchCriteria.process(builder.build(),
                                 page);
 

@@ -1,7 +1,7 @@
 package br.com.projlib.bookshelf.core.usecase;
 
 import br.com.projlib.bookshelf.core.gateway.BookCopyGateway;
-import br.com.projlib.bookshelf.entrypoint.http.response.ListBookCopyResponse;
+import br.com.projlib.bookshelf.entrypoint.http.response.BookCopyResponse;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -16,8 +16,8 @@ public class FindBookCopyBySearchCriteria {
     private final BookCopyGateway bookCopyGateway;
     private final ModelMapper modelMapper;
 
-    public Page<ListBookCopyResponse> process(Specification<BookCopyJpa> spec, Pageable page){
+    public Page<BookCopyResponse> process(Specification<BookCopyJpa> spec, Pageable page){
         Page<BookCopyJpa> all = bookCopyGateway.findAll(spec, page);
-        return all.map(m -> modelMapper.map(m, ListBookCopyResponse.class));
+        return all.map(m -> modelMapper.map(m, BookCopyResponse.class));
     }
 }

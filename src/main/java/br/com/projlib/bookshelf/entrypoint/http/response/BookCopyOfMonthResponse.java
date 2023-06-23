@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +16,25 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@JsonPropertyOrder({"lib_code", "name", "cape_type", "available", "language", "publication_date", "publisher", "sinopse", "isbn", "edition", "number_pages", "cape", "author", "categories"})
-public class ListBookCopyResponse {
+@JsonPropertyOrder({
+        "lib_code",
+        "name",
+        "cape_type",
+        "available",
+        "language",
+        "publication_date",
+        "publisher",
+        "sinopse",
+        "isbn",
+        "edition",
+        "number_pages",
+        "cape",
+        "authors",
+        "categories",
+        "created_at",
+        "updated_at"})
+
+public class BookCopyOfMonthResponse {
 
     @JsonProperty("lib_code")
     private String code;
@@ -46,5 +64,8 @@ public class ListBookCopyResponse {
     private List<AuthorResponse> bookAuthors;
     @JsonProperty("categories")
     private List<CategoryResponse> bookCategories;
-
+    @JsonProperty("created_at")
+    private LocalDateTime createdAt;
+    @JsonProperty("updated_at")
+    private LocalDateTime updatedAt;
 }

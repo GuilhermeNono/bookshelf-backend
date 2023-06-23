@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @JsonPropertyOrder({"id", "name", "capeType", "publisherName", "edition", "sinopse", "language", "publication_date", "isbn", "number_pages", "cape", "categories", "authors"})
-public class ListBooksResponse {
+public class BooksResponse {
 
     private long id;
     private String name;

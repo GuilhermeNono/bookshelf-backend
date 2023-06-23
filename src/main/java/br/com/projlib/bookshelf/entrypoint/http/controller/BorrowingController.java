@@ -11,8 +11,8 @@ import br.com.projlib.bookshelf.core.usecase.SaveBookCopy;
 import br.com.projlib.bookshelf.core.usecase.SaveBorrowing;
 import br.com.projlib.bookshelf.entrypoint.http.request.BorrowingCreateRequest;
 import br.com.projlib.bookshelf.entrypoint.http.request.BorrowingRenewalRequest;
+import br.com.projlib.bookshelf.entrypoint.http.request.SearchRequest;
 import br.com.projlib.bookshelf.entrypoint.http.response.BorrowingListResponse;
-import br.com.projlib.bookshelf.infra.command.BorrowingDTO;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
@@ -102,7 +102,7 @@ public class BorrowingController {
                     defaultValue = "0") int pageNum,
              @RequestParam(name = "pageSize",
                      defaultValue = "10") int pageSize,
-             @RequestBody BorrowingDTO
+             @RequestBody SearchRequest
                      borrowingDTO){
         BorrowingSpecificationBuilder builder = new
                 BorrowingSpecificationBuilder();
