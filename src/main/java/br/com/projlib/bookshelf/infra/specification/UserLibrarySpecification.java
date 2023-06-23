@@ -56,7 +56,7 @@ public class UserLibrarySpecification implements
                 } else if (searchCriteria.getFilterKey().equals("rmra")) {
                     return cb.equal(root.get(searchCriteria.getFilterKey()), strToSearch);
                 } else if (searchCriteria.getFilterKey().equals("library")) {
-                    return cb.equal(libraryJoin(root).get("id"), strToSearch);
+                    return cb.equal(libraryLinkJoin(root).get("id"), strToSearch);
                 } else if(searchCriteria.getFilterKey().equals("course")) {
                     return cb.equal(courseJoin(root).get("id"), strToSearch);
                 }
@@ -73,9 +73,14 @@ public class UserLibrarySpecification implements
         return root.join("library");
     }
 
+    private Join<UserLibraryJpa, LibraryJpa> libraryLinkJoin(Root<UserLibraryJpa>
+                                                                 root) {
+        return root.join("userLibraryCourseLinks").join("libraries");
+    }
+
     private Join<UserLibraryJpa, CourseJpa> courseJoin(Root<UserLibraryJpa>
                                                                  root) {
-        return root.join("courses");
+        return root.join("userLibraryCourseLinks").join("courses");
     }
 
     private Join<UserLibraryJpa, UserAccountJpa> userAccountJoin(Root<UserLibraryJpa>

@@ -18,7 +18,7 @@
     <include file="institution/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="library/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="userLibrary/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
-    <include file="userLibrary_course/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
+    <include file="userLibraryCourses/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="libPermission_userLibraryProfile/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="publisher/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="author/db.changelog-0.0.0.1.xml" relativeToChangelogFile="true" />
@@ -45,7 +45,7 @@
     <include file="institution/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="library/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="userLibrary/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
-    <include file="userLibrary_course/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
+    <include file="userLibraryCourses/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="libPermission_userLibraryProfile/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="publisher/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />
     <include file="author/db.changelog-1.0.0.0.xml" relativeToChangelogFile="true" />

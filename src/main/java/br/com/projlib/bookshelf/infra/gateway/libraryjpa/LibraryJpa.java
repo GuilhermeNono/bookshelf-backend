@@ -2,7 +2,9 @@ package br.com.projlib.bookshelf.infra.gateway.libraryjpa;
 
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.institutionjpa.InstitutionJpa;
+import br.com.projlib.bookshelf.infra.gateway.userlibLibraryCourseLinkJpa.UserLibraryCourseLinkJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,9 +42,13 @@ public class LibraryJpa implements Serializable {
     @OneToMany(mappedBy = "library")
     private List<BookCopyJpa> bookCopies;
 
+    @OneToMany(mappedBy = "libraries", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<UserLibraryCourseLinkJpa> userLibraryCourseLinks;
+
     @ManyToOne
     @JoinColumn(name = "fk_libary_institution", referencedColumnName = "id")
     private InstitutionJpa institution;
+
 
     public LibraryJpa() {
     }

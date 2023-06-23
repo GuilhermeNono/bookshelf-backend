@@ -53,14 +53,14 @@ public class CourseSpecification implements
                 return null;
         }
     }
-    private Join<CourseJpa, UserLibraryJpa> libUsersJoin(Root<CourseJpa>
+    private Join<CourseJpa, UserLibraryJpa> linkTableJoin(Root<CourseJpa>
                                                         root){
-        return root.join("libraryUsers");
+        return root.join("userLibraryCourseLinks");
     }
 
     private Join<CourseJpa, LibraryJpa> libraryJoin(Root<CourseJpa>
                                                                  root){
-        return root.join("libraryUsers").join("library");
+        return linkTableJoin(root).join("libraries");
     }
 //
 //    private Join<BookCopyJpa, LibraryJpa> libraryJoin(Root<BookCopyJpa>
