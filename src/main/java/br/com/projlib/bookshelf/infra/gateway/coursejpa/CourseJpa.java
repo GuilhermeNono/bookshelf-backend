@@ -1,12 +1,15 @@
 package br.com.projlib.bookshelf.infra.gateway.coursejpa;
 
+import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,6 +41,10 @@ public class CourseJpa implements Serializable {
 
     @Column
     private String module;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_library_course", referencedColumnName = "id")
+    private LibraryJpa library;
 
     @ManyToMany(mappedBy = "courses")
     private Set<UserLibraryJpa> libraryUsers;

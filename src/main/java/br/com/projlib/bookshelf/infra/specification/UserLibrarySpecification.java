@@ -1,5 +1,6 @@
 package br.com.projlib.bookshelf.infra.specification;
 
+import br.com.projlib.bookshelf.infra.gateway.coursejpa.CourseJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
 import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
@@ -56,6 +57,8 @@ public class UserLibrarySpecification implements
                     return cb.equal(root.get(searchCriteria.getFilterKey()), strToSearch);
                 } else if (searchCriteria.getFilterKey().equals("library")) {
                     return cb.equal(libraryJoin(root).get("id"), strToSearch);
+                } else if(searchCriteria.getFilterKey().equals("course")) {
+                    return cb.equal(courseJoin(root).get("id"), strToSearch);
                 }
                 return cb.equal(root
                                 .get(searchCriteria.getFilterKey()),
@@ -68,6 +71,11 @@ public class UserLibrarySpecification implements
     private Join<UserLibraryJpa, LibraryJpa> libraryJoin(Root<UserLibraryJpa>
                                                                  root) {
         return root.join("library");
+    }
+
+    private Join<UserLibraryJpa, CourseJpa> courseJoin(Root<UserLibraryJpa>
+                                                                 root) {
+        return root.join("courses");
     }
 
     private Join<UserLibraryJpa, UserAccountJpa> userAccountJoin(Root<UserLibraryJpa>
