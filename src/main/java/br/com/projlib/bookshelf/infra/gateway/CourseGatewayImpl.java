@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -25,5 +26,10 @@ public class CourseGatewayImpl implements CourseGateway {
     @Override
     public Page<CourseJpa> findAll(Specification<CourseJpa> spec, Pageable pageable) {
         return courseRepository.findAll(spec, pageable);
+    }
+
+    @Override
+    public Optional<CourseJpa> findById(long id) {
+        return courseRepository.findById(id);
     }
 }

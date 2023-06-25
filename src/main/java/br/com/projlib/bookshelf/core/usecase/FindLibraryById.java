@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class FindOneLibrary {
+public class FindLibraryById {
     private final LibraryGateway libraryGateway;
 
     public LibraryJpa process(final long id) {
