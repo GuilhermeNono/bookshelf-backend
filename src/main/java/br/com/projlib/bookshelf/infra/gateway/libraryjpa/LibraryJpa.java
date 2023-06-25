@@ -1,6 +1,7 @@
 package br.com.projlib.bookshelf.infra.gateway.libraryjpa;
 
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
+import br.com.projlib.bookshelf.infra.gateway.coursejpa.CourseJpa;
 import br.com.projlib.bookshelf.infra.gateway.institutionjpa.InstitutionJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import jakarta.persistence.Column;
@@ -39,6 +40,9 @@ public class LibraryJpa implements Serializable {
 
     @OneToMany(mappedBy = "library")
     private List<BookCopyJpa> bookCopies;
+
+    @OneToMany(mappedBy = "library")
+    private List<CourseJpa> courses;
 
     @ManyToOne
     @JoinColumn(name = "fk_libary_institution", referencedColumnName = "id")

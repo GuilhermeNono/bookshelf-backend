@@ -7,6 +7,7 @@
     <property name="now" value="now()" dbms="mysql"/>
 
     <changeSet id="populating user_library_course table" author="guilherme.nono">
+<!--        Class 1 - Lib 1-->
         <insert tableName="user_library_course">
             <column name="fk_user_library_course" value="1" />
             <column name="fk_course_user_library" value="1" />
@@ -57,7 +58,174 @@
             <column name="fk_course_user_library" value="1" />
         </insert>
 
+<!--        Class 2 - Lib 1-->
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="5" />
+            <column name="fk_course_user_library" value="2" />
+        </insert>
 
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="6" />
+            <column name="fk_course_user_library" value="2" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="7" />
+            <column name="fk_course_user_library" value="2" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="8" />
+            <column name="fk_course_user_library" value="2" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="9" />
+            <column name="fk_course_user_library" value="2" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="10" />
+            <column name="fk_course_user_library" value="2" />
+        </insert>
+
+        <!--        Class 3 - Lib 1-->
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="7" />
+            <column name="fk_course_user_library" value="3" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="8" />
+            <column name="fk_course_user_library" value="3" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="9" />
+            <column name="fk_course_user_library" value="3" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="10" />
+            <column name="fk_course_user_library" value="3" />
+        </insert>
+
+<!--        Class 1 - Lib 2-->
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="11" />
+            <column name="fk_course_user_library" value="4" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="12" />
+            <column name="fk_course_user_library" value="4" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="13" />
+            <column name="fk_course_user_library" value="4" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="14" />
+            <column name="fk_course_user_library" value="4" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="15" />
+            <column name="fk_course_user_library" value="4" />
+        </insert>
+
+        <!--        Class 2 - Lib 2-->
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="11" />
+            <column name="fk_course_user_library" value="5" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="12" />
+            <column name="fk_course_user_library" value="5" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="13" />
+            <column name="fk_course_user_library" value="5" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="14" />
+            <column name="fk_course_user_library" value="5" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="15" />
+            <column name="fk_course_user_library" value="5" />
+        </insert>
+
+        <!--        Class 3 - Lib 2-->
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="14" />
+            <column name="fk_course_user_library" value="6" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="15" />
+            <column name="fk_course_user_library" value="6" />
+        </insert>
+
+        <!--        Class 1 - Lib 3-->
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="16" />
+            <column name="fk_course_user_library" value="7" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="17" />
+            <column name="fk_course_user_library" value="7" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="18" />
+            <column name="fk_course_user_library" value="7" />
+        </insert>
+
+        <!--        Class 2 - Lib 3-->
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="16" />
+            <column name="fk_course_user_library" value="8" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="17" />
+            <column name="fk_course_user_library" value="8" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="18" />
+            <column name="fk_course_user_library" value="8" />
+        </insert>
+        <!--        Class 3 - Lib 3-->
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="16" />
+            <column name="fk_course_user_library" value="9" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="17" />
+            <column name="fk_course_user_library" value="9" />
+        </insert>
+
+        <insert tableName="user_library_course">
+            <column name="fk_user_library_course" value="18" />
+            <column name="fk_course_user_library" value="9" />
+        </insert>
     </changeSet>
 
 </databaseChangeLog>

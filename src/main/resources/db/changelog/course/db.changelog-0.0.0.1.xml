@@ -24,6 +24,13 @@
             <column name="active" type="tinyint">
                 <constraints nullable="false"/>
             </column>
+            <column name="fk_library_course" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_library_course"
+                             referencedTableName="library"
+                             referencedColumnNames="id"
+                             deleteCascade="true"/>
+            </column>
         </createTable>
     </changeSet>
 

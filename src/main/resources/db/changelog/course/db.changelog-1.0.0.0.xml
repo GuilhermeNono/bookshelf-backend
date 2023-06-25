@@ -14,6 +14,87 @@
             <column name="module" value="3"/>
             <column name="period" value="Noturno"/>
             <column name="active" value="1"/>
+            <column name="fk_library_course" value="1"/>
+        </insert>
+
+        <insert tableName="course">
+            <column name="id" value="2"/>
+            <column name="name" value="ADM"/>
+            <column name="class" value="A"/>
+            <column name="module" value="3"/>
+            <column name="period" value="Noturno"/>
+            <column name="active" value="1"/>
+            <column name="fk_library_course" value="1"/>
+        </insert>
+
+        <insert tableName="course">
+            <column name="id" value="3"/>
+            <column name="name" value="RH"/>
+            <column name="class" value="A"/>
+            <column name="module" value="3"/>
+            <column name="period" value="Noturno"/>
+            <column name="active" value="1"/>
+            <column name="fk_library_course" value="1"/>
+        </insert>
+
+        <insert tableName="course">
+            <column name="id" value="4"/>
+            <column name="name" value="DS"/>
+            <column name="class" value="A"/>
+            <column name="module" value="3"/>
+            <column name="period" value="Noturno"/>
+            <column name="active" value="1"/>
+            <column name="fk_library_course" value="2"/>
+        </insert>
+
+        <insert tableName="course">
+            <column name="id" value="5"/>
+            <column name="name" value="SCT"/>
+            <column name="class" value="A"/>
+            <column name="module" value="3"/>
+            <column name="period" value="Noturno"/>
+            <column name="active" value="1"/>
+            <column name="fk_library_course" value="2"/>
+        </insert>
+
+        <insert tableName="course">
+            <column name="id" value="6"/>
+            <column name="name" value="INF"/>
+            <column name="class" value="A"/>
+            <column name="module" value="3"/>
+            <column name="period" value="Noturno"/>
+            <column name="active" value="1"/>
+            <column name="fk_library_course" value="2"/>
+        </insert>
+
+        <insert tableName="course">
+            <column name="id" value="7"/>
+            <column name="name" value="MEC"/>
+            <column name="class" value="A"/>
+            <column name="module" value="3"/>
+            <column name="period" value="Noturno"/>
+            <column name="active" value="1"/>
+            <column name="fk_library_course" value="3"/>
+        </insert>
+
+        <insert tableName="course">
+            <column name="id" value="8"/>
+            <column name="name" value="MAT"/>
+            <column name="class" value="A"/>
+            <column name="module" value="3"/>
+            <column name="period" value="Noturno"/>
+            <column name="active" value="1"/>
+            <column name="fk_library_course" value="3"/>
+        </insert>
+
+        <insert tableName="course">
+            <column name="id" value="9"/>
+            <column name="name" value="AGR"/>
+            <column name="class" value="A"/>
+            <column name="module" value="3"/>
+            <column name="period" value="Noturno"/>
+            <column name="active" value="1"/>
+            <column name="fk_library_course" value="3"/>
         </insert>
 
     </changeSet>
