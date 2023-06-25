@@ -2,11 +2,7 @@ package br.com.projlib.bookshelf.entrypoint.http.controller;
 
 import br.com.projlib.bookshelf.core.usecase.CreateUserAccount;
 import br.com.projlib.bookshelf.core.usecase.FindAllUser;
-import br.com.projlib.bookshelf.core.usecase.FindContactTypeById;
-import br.com.projlib.bookshelf.core.usecase.FindProfileById;
 import br.com.projlib.bookshelf.core.usecase.FindUserById;
-import br.com.projlib.bookshelf.core.usecase.SaveContact;
-import br.com.projlib.bookshelf.core.usecase.SaveUser;
 import br.com.projlib.bookshelf.entrypoint.http.request.UserAccountCreateRequest;
 import br.com.projlib.bookshelf.entrypoint.http.response.UserAccountResponse;
 import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
@@ -38,12 +34,8 @@ public class UserAccountController {
     private final ModelMapper modelMapper;
 
     private final FindAllUser findAllUser;
-    private final SaveUser saveUser;
-    private final FindProfileById findProfileById;
     private final CreateUserAccount createUserAccount;
     private final FindUserById findUserById;
-    private final FindContactTypeById findContactTypeById;
-    private final SaveContact saveContact;
 
     @Operation(summary = "Get all users")
     @GetMapping
@@ -81,7 +73,7 @@ public class UserAccountController {
     public ResponseEntity<UserAccountResponse> createUser(@RequestBody @Valid UserAccountCreateRequest userAccountCreateRequest) {
         try {
             UserAccountJpa userAccount = createUserAccount.process(userAccountCreateRequest);
-            final UserAccountResponse response = UserAccountResponse.fromDomain(userAccount.toDomain());
+            UserAccountResponse response = modelMapper.map(userAccount, UserAccountResponse.class);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
