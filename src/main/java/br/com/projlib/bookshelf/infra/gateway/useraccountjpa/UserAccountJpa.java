@@ -55,6 +55,9 @@ public class UserAccountJpa implements Serializable, UserDetails {
     private String personName;
 
     @Column
+    private String gender;
+
+    @Column
     private Date birthDay;
 
     @Column(nullable = false)

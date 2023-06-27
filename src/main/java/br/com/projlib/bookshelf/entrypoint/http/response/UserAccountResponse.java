@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -19,8 +20,9 @@ public class UserAccountResponse {
     long id;
     String personName;
     String cpf;
-    String email;
     boolean active;
+    String gender;
+    Date birthDay;
     LocalDateTime updatedAt;
     @JsonProperty("contacts")
     List<UserContactResponse> userContact;

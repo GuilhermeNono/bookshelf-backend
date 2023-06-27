@@ -38,6 +38,7 @@ public class CreateUserAccount {
         userAccount.setPersonName(userAccountCreateRequest.getFirstName()
                 .concat(" ")
                 .concat(userAccountCreateRequest.getLastName()));
+        userAccount.setGender(userAccountCreateRequest.getGender());
         userAccount.setBirthDay(userAccountCreateRequest.getBirthDay());
         userAccount.setCreatedAt(LocalDateTime.now());
         userAccount.setUpdatedAt(LocalDateTime.now());
