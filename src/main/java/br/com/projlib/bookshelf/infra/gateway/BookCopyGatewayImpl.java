@@ -1,7 +1,7 @@
 package br.com.projlib.bookshelf.infra.gateway;
 
 import br.com.projlib.bookshelf.core.gateway.BookCopyGateway;
-import br.com.projlib.bookshelf.core.usecase.FindOneLibrary;
+import br.com.projlib.bookshelf.core.usecase.FindLibraryById;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyRepository;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
@@ -20,11 +20,11 @@ import java.util.Optional;
 public class BookCopyGatewayImpl implements BookCopyGateway {
 
     private final BookCopyRepository bookCopyRepository;
-    private final FindOneLibrary findOneLibrary;
+    private final FindLibraryById findLibraryById;
 
     @Override
     public List<BookCopyJpa> findAllBooksOfLibrary(long libraryId) {
-        LibraryJpa library = findOneLibrary.process(libraryId);
+        LibraryJpa library = findLibraryById.process(libraryId);
         return bookCopyRepository.findAllByLibrary(library);
     }
 
@@ -58,13 +58,13 @@ public class BookCopyGatewayImpl implements BookCopyGateway {
 
     @Override
     public List<BookCopyJpa> findBooksOfLibraryByName(String name, long id) {
-        LibraryJpa library = findOneLibrary.process(id);
+        LibraryJpa library = findLibraryById.process(id);
         return bookCopyRepository.findCopyByLibraryAndName(library, "%" + name + "%");
     }
 
     @Override
     public List<BookCopyJpa> findBooksOfLibraryByIsbn(String isbn, long id) {
-        LibraryJpa library = findOneLibrary.process(id);
+        LibraryJpa library = findLibraryById.process(id);
         return bookCopyRepository.findCopyByLibraryAndIsbn(library, isbn);
     }
 

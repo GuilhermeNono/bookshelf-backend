@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class CreateContact {
+public class SaveContact {
     private final UserContactGateway userContactGateway;
 
     public UserContactJpa process(UserContactJpa userContact) {

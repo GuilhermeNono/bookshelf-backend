@@ -5,7 +5,7 @@ import br.com.projlib.bookshelf.core.usecase.FindAllBorrowings;
 import br.com.projlib.bookshelf.core.usecase.FindBookCopyByCode;
 import br.com.projlib.bookshelf.core.usecase.FindBorrowingById;
 import br.com.projlib.bookshelf.core.usecase.FindBorrowingBySearchCriteria;
-import br.com.projlib.bookshelf.core.usecase.FindOneLibrary;
+import br.com.projlib.bookshelf.core.usecase.FindLibraryById;
 import br.com.projlib.bookshelf.core.usecase.FindUserLibraryById;
 import br.com.projlib.bookshelf.core.usecase.SaveBookCopy;
 import br.com.projlib.bookshelf.core.usecase.SaveBorrowing;
@@ -60,7 +60,7 @@ public class BorrowingController {
     private final FindBorrowingBySearchCriteria findBorrowingBySearchCriteria;
     private final FindUserLibraryById findUserLibraryById;
     private final FindBookCopyByCode findBookCopyByCode;
-    private final FindOneLibrary findOneLibrary;
+    private final FindLibraryById findLibraryById;
     private final FindAllBorrowingOfMonth findAllBorrowingOfMonth;
 
 
@@ -182,7 +182,7 @@ public class BorrowingController {
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<BorrowingListResponse>> getAllLoanOfMonth(@PathVariable long id){
         try {
-            LibraryJpa library = findOneLibrary.process(id);
+            LibraryJpa library = findLibraryById.process(id);
             List<BorrowingListResponse> loanList = findAllBorrowingOfMonth.process(library)
                     .stream()
                     .map(b -> modelMapper.map(b, BorrowingListResponse.class))

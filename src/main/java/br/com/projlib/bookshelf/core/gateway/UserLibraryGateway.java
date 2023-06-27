@@ -14,4 +14,6 @@ public interface UserLibraryGateway {
     Page<UserLibraryJpa> findAll(Specification<UserLibraryJpa> spec, Pageable page);
 
     Optional<UserLibraryJpa> findById(long id);
+
+    UserLibraryJpa save(UserLibraryJpa userLibraryJpa);
 }

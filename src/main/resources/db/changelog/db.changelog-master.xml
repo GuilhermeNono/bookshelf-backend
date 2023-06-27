@@ -61,5 +61,6 @@
     <!-- Version 1.0.0.1 - Hotfix -->
     <include file="bookCopy/db.changelog-1.0.0.1.xml" relativeToChangelogFile="true" />
     <include file="borrowing/db.changelog-1.0.0.1.xml" relativeToChangelogFile="true" />
+    <include file="userAccount/db.changelog-1.0.0.1.xml" relativeToChangelogFile="true" />
 
 </databaseChangeLog>

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,5 +32,11 @@ public class UserLibraryGatewayImpl implements UserLibraryGateway {
     @Override
     public Optional<UserLibraryJpa> findById(long id) {
         return userLibraryRepository.findById(id);
+    }
+
+    @Override
+    @Transactional
+    public UserLibraryJpa save(UserLibraryJpa userLibraryJpa) {
+        return userLibraryRepository.save(userLibraryJpa);
     }
 }
