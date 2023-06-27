@@ -33,9 +33,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -168,6 +168,7 @@ public class BorrowingController {
 
             borrowing.setRenewalDate(LocalDate.now());
             borrowing.setReturnDate(borrowingRenewal.getDateToReturn());
+            borrowing.setOverdue(false);
 
             saveBorrowing.process(borrowing);
 
@@ -202,6 +203,7 @@ public class BorrowingController {
             final BorrowingJpa borrowing = findBorrowingById.process(id);
 
             borrowing.setActive(false);
+            borrowing.getBookCopy().setActive(true);
 
             saveBorrowing.process(borrowing);
 

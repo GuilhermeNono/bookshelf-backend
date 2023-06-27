@@ -72,4 +72,10 @@ public class BookCopyGatewayImpl implements BookCopyGateway {
     public List<BookCopyJpa> findAllBooksOfMonth(LibraryJpa library, int month) {
         return bookCopyRepository.findAllByMonthAndLibrary(month, library);
     }
+
+    @Override
+    @Transactional
+    public void remove(BookCopyJpa bookCopy) {
+        bookCopyRepository.delete(bookCopy);
+    }
 }
