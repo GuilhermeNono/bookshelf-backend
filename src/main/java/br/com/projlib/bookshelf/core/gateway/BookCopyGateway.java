@@ -23,4 +23,6 @@ public interface BookCopyGateway {
     List<BookCopyJpa> findBooksOfLibraryByIsbn(String isbn, long id);
 
     List<BookCopyJpa> findAllBooksOfMonth(LibraryJpa library, int month);
+
+    void remove(BookCopyJpa bookCopy);
 }
