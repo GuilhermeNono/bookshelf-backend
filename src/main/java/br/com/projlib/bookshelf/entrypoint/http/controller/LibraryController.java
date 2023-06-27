@@ -1,6 +1,17 @@
 package br.com.projlib.bookshelf.entrypoint.http.controller;
 
+
 import br.com.projlib.bookshelf.core.usecase.*;
+import br.com.projlib.bookshelf.core.usecase.FindAllBooksOfLibrary;
+import br.com.projlib.bookshelf.core.usecase.FindAllBooksOfMonth;
+import br.com.projlib.bookshelf.core.usecase.FindAllLibraries;
+import br.com.projlib.bookshelf.core.usecase.FindBookById;
+import br.com.projlib.bookshelf.core.usecase.FindBookCopyBySearchCriteria;
+import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByIsbn;
+import br.com.projlib.bookshelf.core.usecase.FindBookOnLibraryByName;
+import br.com.projlib.bookshelf.core.usecase.FindLibraryById;
+import br.com.projlib.bookshelf.core.usecase.FindUserLibraryById;
+import br.com.projlib.bookshelf.core.usecase.SaveBookCopy;
 import br.com.projlib.bookshelf.entrypoint.http.request.CreateBookCopyRequest;
 import br.com.projlib.bookshelf.entrypoint.http.request.DeleteBookCopyRequest;
 import br.com.projlib.bookshelf.entrypoint.http.response.ListBookCopyOfMonthResponse;
@@ -40,7 +51,7 @@ import java.util.stream.Collectors;
 public class LibraryController {
 
     private final FindAllLibraries findAllLibraries;
-    private final FindOneLibrary findOneLibrary;
+    private final FindLibraryById findLibraryById;
     private final FindAllBooksOfLibrary findAllBooksOfLibrary;
     private final FindBookCopyBySearchCriteria findBookCopyBySearchCriteria;
     private final FindAllBooksOfMonth findAllBooksOfMonth;
@@ -83,7 +94,7 @@ public class LibraryController {
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<ListLibraryResponse> getLibrary(@PathVariable long id) {
         try {
-            LibraryJpa library = findOneLibrary.process(id);
+            LibraryJpa library = findLibraryById.process(id);
             ListLibraryResponse libResponse = modelMapper.map(library, ListLibraryResponse.class);
             return new ResponseEntity<>(libResponse, HttpStatus.OK);
         } catch (RuntimeException e) {
@@ -114,7 +125,7 @@ public class LibraryController {
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<List<ListBookCopyOfMonthResponse>> getAllBooksOfMonth(@PathVariable long id) {
         try {
-            LibraryJpa library = findOneLibrary.process(id);
+            LibraryJpa library = findLibraryById.process(id);
             List<ListBookCopyOfMonthResponse> books = findAllBooksOfMonth.process(library)
                     .stream()
                     .map(b -> modelMapper.map(b, ListBookCopyOfMonthResponse.class))
@@ -165,7 +176,7 @@ public class LibraryController {
     @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<Void> addNewCopy(@Valid @RequestBody CreateBookCopyRequest bookCopyRequest) {
         try {
-            LibraryJpa library = findOneLibrary.process(bookCopyRequest.getLibId());
+            LibraryJpa library = findLibraryById.process(bookCopyRequest.getLibId());
             //UserLibraryJpa user = findUserLibraryById.process(bookCopyRequest.getUserId());
             BookJpa book = findBookById.process(bookCopyRequest.getBookId());
 
