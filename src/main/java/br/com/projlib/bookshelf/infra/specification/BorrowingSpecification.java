@@ -4,6 +4,7 @@ import br.com.projlib.bookshelf.infra.gateway.bookcopyjpa.BookCopyJpa;
 import br.com.projlib.bookshelf.infra.gateway.bookjpa.BookJpa;
 import br.com.projlib.bookshelf.infra.gateway.borrowingjpa.BorrowingJpa;
 import br.com.projlib.bookshelf.infra.gateway.libraryjpa.LibraryJpa;
+import br.com.projlib.bookshelf.infra.gateway.useraccountjpa.UserAccountJpa;
 import br.com.projlib.bookshelf.infra.gateway.userlibraryjpa.UserLibraryJpa;
 import br.com.projlib.bookshelf.infra.query.SearchCriteria;
 import br.com.projlib.bookshelf.infra.query.SearchOperation;
@@ -36,6 +37,9 @@ public class BorrowingSpecification implements
                 SearchOperation.getSimpleOperation
                         (searchCriteria.getOperation()))){
             case CONTAINS:
+                if(searchCriteria.getFilterKey().equals("name")) {
+                  return cb.like(userAccountJoin(root).get("personName"), strToSearch);
+                }
                 return cb.like(cb.lower(root
                                 .get(searchCriteria.getFilterKey())),
                         "%" + strToSearch + "%");
@@ -93,5 +97,9 @@ public class BorrowingSpecification implements
 
     private Join<BorrowingJpa, UserLibraryJpa> userLibraryJoin(Root<BorrowingJpa> root) {
         return root.join("userLibrary");
+    }
+
+    private Join<BorrowingJpa, UserAccountJpa> userAccountJoin(Root<BorrowingJpa> root) {
+        return userLibraryJoin(root).join("userAccount");
     }
 }
